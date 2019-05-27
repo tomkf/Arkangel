@@ -1,0 +1,2 @@
+class UserParam < ApplicationRecord
+end
