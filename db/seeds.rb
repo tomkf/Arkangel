@@ -15,8 +15,8 @@ puts 'Adding user score...'
 score1 = UserScore.create(
   user: user,
   bmi: 18,
-  physical_activity: 1, # hours per day
-  fruits_vegetables: 4, # servings per day
+  physical_activity: 0.5, # hours per day
+  fruits_vegetables: 2, # servings per day
   whole_grains: 15, # grams per day
   red_meat: 0.5, # servings per day
   processed_meat: 0.5, # servings per day
@@ -32,15 +32,15 @@ score1.save
 
 score2 = UserScore.create(
   user: user,
-  bmi: 30,
+  bmi: 40,
   physical_activity: 0, # hours per day
   fruits_vegetables: 1, # servings per day
   whole_grains: 5, # grams per day
-  red_meat: 2, # servings per day
-  processed_meat: 2, # servings per day
+  red_meat: 10, # servings per day
+  processed_meat: 12, # servings per day
   fats: 0, # servings per day
-  soda: 2, # drinks per day
-  alcohol: 4, # drinks per day
+  soda: 12, # drinks per day
+  alcohol: 14, # drinks per day
   logdate: '2019-05-26'
   )
 score2.algorithm
