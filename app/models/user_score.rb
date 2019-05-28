@@ -4,7 +4,6 @@ class UserScore < ApplicationRecord
 
 
   def algorithm
-
     # puts self.user.age
 
     risk_score = (0.9660**(w_score - 6.57301) - 1) * 100
@@ -19,8 +18,7 @@ class UserScore < ApplicationRecord
   private
 
   def w_score
-    0.10820 * self.user.age + smokermethod + 0.04676 * self.bmi - 0.01923 * self.alcohol
-    + 0.0004 * self.alcohol**2 - 0.029251 * self.physical_activity * 7 - 0.05113 * diet_score
+    0.10820 * self.user.age + smokermethod + 0.04676 * self.bmi - 0.01923 * self.alcohol + 0.0004 * self.alcohol**2 - 0.029251 * self.physical_activity * 7 - 0.05113 * diet_score
   end
 
   def smokermethod
@@ -34,8 +32,7 @@ class UserScore < ApplicationRecord
   end
 
   def diet_score
-    (0.03626 * self.whole_grains + fruitsVegetables + fatsmethod
-      - 0.14631 * self.soda - 0.15624 * (self.red_meat + self.processed_meat)) * 10
+    (0.03626 * self.whole_grains + fruitsVegetables + fatsmethod - 0.14631 * self.soda - 0.15624 * (self.red_meat + self.processed_meat)) * 10
   end
 
   def fruitsVegetables
@@ -55,5 +52,4 @@ class UserScore < ApplicationRecord
       0
     end
   end
-
 end
