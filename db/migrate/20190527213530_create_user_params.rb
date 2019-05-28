@@ -4,7 +4,7 @@ class CreateUserParams < ActiveRecord::Migration[5.2]
       t.float :bmi
       t.integer :weight
       t.integer :height
-      t.references :users, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
