@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_184458) do
+ActiveRecord::Schema.define(version: 2019_05_28_181052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "user_scores", force: :cascade do |t|
+    t.float "health_score"
+    t.float "bmi"
+    t.float "physical_activity"
+    t.float "fruits_vegetables"
+    t.float "whole_grains"
+    t.float "red_meat"
+    t.float "processed_meat"
+    t.float "fats"
+    t.float "soda"
+    t.float "alcohol"
+    t.date "logdate"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_scores_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +45,5 @@ ActiveRecord::Schema.define(version: 2019_05_27_184458) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_scores", "users"
 end
