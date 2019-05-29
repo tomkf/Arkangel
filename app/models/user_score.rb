@@ -1,21 +1,12 @@
 class UserScore < ApplicationRecord
   belongs_to :user
 
-<<<<<<< HEAD
-=======
-  after_create :algorithm
 
->>>>>>> 365b8e7dc267c60c7c329fb4405c922c0b7e415a
+
   def algorithm
-    # puts self.user.age
-
     p risk_score = (1 - 0.9660**(Math::E**(w_score - 6.57301))) * 1000
 
-    risk_score = risk_score.round(2)
-
     self.health_score = p 100 - risk_score
-
-    self.save
 
     puts 'score added!'
   end
@@ -23,11 +14,7 @@ class UserScore < ApplicationRecord
   private
 
   def w_score
-<<<<<<< HEAD
-    0.10820 * self.user.age + smokermethod + 0.04676 * self.bmi - 0.01923 * self.alcohol + 0.0004 * self.alcohol**2 - 0.029251 * self.physical_activity * 7 - 0.05113 * diet_score
-=======
     (0.10820 * self.user.age) + smokermethod + (0.04676 * self.bmi) - (0.01923 * self.alcohol) + (0.0004 * self.alcohol**2) - (0.029251 * self.physical_activity * 7) - (0.05113 * diet_score)
->>>>>>> 365b8e7dc267c60c7c329fb4405c922c0b7e415a
   end
 
   def smokermethod
@@ -61,4 +48,5 @@ class UserScore < ApplicationRecord
       0
     end
   end
+
 end
