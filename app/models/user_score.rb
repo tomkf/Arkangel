@@ -1,8 +1,6 @@
 class UserScore < ApplicationRecord
   belongs_to :user
 
-
-
   def algorithm
     # puts self.user.age
 
