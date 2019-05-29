@@ -19,12 +19,12 @@ options = { height: 250, #onClick:"function(){
     Show my breakdown
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   <li> <%= link_to "Weekly", graph_path(date: "Weekly") %> </li>
-   <li> <%= link_to "Monthly", graph_path(date: "Monthly") %> </li>
-   <li> <%= link_to "All history", graph_path(date: "All history") %> </li>
+   <li> <%= link_to "Weekly", graph_path(date: "Weekly"), class: "dropdown-item" %> </li>
+   <li> <%= link_to "Monthly", graph_path(date: "Monthly"), class: "dropdown-item" %> </li>
+   <li> <%= link_to "All history", graph_path(date: "All history"), class: "dropdown-item" %> </li>
 
   </div>
-</div>
+
 
 
 
