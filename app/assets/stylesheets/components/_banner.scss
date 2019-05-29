@@ -1,0 +1,28 @@
+.banner {
+  height: calc(100vh + 70px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("background-home");
+  background-size: cover;
+  margin-top: -70px;
+
+
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+  p {
+    color:white;
+    opacity: 0.8px;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 15px 50px;
+  }
+
+}

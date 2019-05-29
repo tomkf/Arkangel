@@ -1,0 +1,27 @@
+<div class="banner">
+  <div class="content-banner text-center">
+    <h1>Arkangel</h1>
+    <p>Your personal health guardian</p>
+    <%= link_to "Enroll Now", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+  </div>
+</div>
+
+<div class="big_title">
+  <div class="container">
+    <h3>Your <b>Health Score</b></h3>
+    <div class="score d-flex align-items-end">
+      <h1>83</h1>
+      <h2>/100</h2>
+    </div>
+    <p>Score history</p>
+</div>
+
+<div class="wrapper">
+  <div class="row">
+    <div class="great col-sm"></div>
+    <div class="average col-sm"></div>
+    <div class="low col-sm"></div>
+  </div>
+</div>
+  <%= render "shared/footer" %>
+</div>
