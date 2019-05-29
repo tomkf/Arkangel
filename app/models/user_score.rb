@@ -1,12 +1,13 @@
 class UserScore < ApplicationRecord
   belongs_to :user
-
-
+  after_create :algorithm
 
   def algorithm
     p risk_score = (1 - 0.9660**(Math::E**(w_score - 6.57301))) * 1000
 
     self.health_score = p 100 - risk_score
+
+    self.save
 
     puts 'score added!'
   end

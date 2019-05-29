@@ -14,12 +14,12 @@ class UserScoreController < ApplicationController
   end
 
   def graph
-   @user_score_params = nil
-   if params(:date) == "Weekly"
+   @user_score_params = UserScore.last
+   if params[:date] == "Weekly"
      @user_score_params = UserScore.last(7)
-    elsif params(:date) == "Monthly"
+    elsif params[:date] == "Monthly"
      @user_score_params = UserScore.last(25)  #make this logic work w/ helper function for MONTHS
-    elsif params(:date) == "All history"
+    elsif params[:date] == "All history"
          @user_score_params = UserScore.all
     end
 
@@ -28,9 +28,9 @@ class UserScoreController < ApplicationController
    @dates = []
 
    @user_score_params.each do |score|
-     health_score << score.health_score.round
-     bmi << score.bmi
-     dates << score.logdate
+     @health_score << score.health_score.round
+     @bmi << score.bmi
+     @dates << score.logdate
    end
   end
 
