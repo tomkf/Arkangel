@@ -1,4 +1,13 @@
 class UserScoreController < ApplicationController
+
+
+  def index
+
+    @userscoresweek = UserScore.last(28)
+
+  end
+
+
   def new
   end
 
