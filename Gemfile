@@ -16,14 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'chartjs-ror'
-<<<<<<< HEAD
-
-=======
->>>>>>> 365b8e7dc267c60c7c329fb4405c922c0b7e415a
-
-group :development do
   gem 'web-console', '>= 3.3.0'
-end
 
 group :development, :test do
   gem 'pry-byebug'
@@ -32,5 +25,5 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
-  
+
 end
