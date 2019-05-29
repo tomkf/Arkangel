@@ -1,7 +1,7 @@
 class UserScore < ApplicationRecord
   belongs_to :user
 
-
+  after_create :algorithm
 
   def algorithm
 
@@ -19,7 +19,7 @@ class UserScore < ApplicationRecord
   private
 
   def w_score
-    (0.10820 * self.user.age) + smokermethod + (0.04676 * self.bmi) - (0.01923 * self.alcohol) + (0.0004 * self.alcohol**2) - (0.029251 * self.physical_activity * 7) - (0.05113 * diet_score)
+    (0.10820 * self.user.age) + smokermethod + (0.04676 * self.bmi) - (0.01923 * self.alcohol) + (0.0004 * self.alcohol**2) - (0.029251 * self.physical_activity) - (0.05113 * diet_score)
   end
 
   def smokermethod
