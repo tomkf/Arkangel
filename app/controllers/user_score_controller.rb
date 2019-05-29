@@ -34,5 +34,8 @@ class UserScoreController < ApplicationController
    end
   end
 
+  def day_graph
+    @user_score = UserScore.last
+  end
 
 end

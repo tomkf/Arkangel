@@ -1,0 +1,71 @@
+<h1>welcome to the day graph</h1>
+
+<% data = [50, 75, 20, 100, 60, 30] %>
+
+<% exercise = (@user_score.physical_activity / 0.5) * 100 %>
+<% if exercise >= 100 %>
+  <% exercise = 99 %>
+<% end %>
+<% fruits_vegetables = (@user_score.fruits_vegetables / 4) * 100 %>
+<% fibers = (@user_score.whole_grains / 15) * 100 %>
+<% fats = (@user_score.fats / 1) * 100 %>
+<% red_meat = 100 %>
+<% processed_meat = 100 %>
+<% soda = 100 %>
+<% alcohol = 80 %>
+
+
+<%
+data = {
+  labels: ["Exercise", "Fruits & Vegetables", "Fibers", "Healthy Fats", "Red meat", "Processed meat", "Soda", "Alcohol"],
+  datasets: [
+    # {
+    #     label: "My First dataset",
+    #     backgroundColor: "rgba(220,220,220,0.2)",
+    #     borderColor: "rgba(220,220,220,1)",
+    #     data: data
+    # },
+    {
+        label: "Positive indicators",
+        backgroundColor: "rgba(151,187,205,0.2)",
+        borderColor: "rgba(151,187,205,1)",
+        data: [exercise.round, fruits_vegetables.round, fibers.round,
+         fats.round, red_meat.round, soda.round, alcohol.round]
+    }
+  ]
+}
+# options = { ... }
+ %>
+<div class="container">
+  <%= radar_chart data %>
+
+
+
+<%= @user_score.physical_activity %>  <br>
+<%= @user_score.fruits_vegetables %> <br>
+<%= @user_score.whole_grains %> <br>
+<%= @user_score.fats %> <br>
+
+<%= @user_score.red_meat %> <br>
+<%= @user_score.processed_meat %> <br>
+<%= @user_score.alcohol  %> <br>
+
+</div>
+
+<!--
+  health_score
+  -----bmi .... not relevant
+  physical_activity
+  fruits_vegetables
+  whole_grains
+  fats
+
+    bad stuff
+  red_meat
+  processed_meats
+  soda
+  alcohol
+
+
+
+ -->
