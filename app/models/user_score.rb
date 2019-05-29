@@ -1,15 +1,9 @@
 class UserScore < ApplicationRecord
   belongs_to :user
-
   after_create :algorithm
 
   def algorithm
-
-    # puts self.user.age
-
     p risk_score = (1 - 0.9660**(Math::E**(w_score - 6.57301))) * 1000
-
-    risk_score = risk_score.round(2)
 
     self.health_score = p 100 - risk_score
 
