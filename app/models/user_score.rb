@@ -9,9 +9,11 @@ class UserScore < ApplicationRecord
 
     p risk_score = (1 - 0.9660**(Math::E**(w_score - 6.57301))) * 1000
 
-    # risk_score = risk_score.round(2)
+    risk_score = risk_score.round(2)
 
     self.health_score = p 100 - risk_score
+
+    self.save
 
     puts 'score added!'
   end
@@ -19,7 +21,7 @@ class UserScore < ApplicationRecord
   private
 
   def w_score
-    (0.10820 * self.user.age) + smokermethod + (0.04676 * self.bmi) - (0.01923 * self.alcohol) + (0.0004 * self.alcohol**2) - (0.029251 * self.physical_activity) - (0.05113 * diet_score)
+    (0.10820 * self.user.age) + smokermethod + (0.04676 * self.bmi) - (0.01923 * self.alcohol) + (0.0004 * self.alcohol**2) - (0.029251 * self.physical_activity * 7) - (0.05113 * diet_score)
   end
 
   def smokermethod
