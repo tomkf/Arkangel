@@ -12,14 +12,15 @@
     color: black;
   }
   h1 {
-    font-size: 130px;
+    font-size: 700%;
     font-weight: 800;
     color: white;
     letter-spacing: -0.035em;
+    line-height: 1;
   }
   h2 {
     font-weight: 800;
-    font-size: 30px;
+    font-size: 200%;
     letter-spacing: -0.035em;
     color: rgba(255, 255, 255, 0.72);
   }
@@ -28,5 +29,11 @@
     font-weight: 800;
     font-size: 15px;
     color: white;
+  }
+}
+
+#main_title {
+  h1 {
+  margin: 0;
   }
 }
