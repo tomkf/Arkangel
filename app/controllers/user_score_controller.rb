@@ -14,7 +14,7 @@ class UserScoreController < ApplicationController
   end
 
   def graph
-    @user_score_params = UserScore.last
+    @user_score_params = UserScore.order(:logdate).last(30)
     if params[:date] == "Weekly"
       @user_score_params = UserScore.order(:logdate).last(7)
     elsif params[:date] == "Monthly"

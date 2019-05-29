@@ -2,10 +2,10 @@
   <div class="container">
     <h3>Your <b>Health Score</b></h3>
     <div class="score d-flex align-items-end" id="main_title">
-      <h1><%= @user.health_score %></h1>
+      <h1><%= @user.user_scores.last.health_score.round(1) %></h1>
       <h2>/100</h2>
     </div>
-    <p>Score history</p>
+    <%= link_to "Score history", graph_path, style:"color: white;" %>
   </div>
 </div>
 
@@ -13,7 +13,7 @@
   <div class="row mr-3 ml-3">
 
     <!-- feedback -->
-    <div class="great col-sm mt-3 ">
+    <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
 
       <!-- GREAT title component -->
       <div class="title-great text-right">
@@ -22,21 +22,35 @@
       </div>
 
       <!-- content component -->
-      <div class="content" id="score_detail">
-        <p class="vital_title pr-3">Weight</p>
-        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        <p class="vital_content pl-3">You have a healthy weight (BMI: 24.6), keep it up!</p>
+      <div class="content row" style="flex-wrap: nowrap;" id="score_detail">
+        <div class="col-xs-2">
+          <p class="vital_title pr-3">Weight</p>
+        </div>
+        <div class="col-xs-2">
+          <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
+        </div>
+        <div class="col-xs-5">
+          <p class="vital_content pl-3">You have a healthy weight (BMI: 24.6), keep it up!</p>
+        </div>
       </div>
 
-      <div class="content" id="score_detail">
-        <p class="vital_title pr-3">Food</p>
-        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        <p class="vital_content pl-3">You have a high intake of nuts and seeds (1.2 portion/day) <b>Your goal:</b> 1 portion/day or more</p>
+
+      <div class="content row" style="flex-wrap: nowrap;" id="score_detail">
+        <div class="col-xs-2">
+          <p class="vital_title pr-3">Food</p>
+        </div>
+        <div class="col-xs-2">
+          <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
+        </div>
+        <div class="col-xs-5">
+          <p class="vital_content pl-3">You have a high intake of nuts and seeds (1.2 portion/day) <b>Your goal:</b> 1 portion/day or more</p>
+        </div>
       </div>
+
 
     </div>
 
-    <div class="average col-sm mt-3">
+    <div class="average col-sm-12 col-md-12 col-lg-4 mt-3">
 
       <!-- AVERAGE title component -->
       <div class="title-average">
@@ -54,7 +68,7 @@
 
     </div>
 
-    <div class="low col-sm mt-3">
+    <div class="low col-sm-12 col-md-12 col-lg-4 mt-3 ">
 
       <!-- LOW title component -->
       <div class="title-low">
@@ -72,7 +86,8 @@
 
   </div>
 </div>
-
-<div class="container">
-  <%= render "shared/footer" %>
+<div style="background-color: white; height: 10vh" class="fixed-bottom">
+  <div class="container">
+    <%= render "shared/footer" %>
+  </div>
 </div>
