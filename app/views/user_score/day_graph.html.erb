@@ -1,18 +1,28 @@
-<h1>welcome to the day graph</h1>
+<h1>the day graph</h1>
 
 <% data = [50, 75, 20, 100, 60, 30] %>
 
-<% exercise = (@user_score.physical_activity / 0.5) * 100 %>
-<% if exercise >= 100 %>
-  <% exercise = 99 %>
+<% exercise = (@user_score.physical_activity / 0.5) * 10 %>
+<% fruits_vegetables = (@user_score.fruits_vegetables / 4) * 10 %>
+<% fibers = (@user_score.whole_grains / 15) * 10 %>
+<% fats = (@user_score.fats / 1) * 10 %>
+<% red_meat = 10 - @user_score.red_meat * 5 %>
+<% processed_meat = 10 - @user_score.processed_meat * 5 %>
+<% soda = 10 - @user_score.soda * 3 %>
+<% alcohol = 10 - @user_score.alcohol * 3 %>
+
+<% datapoints = [exercise, fruits_vegetables, fibers, fats, red_meat, processed_meat, soda, alcohol] %>
+
+<% display_points = [] %>
+<% datapoints.each do |datapoint| %>
+  <% if datapoint > 10 %>
+    <% display_points << 10 %>
+  <% elsif datapoint < 1 %>
+    <% display_points << 1 %>
+  <% else %>
+    <% display_points << datapoint %>
+  <% end %>
 <% end %>
-<% fruits_vegetables = (@user_score.fruits_vegetables / 4) * 100 %>
-<% fibers = (@user_score.whole_grains / 15) * 100 %>
-<% fats = (@user_score.fats / 1) * 100 %>
-<% red_meat = 100 %>
-<% processed_meat = 100 %>
-<% soda = 100 %>
-<% alcohol = 80 %>
 
 
 <%
@@ -29,27 +39,21 @@ data = {
         label: "Positive indicators",
         backgroundColor: "rgba(151,187,205,0.2)",
         borderColor: "rgba(151,187,205,1)",
-        data: [exercise.round, fruits_vegetables.round, fibers.round,
-         fats.round, red_meat.round, soda.round, alcohol.round]
+        data: display_points
     }
   ]
 }
-# options = { ... }
+options = { scale: {
+        ticks: {
+          beginAtZero: true,
+          max: 10
+        }
+    }
+  }
  %>
+
 <div class="container">
-  <%= radar_chart data %>
-
-
-
-<%= @user_score.physical_activity %>  <br>
-<%= @user_score.fruits_vegetables %> <br>
-<%= @user_score.whole_grains %> <br>
-<%= @user_score.fats %> <br>
-
-<%= @user_score.red_meat %> <br>
-<%= @user_score.processed_meat %> <br>
-<%= @user_score.alcohol  %> <br>
-
+  <%= radar_chart data, options %>
 </div>
 
 <!--
@@ -65,7 +69,4 @@ data = {
   processed_meats
   soda
   alcohol
-
-
-
  -->
