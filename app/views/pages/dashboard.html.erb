@@ -1,0 +1,78 @@
+<div class="big_title">
+  <div class="container">
+    <h3>Your <b>Health Score</b></h3>
+    <div class="score d-flex align-items-end" id="main_title">
+      <h1><%= @user.health_score %></h1>
+      <h2>/100</h2>
+    </div>
+    <p>Score history</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mr-3 ml-3">
+
+    <!-- feedback -->
+    <div class="great col-sm mt-3 ">
+
+      <!-- GREAT title component -->
+      <div class="title-great text-right">
+        <p class="text-uppercase font-weight-bold">Great</p>
+        <hr>
+      </div>
+
+      <!-- content component -->
+      <div class="content" id="score_detail">
+        <p class="vital_title pr-3">Weight</p>
+        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
+        <p class="vital_content pl-3">You have a healthy weight (BMI: 24.6), keep it up!</p>
+      </div>
+
+      <div class="content" id="score_detail">
+        <p class="vital_title pr-3">Food</p>
+        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
+        <p class="vital_content pl-3">You have a high intake of nuts and seeds (1.2 portion/day) <b>Your goal:</b> 1 portion/day or more</p>
+      </div>
+
+    </div>
+
+    <div class="average col-sm mt-3">
+
+      <!-- AVERAGE title component -->
+      <div class="title-average">
+        <p class="text-uppercase font-weight-bold">Average</p>
+        <hr>
+      </div>
+
+      <!-- content component -->
+      <div class="content" id="score_detail">
+        <p class="vital_title pr-3">Workout</p>
+        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
+        <p class="vital_content pl-3">Moderately active (2.5 hr / week). <b>Your goal:</b> 3.5 hours/week or more</p>
+      </div>
+
+
+    </div>
+
+    <div class="low col-sm mt-3">
+
+      <!-- LOW title component -->
+      <div class="title-low">
+        <p class="text-uppercase font-weight-bold">Low</p>
+        <hr>
+      </div>
+
+      <!-- content component -->
+      <div class="content" id="score_detail">
+        <p class="vital_title pr-3">Workout</p>
+        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
+        <p class="vital_content pl-3">Current smoker.<b>Your goal:</b> Non-smoker</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <%= render "shared/footer" %>
+</div>

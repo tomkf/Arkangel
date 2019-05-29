@@ -1,0 +1,74 @@
+// title box
+
+.title-great {
+ color: $success-green;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ p {
+  margin: 0;
+ }
+ hr {
+  border: 1.5px solid $success-green;
+  width: 70%;
+ }
+}
+
+.title-average {
+ color: $yellow;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ hr {
+  border: 1.5px solid $yellow;
+  width: 70%;
+ }
+ p {
+  margin: 0;
+ }
+}
+
+.title-low {
+ color: $danger-red;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ hr {
+  border: 1.5px solid $danger-red;
+  width: 70%;
+ }
+ p {
+  margin: 0;
+ }
+}
+
+
+// content box
+
+.content  {
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 20px;
+  p {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  }
+}
+
+#score_detail {
+  p {
+    margin: 0
+  }
+}
+
+.vital_title {
+  color: #979797;
+  text-align: right;
+}
+
+.vital_content {
+  color: #585858;
+  line-height: 1;
+}
