@@ -5,27 +5,15 @@
         label: "Health score",
         backgroundColor: "rgba(151,187,205,0.2)",
         borderColor: "rgba(151,187,205,1)",
-        data: @health_score,
-       class: "data-node"
+        data: @health_score
     }
   ]
 }
-options = { height: 250 } #maybe you can make a class name here and have event listener
+options = { height: 250, onClick:"function(){
+window.location.replace('#{root}');
+    }" }
  %>
 
 <div class="container">
-
   <%= line_chart data, options %>
 </div>
-
-
-
-
-<script>
-  dayNode = document.querySelector(.data-node);
-  dayNode.addEventListener("click", function(){
-
-    });
-
-
- </script>

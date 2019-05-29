@@ -34,5 +34,4 @@ class UserScoreController < ApplicationController
    end
   end
 
-
 end
