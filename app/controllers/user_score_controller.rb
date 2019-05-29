@@ -13,7 +13,7 @@ class UserScoreController < ApplicationController
     score.save
   end
 
-  def graph  #make associated view
+  def graph
    @user_score_params = UserScore.last
 
    if params(:date) == "Daily"
