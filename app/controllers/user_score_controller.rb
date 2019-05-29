@@ -38,4 +38,5 @@ class UserScoreController < ApplicationController
     @user_score = UserScore.last
   end
 
+
 end
