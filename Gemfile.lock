@@ -52,9 +52,14 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+
+    chartjs-ror (3.6.4)
+      rails (>= 3.1)
+
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
+
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
@@ -213,7 +218,10 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
+
+  chartjs-ror
   cloudinary (~> 1.9.1)
+
   devise
   dotenv-rails
   font-awesome-sass (~> 5.6.1)
