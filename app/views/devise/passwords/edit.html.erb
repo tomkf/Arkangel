@@ -12,12 +12,12 @@
                 required: true,
                 autofocus: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", } %>
     <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+    <%= f.button :submit, "Change my password", id:"action_button" %>
   </div>
 <% end %>
 
