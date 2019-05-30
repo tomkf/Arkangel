@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   get "user_score/exercise_score", to: 'user_score#exercise_score', as: 'exercise_score'
   get "user_score/food_score", to: 'user_score#food_score', as: 'food_score'
 
-  get "user_param/wight_score", to: 'user_param#weight_score', as: 'weight_score'
+resources :user do
+
+resources :user_param
+end
+
 end
