@@ -11,7 +11,7 @@
   </head>
   <body>
 
-    <% if controller_name == 'pages' && action_name == 'home'%>
+    <% if controller_name == 'pages' && action_name == 'home' || controller_name == 'pages' && action_name == 'dashboard'%>
       <%= render 'shared/navbar', transparent: true %>
     <% else %>
       <%= render 'shared/navbar', transparent: false %>
