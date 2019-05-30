@@ -1,6 +1,7 @@
 class UserScore < ApplicationRecord
   belongs_to :user
   after_create :algorithm
+  after_update :algorithm
 
   def algorithm
     p risk_score = (1 - 0.9660**(Math::E**(w_score - 6.57301))) * 1000
