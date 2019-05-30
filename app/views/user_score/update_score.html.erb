@@ -5,17 +5,21 @@
 
 <div class="icon-container">
 <div class="end">
+      <%= link_to weight_score_path do %>
 <i class="far fa-user-circle"></i>
 <h4>
 Weight
 </h4>
+<% end %>
 </div>
 
 <div class="aside">
+<%= link_to exercise_score_path do %>
 <i class="fas fa-running"></i>
 <h4>
 Exercise
 </h4>
+<% end %>
 </div>
 
 <div class="mid">
@@ -28,10 +32,12 @@ Devices
 </div>
 
 <div class="aside">
+  <%= link_to food_score_path do %>
  <i class="fas fa-apple-alt icon-new"></i>
 <h4>
 Food
 </h4>
+<% end %>
 </div>
 
 <div class="end">
