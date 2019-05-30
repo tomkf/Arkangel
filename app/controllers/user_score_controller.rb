@@ -14,7 +14,7 @@ class UserScoreController < ApplicationController
   end
 
   def graph
-    @user_score_params = UserScore.last
+    @user_score_params = UserScore.order(:logdate).last(7)
     if params[:date] == "Weekly"
       @user_score_params = UserScore.order(:logdate).last(7)
     elsif params[:date] == "Monthly"
@@ -26,16 +26,18 @@ class UserScoreController < ApplicationController
     @health_score = []
     @bmi = []
     @dates = []
+    @ids = []
 
     @user_score_params.each do |score|
-       @health_score << score.health_score.round
-       @bmi << score.bmi
-       @dates << score.logdate
-     end
+      @health_score << score.health_score.round
+      @bmi << score.bmi
+      @dates << "#{Date::ABBR_MONTHNAMES[score.logdate.month]} #{score.logdate.day.to_s}"#.slice(5..9)
+      @ids << score.id
+    end
   end
 
   def day_graph
-    @user_score = UserScore.last
+    @user_score = UserScore.find(params[:score])
   end
 
 
