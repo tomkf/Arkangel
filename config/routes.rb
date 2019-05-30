@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get "user_score/food_score", to: 'user_score#food_score', as: 'food_score'
 
 resources :user do
-
 resources :user_param
 end
 
