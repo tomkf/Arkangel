@@ -12,9 +12,10 @@
 
 <!-- classifier -->
 
-<% great_array = @feedback.select { |component| component[4] == "great" } %>
-<% average_array = @feedback.select { |component| component[4] == "average" } %>
-<% low_array = @feedback.select { |component| component[4] == "low" } %>
+<% great_array = @feedback.select { |component| component[3] == "great" } %>
+<% average_array = @feedback.select { |component| component[3] == "average" } %>
+<% low_array = @feedback.select { |component| component[3] == "low" } %>
+
 
 <!-- columns -->
 
@@ -23,47 +24,27 @@
 
     <!-- feedback -->
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
-
-    <!-- GREAT title -->
-
-    <%= render "shared/title_great" %>
-
-      <%# render 'shared/component', feedback: feedback %>
-
+      <!-- GREAT  -->
+      <%= render "shared/title_great" %>
+      <% great_array.each do |info| %>
+        <%= render "shared/component_info", info: info %>
+      <% end %>
     </div>
 
     <div class="average col-sm-12 col-md-12 col-lg-4 mt-3">
-
-      <!-- AVERAGE title component -->
-      <div class="title-average">
-        <p class="text-uppercase font-weight-bold">Average</p>
-        <hr>
-      </div>
-
-      <!-- content component -->
-      <div class="content" id="score_detail">
-        <p class="vital_title pr-3">Workout</p>
-        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        <p class="vital_content pl-3">Moderately active (2.5 hr / week). <b>Your goal:</b> 3.5 hours/week or more</p>
-      </div>
-
-
+      <!-- AVERAGE  -->
+      <%= render "shared/title_average" %>
+      <% average_array.each do |info| %>
+        <%= render "shared/component_info", info: info %>
+      <% end %>
     </div>
 
     <div class="low col-sm-12 col-md-12 col-lg-4 mt-3 ">
-
-      <!-- LOW title component -->
-      <div class="title-low">
-        <p class="text-uppercase font-weight-bold">Low</p>
-        <hr>
-      </div>
-
-      <!-- content component -->
-      <div class="content" id="score_detail">
-        <p class="vital_title pr-3">Workout</p>
-        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        <p class="vital_content pl-3">Current smoker.<b>Your goal:</b> Non-smoker</p>
-      </div>
+      <!-- LOW  -->
+      <%= render "shared/title_low" %>
+      <% low_array.each do |info| %>
+        <%= render "shared/component_info", info: info %>
+      <% end %>
     </div>
 
   </div>

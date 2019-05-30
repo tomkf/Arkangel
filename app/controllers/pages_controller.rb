@@ -54,7 +54,7 @@ class PagesController < ApplicationController
   end
 
   def physical_activity(user)
-    message = ["workout", "vitals/2_Workout.png"]
+    message = ["workout", "vitals/6_Workout.png"]
     if user.user_scores.last.physical_activity >= 3.5
       message << "You are in the healthiest category for physical activity. You meet current physical activity recommendations. Keep up the great work!"
       message << "great"
@@ -69,7 +69,7 @@ class PagesController < ApplicationController
   end
 
   def fruits_vegetables(user)
-    message = ["food", "vitals/2_Energy.png"]
+    message = ["food", "vitals/4_Energy.png"]
     if user.user_scores.last.fruits_vegetables >= 5
       message << "You are in the healthiest category for fruit and vegetable intake based on the study population."
       message << "great"
@@ -84,7 +84,7 @@ class PagesController < ApplicationController
   end
 
   def whole_grains(user)
-    message = ["fiber", "vitals/2_Energy.png"]
+    message = ["fiber", "vitals/4_Energy.png"]
     if user.user_scores.last.whole_grains >= 15
       message << "You have a diet high in whole grain fiber."
       message << "great"
@@ -99,7 +99,7 @@ class PagesController < ApplicationController
   end
 
   def red_meat(user)
-    message = ["food", "vitals/2_Energy.png"]
+    message = ["food", "vitals/4_Energy.png"]
     if user.user_scores.last.red_meat <= 2
       message << "You have a low intake of red meat. Keep it up!"
       message << "great"
@@ -114,7 +114,7 @@ class PagesController < ApplicationController
   end
 
   def processed_meat(user)
-    message = ["food", "vitals/2_Energy.png"]
+    message = ["food", "vitals/4_Energy.png"]
     if user.user_scores.last.processed_meat >= 5
       message << "You have the healthiest intake of processed meat."
       message << "great"
@@ -129,7 +129,7 @@ class PagesController < ApplicationController
   end
 
   def fats(user)
-    message = ["fats", "vitals/2_Energy.png"]
+    message = ["fats", "vitals/4_Energy.png"]
     if user.user_scores.last.fats >= 1
       message << "You have a healthy intake of nuts and seeds."
       message << "great"
@@ -144,7 +144,7 @@ class PagesController < ApplicationController
   end
 
   def soda(user)
-    message = ["sugar", "vitals/2_Energy.png"]
+    message = ["sugar", "vitals/4_Energy.png"]
     if user.user_scores.last.soda <= 0
       message << "You are in the healthiest category for sugar-sweetened drinks."
       message << "great"
@@ -159,7 +159,7 @@ class PagesController < ApplicationController
   end
 
   def alcohol(user)
-    message = ["alcohol", "vitals/2_Energy.png"]
+    message = ["alcohol", "vitals/4_Energy.png"]
     if user.user_scores.last.alcohol <= 2
       message << "You are drinking the right amount of alcohol for ultimate health benefits."
       message << "great"
