@@ -1,18 +1,3 @@
-<% data = {
-  labels: @dates,
-  datasets: [
-    {
-        label: "Health score",
-        backgroundColor: "rgba(151,187,205,0.2)",
-        borderColor: "rgba(151,187,205,1)",
-        data: @health_score
-    }
-  ]
-}
-options = { height: 250, #onClick:"function(){
-#window.location.replace('#{root}');
-    }#" }
- %>
 
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,8 +12,80 @@ options = { height: 250, #onClick:"function(){
 </div>
 
 
-
-
-<div class="container">
-  <%= line_chart data, options %>
+<div class="container p-3">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0-beta2/Chart.min.js"></script>
+  <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line' width="400" height="250">
+    <div class="chartjs-item" data-label='Health Score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+    </div>
+  </canvas>
 </div>
+
+<script>
+  if ($(".chartjs").length > 0){
+      $( ".chartjs" ).each(function() {
+
+        datasets=[];
+        // ARRAY FOR DATASETS
+        $(this).find('.chartjs-item').each(function(index, el){
+          var chartData=$(this).data('chartdata');
+          var chartLabel=$(this).data('label');
+          var chartURLs=$(this).data('charturls');
+          if($(this).data('rgb')){
+            var rgb=$(this).data('rgb');
+          }else{
+            if(index<1){
+              var rgb='151,187,205';
+            }else if(index<2){
+              var rgb='255,85,75';
+            }
+          }
+          var dataset=[{
+                  label: chartLabel,
+                  data: chartData,
+                  links: chartURLs,
+                  borderColor: 'rgba('+rgb+', 1)',
+                  backgroundColor: 'rgba('+rgb+', 0.12)',
+                  borderWidth:3,
+                  pointBorderWidth:3,
+                  pointBorderColor:'rgba('+rgb+', 1)',
+                  pointBackgroundColor:'#465f80',
+                  pointRadius: 5,
+              }];
+
+               datasets = $.merge(dataset, datasets);
+
+
+        });
+
+
+        // CHART JS INIT
+
+        var chartType=$(this).data('charttype');
+        var chartLabels=$(this).data('labels');
+
+        var myChart = new Chart(this, {
+            type: chartType,
+            data: {
+                labels: chartLabels,
+                datasets: datasets,
+            },
+        });
+
+        $(this).on('click', function(evt){
+            var activePoint = myChart.getElementAtEvent(evt);
+            if(activePoint[0]){
+              var URL = myChart.data.datasets[activePoint[0]._datasetIndex].links[activePoint[0]._index];
+            window.open(`/user_score/day_graph?score=${URL}`, "_self");
+
+            }
+
+        });
+
+
+      });
+
+  }
+</script>
+
