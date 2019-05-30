@@ -1,5 +1,4 @@
 
-   <li> <%= link_to "All history", graph_path(date: "All history"), class: "dropdown-item" %> </li>
 
 <div class="container">
   <h3 class="text-center">Health score history</h3>
@@ -110,12 +109,7 @@
       });
   }
 
-      window.onresize = () => {
-        document.querySelector('.chart-container').style.height = window.innerHeight;
-        document.querySelector('.chart-container').style.width = window.innerWidth;
-        console.log(window.innerHeight)
-        console.log(window.innerWidth)
-      }
+
 </script>
 
 
