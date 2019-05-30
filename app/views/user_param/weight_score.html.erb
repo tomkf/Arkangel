@@ -3,9 +3,16 @@
 <p> Add your weight: </p>
 </div>
 
-<div>
-  <h4></h4>
+
+<div class="input-form">
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :password %>
+  <%= f.button :submit %>
+<% end %>
 </div>
+
+
 
  <div class="container">
     <%= render "shared/footer" %>
