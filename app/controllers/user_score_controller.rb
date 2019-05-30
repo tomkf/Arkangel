@@ -39,4 +39,16 @@ class UserScoreController < ApplicationController
     @user_score = UserScore.find(params[:score])
   end
 
+  def update_score
+  @user = current_user
+end
+
+
+
+def exercise_score
+end
+
+def food_score
+  end
+
 end

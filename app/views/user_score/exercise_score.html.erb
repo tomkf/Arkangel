@@ -1,14 +1,11 @@
 <div class="prompt">
 <%= image_tag "Logo_PNG.png", class:'avatar-bordered' %>
-<p> Add your weight: </p>
+<p> Add your exercise: </p>
 </div>
 
-
-<%= simple_form_for @user do |f| %>
-<%-
-  <%= f.input :weight_score %>
-  <%= f.button :submit %>
-<% end %>
+<div>
+  <h4></h4>
+</div>
 
  <div class="container">
     <%= render "shared/footer" %>

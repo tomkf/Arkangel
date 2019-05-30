@@ -1,20 +1,17 @@
 class UserParamController < ApplicationController
-def update_score
-  @user = current_user
+
+def create
 end
+
+def new
+  @user_param = UserParams.new
+  end
 
 def weight_score
-  @user = current_user
-  @weight = @users.user_params.weight
+  @user_param = UserParams.new
 end
 
-def exercise_score
 end
-
-def food_score
-  end
-end
-
 
 
 

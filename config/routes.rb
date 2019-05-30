@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get "user_score/graph", to: 'user_score#graph', as: 'graph'
   get "user_score/day_graph", to: 'user_score#day_graph', as: 'day_graph'
   get "user_score/update_score", to: 'user_score#update_score', as: 'update_score'
+  get "user_score/exercise_score", to: 'user_score#exercise_score', as: 'exercise_score'
+  get "user_score/food_score", to: 'user_score#food_score', as: 'food_score'
 
   get "user_param/wight_score", to: 'user_param#weight_score', as: 'weight_score'
-  get "user_param/exercise_score", to: 'user_param#exercise_score', as: 'exercise_score'
-  get "user_param/food_score", to: 'user_param#food_score', as: 'food_score'
-
 end
