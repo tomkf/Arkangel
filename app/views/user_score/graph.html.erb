@@ -1,26 +1,47 @@
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Show my breakdown
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   <li> <%= link_to "Weekly", graph_path(date: "Weekly"), class: "dropdown-item" %> </li>
-   <li> <%= link_to "Monthly", graph_path(date: "Monthly"), class: "dropdown-item" %> </li>
    <li> <%= link_to "All history", graph_path(date: "All history"), class: "dropdown-item" %> </li>
+
+<div class="container">
+  <h3 class="text-center">Health score history</h3>
+  <div class="graph-card">
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0-beta2/Chart.min.js"></script>
+
+      <div class="chart-container">
+        <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line'>
+
+          <div class="chartjs-item" data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+          </div>
+        </canvas>
+
+      </div>
+
+
+
+    <div class="d-flex flex-row-reverse">
+
+      <div class="dropdown dropup">
+        <button class="btn dropdown-toggle dropdown-graph" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= @text %>
+        </button>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         <li> <%= link_to "Weekly", graph_path(date: "Weekly"), class: "dropdown-item" %> </li>
+         <li> <%= link_to "Monthly", graph_path(date: "Monthly"), class: "dropdown-item" %> </li>
+         <li> <%= link_to "All history", graph_path(date: "All history"), class: "dropdown-item" %> </li>
+
+        </div>
+      </div>
+
+    </div>
 
   </div>
 </div>
 
-
-<div class="container p-3">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0-beta2/Chart.min.js"></script>
-  <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line' width="400" height="250">
-    <div class="chartjs-item" data-label='Health Score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
-    </div>
-  </canvas>
-</div>
+<%= render 'shared/footer' %>
 
 <script>
   if ($(".chartjs").length > 0){
@@ -36,7 +57,7 @@
             var rgb=$(this).data('rgb');
           }else{
             if(index<1){
-              var rgb='151,187,205';
+              var rgb='246,172,29';
             }else if(index<2){
               var rgb='255,85,75';
             }
@@ -59,7 +80,6 @@
 
         });
 
-
         // CHART JS INIT
 
         var chartType=$(this).data('charttype');
@@ -70,6 +90,9 @@
             data: {
                 labels: chartLabels,
                 datasets: datasets,
+                options: {
+                  maintainAspectRatio: false,
+                }
             },
         });
 
@@ -85,7 +108,15 @@
 
 
       });
-
   }
+
+      window.onresize = () => {
+        document.querySelector('.chart-container').style.height = window.innerHeight;
+        document.querySelector('.chart-container').style.width = window.innerWidth;
+        console.log(window.innerHeight)
+        console.log(window.innerWidth)
+      }
 </script>
+
+
 
