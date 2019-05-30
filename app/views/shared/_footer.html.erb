@@ -1,5 +1,7 @@
 <div class="container d-flex justify-content-between fixed-bottom mb-3 footer">
     <%= image_tag "footer/home_thick.svg", class: "icon" %>
-    <%= image_tag "footer/plus.png", class: "icon" %>
+    <%= link_to update_score_path do %>
+    <%=  image_tag "footer/plus.png", class: "icon" %>
+    <% end %>
     <%= image_tag "footer/user_thick.png", class: "icon" %>
 </div>

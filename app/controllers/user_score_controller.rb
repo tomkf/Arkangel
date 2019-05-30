@@ -1,8 +1,6 @@
 class UserScoreController < ApplicationController
-
   def index
   end
-
 
   def new
   end
@@ -14,7 +12,6 @@ class UserScoreController < ApplicationController
   end
 
   def graph
-
     @user_score_params = UserScore.order(:logdate).last(7)
 
     if params[:date] == "Weekly"
@@ -42,5 +39,18 @@ class UserScoreController < ApplicationController
     @user_score = UserScore.find(params[:score])
   end
 
+def update_score
+  @user = current_user
+end
+
+
+def weight_score
+end
+
+def exercise_score
+end
+
+def food_score
+  end
 
 end
