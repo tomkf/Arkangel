@@ -13,8 +13,16 @@ class UserScoreController < ApplicationController
     score.save
   end
 
-  def graph
+  def update
+    @user = user_current
+  end
 
+  def edit
+    @user = current_user
+  end
+
+
+  def graph
     @user_score_params = UserScore.order(:logdate).last(7)
 
     if params[:date] == "Weekly"
