@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Show my breakdown
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+   <li> <%= link_to "Weekly", graph_path(date: "Weekly"), class: "dropdown-item" %> </li>
+   <li> <%= link_to "Monthly", graph_path(date: "Monthly"), class: "dropdown-item" %> </li>
+   <li> <%= link_to "All history", graph_path(date: "All history"), class: "dropdown-item" %> </li>
+
+  </div>
+</div>
+
+
+
