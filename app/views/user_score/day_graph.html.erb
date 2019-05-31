@@ -44,8 +44,12 @@ options = { height: 380, width: 250, scale: {
 
 <div class="container">
   <h3 class="text-center"><%= Date::ABBR_MONTHNAMES[@user_score.logdate.month] %> <%= @user_score.logdate.day %></h3>
+
   <div class="graph-card">
-    <%= radar_chart data, options %>
+
+      <%= radar_chart data, options %>
+
+
   </div>
 </div>
 
