@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     if params[:apis_params] == 'true'
-      sleep 10
+      sleep 3
     end
 
     # raise
