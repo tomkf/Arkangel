@@ -6,7 +6,7 @@ User.destroy_all
 
 puts 'Creating users'
 
-user = User.create!(email: 'gustaf@email.com', password: '123456', age: 50, smoker: 'never')
+user = User.create!(email: 'gustaf@email.com', first_name: "gustaf", last_name: "Folkmar", password: '123456', age: 50, smoker: 'never')
 
 
 puts 'Adding user score...'
