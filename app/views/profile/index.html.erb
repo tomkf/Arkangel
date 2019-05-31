@@ -24,22 +24,19 @@
 
 
 
-<div>
-<h3>
-<%=  @user.first_name %>'s vitals
-</h3>
-
-
-<span>
-<%=  @user.age %> years old
-</span>
-
-<!--
-<span>
-   user.user_params.height
- user.user_params.weight
-</span> -->
-</div>
+ <div class="user-title">
+  <h3>
+  <%=  @user.first_name %>'s vitals
+  </h3>
+  <span>
+  <%=  @user.age %> years old
+  </span>
+  <!--
+  <span>
+     user.user_params.height
+   user.user_params.weight
+  </span> -->
+ </div>
 
 
 
@@ -48,9 +45,9 @@
   <span> Today </span>
   <span> Weekly </span>
   <span> Monthly </span>
+ </div>
 
   <div class="stats-display">
-
     <div class="stat-item">
      <p> Sleep </p>
      <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
@@ -97,7 +94,6 @@
     </div>
 
     </div>
-  </div>
 </div>
 
 <div> <%= render "shared/footer" %> </div>

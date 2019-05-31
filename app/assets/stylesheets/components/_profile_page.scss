@@ -3,5 +3,32 @@
   justify-content: center;
 .profile-landing {
   height: 365px;
+ }
+}
+
+.side-icons{
+  display: flex;
+  padding-bottom: 2%;
+  }
+
+
+.user-title{
+margin-left: 2%;
+padding-top: 1%;
+padding-bottom: 2%;
+}
+
+
+.dashboard{
+      padding-left: 2%;
+
+  .time-toggle{
+display: flex;
+justify-content: space-between;
+padding-bottom: 2%;
+}
+.stats-display{
+padding-top: 2%;
+
 }
 }
