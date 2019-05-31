@@ -7,18 +7,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    # @feedback = {
-    #   health_score: @user.user_scores.last.health_score,
-    #   bmi_message: bmi(@user),
-    #   physical_activity: physical_activity(@user),
-    #   fruits_vegetables: fruits_vegetables(@user),
-    #   whole_grains: whole_grains(@user),
-    #   red_meat: red_meat(@user),
-    #   processed_meat: processed_meat(@user),
-    #   fats: fats(@user),
-    #   soda: soda(@user),
-    #   alcohol: alcohol(@user)
-    # }
 
     @health_score = @user.user_scores.last.health_score
     @bmi = bmi(@user)

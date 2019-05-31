@@ -1,5 +1,15 @@
-<div class="container d-flex justify-content-between fixed-bottom mb-3 footer">
-    <%= image_tag "footer/home_thick.svg", class: "icon" %>
-    <%= image_tag "footer/plus.png", class: "icon" %>
-    <%= image_tag "footer/user_thick.png", class: "icon" %>
+<div style="background-color: white; height: 12vh" class="fixed-bottom">
+  <div class="container">
+    <div class="container d-flex justify-content-between fixed-bottom mb-4 footer">
+      <%= link_to dashboard_path do %>
+        <%= image_tag "footer/home_thick.svg", class: "icon pl-4" %>
+      <% end %>
+      <%= link_to dashboard_path do %>
+        <%= image_tag "footer/plus.png", class: "icon" %>
+      <% end %>
+      <%= link_to dashboard_path do %>
+        <%= image_tag "footer/user_thick.png", class: "icon pr-4" %>
+      <% end %>
+    </div>
+  </div>
 </div>
