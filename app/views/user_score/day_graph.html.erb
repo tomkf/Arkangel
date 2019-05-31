@@ -33,7 +33,7 @@ data = {
     }
   ]
 }
-options = { height: 380, width: 250, scale: {
+options = { maintainAspectRatio: false, height: 500, width: 250, scale: {
         ticks: {
           beginAtZero: true,
           max: 10
@@ -44,26 +44,16 @@ options = { height: 380, width: 250, scale: {
 
 <div class="container">
   <h3 class="text-center"><%= Date::ABBR_MONTHNAMES[@user_score.logdate.month] %> <%= @user_score.logdate.day %></h3>
+
   <div class="graph-card">
-    <%= radar_chart data, options %>
+
+      <%= radar_chart data, options %>
+
   </div>
 </div>
 
 
 <%= render 'shared/footer' %>
-<!--
-  health_score
-  -----bmi .... not relevant
-  physical_activity
-  fruits_vegetables
-  whole_grains
-  fats
 
-    bad stuff
-  red_meat
-  processed_meats
-  soda
-  alcohol
- -->
 
 
