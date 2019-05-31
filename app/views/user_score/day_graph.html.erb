@@ -25,21 +25,15 @@
 data = {
   labels: ["Exercise", "Fruits & Vegetables", "Fibers", "Healthy Fats", "Red meat", "Processed meat", "Soda", "Alcohol"],
   datasets: [
-    # {
-    #     label: "My First dataset",
-    #     backgroundColor: "rgba(220,220,220,0.2)",
-    #     borderColor: "rgba(220,220,220,1)",
-    #     data: data
-    # },
     {
-        label: "Positive indicators",
-        backgroundColor: "rgba(151,187,205,0.2)",
-        borderColor: "rgba(151,187,205,1)",
+        label: "Goal completion",
+        backgroundColor: "rgba(246,172,29,0.2)",
+        borderColor: "rgba(246,172,29,1)",
         data: display_points
     }
   ]
 }
-options = { scale: {
+options = { height: 380, width: 250, scale: {
         ticks: {
           beginAtZero: true,
           max: 10
@@ -49,9 +43,14 @@ options = { scale: {
  %>
 
 <div class="container">
-  <%= radar_chart data, options %>
+  <h3 class="text-center"><%= Date::ABBR_MONTHNAMES[@user_score.logdate.month] %> <%= @user_score.logdate.day %></h3>
+  <div class="graph-card">
+    <%= radar_chart data, options %>
+  </div>
 </div>
 
+
+<%= render 'shared/footer' %>
 <!--
   health_score
   -----bmi .... not relevant
