@@ -4,20 +4,19 @@
   <h3 class="text-center">Health score history</h3>
   <div class="graph-card">
 
+    <div class="container">
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0-beta2/Chart.min.js"></script>
 
-      <div class="chart-container">
-        <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line'>
+      <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line' style="max-height: 60vh" width="400" height="450">
 
-          <div class="chartjs-item" data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
-          </div>
-        </canvas>
+        <div class="chartjs-item" data-label='Health Score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+        </div>
 
-      </div>
-
+      </canvas>
+    </div>
 
 
     <div class="d-flex flex-row-reverse">
@@ -79,6 +78,7 @@
 
         });
 
+
         // CHART JS INIT
 
         var chartType=$(this).data('charttype');
@@ -89,9 +89,6 @@
             data: {
                 labels: chartLabels,
                 datasets: datasets,
-                options: {
-                  maintainAspectRatio: false,
-                }
             },
         });
 
@@ -107,10 +104,7 @@
 
 
       });
+
   }
-
-
 </script>
-
-
 
