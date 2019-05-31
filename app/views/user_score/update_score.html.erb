@@ -1,0 +1,53 @@
+<div class="prompt">
+<%= image_tag "Logo_PNG.png", class:'avatar-bordered' %>
+<p> What would you like to report, <%= @user.first_name %> ?</p>
+</div>
+
+<div class="icon-container">
+<div class="end">
+      <%= link_to  new_user_user_param_path[:user_id] do %>
+<i class="far fa-user-circle"></i>
+<h4>
+Weight
+</h4>
+<% end %>
+</div>
+
+<div class="aside">
+<%= link_to exercise_score_path do %>
+<i class="fas fa-running"></i>
+<h4>
+Exercise
+</h4>
+<% end %>
+</div>
+
+<div class="mid">
+
+<i class="far fa-laugh"></i>
+  <h4>
+Devices
+</h4>
+
+</div>
+
+<div class="aside">
+  <%= link_to food_score_path do %>
+ <i class="fas fa-apple-alt icon-new"></i>
+<h4>
+Food
+</h4>
+<% end %>
+</div>
+
+<div class="end">
+<i class="fas fa-palette"></i><h4>
+Profile
+</h4>
+</div>
+</div>
+
+
+ <div class="container">
+    <%= render "shared/footer" %>
+  </div>

@@ -1,0 +1,35 @@
+.prompt{
+  text-align: center;
+}
+// media query in this file
+// on mobile, only p tag w/ text-align, other wise above rule
+.icon-logo{
+ height: 20px;
+}
+
+.end{
+ margin-bottom: -20px;
+}
+
+.icon-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    bottom: 70px;
+  >div{
+        text-align: center;
+        h4{
+        font-size: 14px;
+        }
+  }
+}
+
+.mid{
+  margin-bottom: 50px;
+}
+
+.aside{
+    margin-bottom: 15px;
+}
