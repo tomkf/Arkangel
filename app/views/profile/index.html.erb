@@ -1,14 +1,14 @@
+<div class="wrap">
+
 <div class="profile-container">
  <%= image_tag "profile.png", class: "profile-landing" %>
-</div>
-
 <div class="side-icons">
  <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
  <%= image_tag "vitals/3_Steps.png", class: "icon" %>
  <%= image_tag "vitals/3_Mind.png", class: "icon" %>
  <%= image_tag "vitals/4_Energy.png", class: "icon" %>
 </div>
-
+</div>
 
 
 <div class="big_title">
@@ -21,7 +21,6 @@
     <%= link_to "Score history", graph_path, style:"color: white;" %>
   </div>
 </div>
-
 
 
  <div class="user-title">
@@ -99,9 +98,13 @@
     </div>
 
     </div>
+
+  </div>
+
 </div>
 
-<div> <%= render "shared/footer" %> </div>
+<%= render "shared/footer" %>
+
 
 
 
