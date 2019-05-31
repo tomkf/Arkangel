@@ -39,10 +39,10 @@ class PagesController < ApplicationController
   def bmi(user)
     message = ["weight", "vitals/2_Weight.png"]
     if user.user_scores.last.bmi <= 24.9
-      message << "Your BMI category is healthy based on the World Health Organization criteria for adults."
+      message << "You have a healthy weight (BMI: #{user.user_scores.bmi}), keep it up!"
       message << "great"
     elsif user.user_scores.last.bmi.between?(25, 29.9)
-      message << "Your BMI category is overweight based on the World Health Organization criteria."
+      message << "Your BMI category is overweight (BMI: #{user.user_scores.bmi}) based on the World Health Organization criteria."
       message << "average"
     else
       message << "Your BMI category is obese based on the World Health Organization criteria."
