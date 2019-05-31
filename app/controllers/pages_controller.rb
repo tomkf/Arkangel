@@ -6,6 +6,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    if params[:apis_params] == 'true'
+      sleep 3
+    end
+
+    # raise
     @user = current_user
 
     @health_score = @user.user_scores.last.health_score
@@ -20,6 +25,10 @@ class PagesController < ApplicationController
     @alcohol = alcohol(@user)
 
     @feedback = [@bmi, @physical_activity, @fruits_vegetables, @whole_grains, @red_meat, @processed_meat, @fats, @soda, @alcohol]
+  end
+
+  def apis
+
   end
 
   private

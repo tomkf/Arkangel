@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "user_score/day_graph", to: 'user_score#day_graph', as: 'day_graph'
 
 
-
+# create this fake route for the apis - I will create a table for the apis next week. Jose
+  get 'apis', to: 'pages#apis', as: 'apis'
 
 end
