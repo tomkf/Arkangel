@@ -1,15 +1,12 @@
 <div class="profile-img">
  <%= image_tag "profile.png" %>
-
 </div>
-
 
 <div class="side-icons">
  <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
  <%= image_tag "vitals/3_Steps.png", class: "icon" %>
  <%= image_tag "vitals/3_Mind.png", class: "icon" %>
  <%= image_tag "vitals/4_Energy.png", class: "icon" %>
-
 </div>
 
 
@@ -28,7 +25,6 @@
 
 
 <div>
-
 <h3>
 <%=  @user.first_name %>'s vitals
 </h3>
@@ -43,85 +39,71 @@
    user.user_params.height
  user.user_params.weight
 </span> -->
-
 </div>
-
-
-
-
-
 
 
 
 <div class="dashboard">
-
-
-<div class="time-toggle">
+ <div class="time-toggle">
   <span> Today </span>
   <span> Weekly </span>
   <span> Monthly </span>
 
- <div class="stats-display">
+  <div class="stats-display">
 
-   <div class="stat-item">
+    <div class="stat-item">
     <p> Sleep </p>
- <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
-<span>
-  7.5 Hrs
-  <p>Slept at 10:45 pm</p>
-</span>
+    <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+    <span>
+      7.5 Hrs
+      <p>Slept at 10:45 pm</p>
+    </span>
+
+       </div>
+
+       <div class="stat-item">
+             <p> Focus </p>
+     <%= image_tag "vitals/3_Mind.png", class: "icon" %>
+    <span>
+      4.5 hours
+      <p>75% productivity</p>
+    </span>
+
 
    </div>
 
    <div class="stat-item">
-         <p> Focus </p>
- <%= image_tag "vitals/3_Mind.png", class: "icon" %>
-<span>
-  4.5 hours
-  <p>75% productivity</p>
-</span>
-
-
-   </div>
-
-   <div class="stat-item">
-         <p> Food </p>
- <%= image_tag "vitals/4_Energy.png", class: "icon" %>
-<span>
-  850 Calories
-  <p>60% of daily caloric goal met</p>
-</span>
-
-   </div>
+           <p> Food </p>
+   <%= image_tag "vitals/4_Energy.png", class: "icon" %>
+  <span>
+    850 Calories
+    <p>60% of daily caloric goal met</p>
+  </span>
+  </div>
 
    <div class="stat-item">
          <p> Steps </p>
- <%= image_tag "vitals/3_Steps.png", class: "icon" %>
-<span>
-  5, 495 steps
-  <p>Synched 15 mins ago</p>
-</span>
-
+    <%= image_tag "vitals/3_Steps.png", class: "icon" %>
+    <span>
+      5, 495 steps
+      <p>Synched 15 mins ago</p>
+    </span>
    </div>
 
    <div class="stat-item">
          <p> Workout </p>
- <%= image_tag "vitals/6_Workout.png", class: "icon" %>
-<span>
-  25 mins
-  <p>Light jogging - 4 hours ago</p>
-</span>
+     <%= image_tag "vitals/6_Workout.png", class: "icon" %>
+     <span>
+      25 mins
+      <p>Light jogging - 4 hours ago</p>
+    </span>
+    </div>
 
-   </div>
-
- </div>
-
+    </div>
+  </div>
 </div>
 
-</div>
-
-
-<%= render "shared/footer" %>
+<div> <%= render "shared/footer" %> </div>
 
 
 
