@@ -1,0 +1,35 @@
+<!-- <div class="big_title"  style="background-color: white;">
+  <div class="container">
+    <h3><b>Integrate</b> Your</h3>
+    <div class="score d-flex align-items-end" id="main_title">
+      <h1></h1>
+      <h2 style="color: #F6AC1D;">Data Sensors</h2>
+    </div>
+    <p style="color: grey; font-weight: 400;">0 apps connected</p>
+  </div>
+</div> -->
+
+<div class="container mt-5">
+  <div class="col-12 text-center ">
+    <h2>Fitbit</h2>
+  </div>
+  <div class="row text-center">
+    <div class="col-12 text-center">
+      <%= image_tag "apis_Integration/fitbit.svg", class: "api-logo text-center" %>
+    </div>
+  </div>
+  <div class="col-12 text-center ">
+    <h6><b>Fitbit</b> (not connected)</h6>
+  </div>
+  <div class="">
+      <p class="m-5 font-weight-lighter text-center" style="line-height: 1">Automatically link your steps & heart rate from your Fitbit band. I can also collect weight & bodyfat if you are using the wireless scale.</p>
+  </div>
+  <div >
+    <%= link_to "Integrate now", dashboard_path(apis_params: true), class:"submit-button d-flex justify-content-center", style:"max-width: 335px; text-decoration: none; color: white;" %>
+    <% apis_params = true %>
+  </div>
+</div>
+
+
+
+<%= render "shared/footer" %>
