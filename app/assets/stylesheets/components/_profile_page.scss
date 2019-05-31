@@ -18,9 +18,10 @@
   display: flex;
   padding-bottom: 2%;
     flex-direction: column;
-    width: 9%;
+    justify-content: space-between;
+    width: 15%;
     position: absolute;
-     left: 2px;
+     left: 2%;
      bottom: 0;
   }
 
