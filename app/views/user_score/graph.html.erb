@@ -1,22 +1,29 @@
-
-
 <div class="container">
   <h3 class="text-center">Health score history</h3>
   <div class="graph-card">
 
-    <div class="container">
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0-beta2/Chart.min.js"></script>
 
-      <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line' style="max-height: 60vh" width="400" height="450">
+      <div class="chart-container small-c" style="overflow-x: hidden; display: none;">
+        <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line'
+          style="max-height: 60vh;" width='400' height='450'>
 
-        <div class="chartjs-item" data-label='Health Score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
-        </div>
+          <div class="chartjs-item" style="display: none"  data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+          </div>
+        </canvas>
+      </div>
 
-      </canvas>
-    </div>
+      <div class="chart-container big-c" style="display: none;">
+        <canvas class="chartjs" data-labels="<%= @dates %>"  data-charttype='line'>
+
+          <div class="chartjs-item" data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+          </div>
+        </canvas>
+      </div>
+
 
 
     <div class="d-flex flex-row-reverse">
@@ -78,7 +85,6 @@
 
         });
 
-
         // CHART JS INIT
 
         var chartType=$(this).data('charttype');
@@ -89,6 +95,9 @@
             data: {
                 labels: chartLabels,
                 datasets: datasets,
+                options: {
+                  maintainAspectRatio: true,
+                }
             },
         });
 
@@ -104,7 +113,27 @@
 
 
       });
-
   }
-</script>
 
+  window.onload = () => {
+    console.log(window.innerHeight)
+    console.log(window.innerWidth)
+    // if (window.innerWidth >= 500) {
+    //   document.querySelector('.small-c').style.display = "none";
+    //   console.log("hid the small one")
+    // } else {
+    //   console.log("hid the big one")
+    //   document.querySelector('.big-c').style.display = "none";
+    // }
+
+    if (window.innerWidth <= 500) {
+      document.querySelector('.small-c').style.display = "block";
+      console.log("hid the small one")
+    } else {
+      console.log("hid the big one")
+      document.querySelector('.big-c').style.display = "block";
+    }
+  }
+
+
+</script>
