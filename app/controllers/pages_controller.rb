@@ -53,10 +53,10 @@ class PagesController < ApplicationController
 
   def physical_activity(user)
     message = ["workout", "vitals/6_Workout.png"]
-    if user.user_scores.last.physical_activity >= 3.5
+    if user.user_scores.last.physical_activity >= 0.5
       message << "You are in the healthiest category for physical activity. You meet current physical activity recommendations. Keep up the great work!"
       message << "great"
-    elsif user.user_scores.last.physical_activity.between?(2, 3.4)
+    elsif user.user_scores.last.physical_activity.between?(0.1, 0.4)
       message << "You are on your way to an active lifestyle, but increasing your physical activity will provide more cardiovascular health benefits."
       message << "average"
     else
