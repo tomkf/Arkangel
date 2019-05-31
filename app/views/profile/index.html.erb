@@ -1,18 +1,41 @@
-<div>
+<div class="profile-img">
+ <%= image_tag "profile.png" %>
 
 </div>
 
 
-<div>
+<div class="side-icons">
+ <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ <%= image_tag "vitals/3_Steps.png", class: "icon" %>
+ <%= image_tag "vitals/3_Mind.png", class: "icon" %>
+ <%= image_tag "vitals/4_Energy.png", class: "icon" %>
 
 </div>
 
 
-<div>
 
+<div class="big_title">
+  <div class="container">
+    <h3>Your <b>Health Score</b></h3>
+    <div class="score d-flex align-items-end" id="main_title">
+      <h1><%= @health_score.round(1) %></h1>
+      <h2>/100</h2>
+    </div>
+    <%= link_to "Score history", graph_path, style:"color: white;" %>
+  </div>
 </div>
 
 
-<div>
 
+
+
+
+
+
+
+
+
+
+
+<div>
 </div>
