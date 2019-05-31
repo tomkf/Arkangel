@@ -67,12 +67,12 @@ class PagesController < ApplicationController
   end
 
   def fruits_vegetables(user)
-    message = ["food", "vitals/4_Energy.png"]
-    if user.user_scores.last.fruits_vegetables >= 5
+    message = ["fruits & veggies", "vitals/4_Energy.png"]
+    if user.user_scores.last.fruits_vegetables >= 4
       message << "You are in the healthiest category for fruit and vegetable intake based on the study population."
       message << "great"
-    elsif user.user_scores.last.fruits_vegetables.between?(3, 4.9)
-      message << "You are on your way to a healthy fruit and vegetables intake. Try to reach 5 servings a day of vegetables and fruits to get the best benefits."
+    elsif user.user_scores.last.fruits_vegetables.between?(2, 3.9)
+      message << "You are on your way to a healthy fruit and vegetables intake. Try to reach 4 servings a day of vegetables and fruits to get the best benefits."
       message << "average"
     else
       message << "Set a goal to increase your intake of fruits and vegetables."
@@ -82,7 +82,7 @@ class PagesController < ApplicationController
   end
 
   def whole_grains(user)
-    message = ["fiber", "vitals/4_Energy.png"]
+    message = ["fiber", "vitals/11_Fibers.png"]
     if user.user_scores.last.whole_grains >= 15
       message << "You have a diet high in whole grain fiber."
       message << "great"
@@ -97,7 +97,7 @@ class PagesController < ApplicationController
   end
 
   def red_meat(user)
-    message = ["food", "vitals/4_Energy.png"]
+    message = ["meat", "vitals/13_Red.png"]
     if user.user_scores.last.red_meat <= 2
       message << "You have a low intake of red meat. Keep it up!"
       message << "great"
@@ -112,8 +112,8 @@ class PagesController < ApplicationController
   end
 
   def processed_meat(user)
-    message = ["food", "vitals/4_Energy.png"]
-    if user.user_scores.last.processed_meat >= 5
+    message = ["meat", "vitals/9_Processed.png"]
+    if user.user_scores.last.processed_meat >= 0
       message << "You have the healthiest intake of processed meat."
       message << "great"
     elsif user.user_scores.last.processed_meat.between?(3, 4.9)
@@ -127,11 +127,11 @@ class PagesController < ApplicationController
   end
 
   def fats(user)
-    message = ["fats", "vitals/4_Energy.png"]
+    message = ["fats", "vitals/14_Fats.png"]
     if user.user_scores.last.fats >= 1
       message << "You have a healthy intake of nuts and seeds."
       message << "great"
-    elsif user.user_scores.last.fats.between?(0.9, 0.5)
+    elsif user.user_scores.last.fats.between?(0.5, 0.9)
       message << "Increasing your intake of nuts and seeds to at least 1 oz/day can provide additional health benefits."
       message << "average"
     else
@@ -142,7 +142,7 @@ class PagesController < ApplicationController
   end
 
   def soda(user)
-    message = ["sugar", "vitals/4_Energy.png"]
+    message = ["sugar", "vitals/10_Sugar.png"]
     if user.user_scores.last.soda <= 0
       message << "You are in the healthiest category for sugar-sweetened drinks."
       message << "great"
@@ -157,8 +157,8 @@ class PagesController < ApplicationController
   end
 
   def alcohol(user)
-    message = ["alcohol", "vitals/4_Energy.png"]
-    if user.user_scores.last.alcohol <= 2
+    message = ["alcohol", "vitals/8_Alcohol.png"]
+    if user.user_scores.last.alcohol <= 1
       message << "You are drinking the right amount of alcohol for ultimate health benefits."
       message << "great"
     elsif user.user_scores.last.alcohol.between?(2.1, 4)
