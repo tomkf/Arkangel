@@ -335,7 +335,7 @@ UserScore.create!(
 UserScore.create!(
   user: user,
   bmi: 28.1,
-  physical_activity: 1, # hours per day
+  physical_activity: 2, # hours per day
   fruits_vegetables: 4, # servings per day
   whole_grains: 15, # grams per day
   red_meat: 0.5, # servings per day
@@ -353,7 +353,7 @@ UserScore.create!(
   fruits_vegetables: 4, # servings per day
   whole_grains: 15, # grams per day
   red_meat: 0.5, # servings per day
-  processed_meat: 0, # servings per day
+  processed_meat: 2, # servings per day
   fats: 1, # servings per day
   soda: 0, # drinks per day
   alcohol: 0, # drinks per day
@@ -392,16 +392,57 @@ UserScore.create!(
   user: user,
   bmi: 27.7,
   physical_activity: 1, # hours per day
-  fruits_vegetables: 4, # servings per day
-  whole_grains: 15, # grams per day
+  fruits_vegetables: 2, # servings per day
+  whole_grains: 8, # grams per day
   red_meat: 0.5, # servings per day
-  processed_meat: 0, # servings per day
+  processed_meat: 1, # servings per day
   fats: 1, # servings per day
   soda: 0, # drinks per day
   alcohol: 0, # drinks per day
   logdate: '2019-05-28'
   )
 
+UserScore.create!(
+  user: user,
+  bmi: 27.7,
+  physical_activity: 1, # hours per day
+  fruits_vegetables: 3, # servings per day
+  whole_grains: 5, # grams per day
+  red_meat: 0.5, # servings per day
+  processed_meat: 1, # servings per day
+  fats: 1, # servings per day
+  soda: 0, # drinks per day
+  alcohol: 0, # drinks per day
+  logdate: '2019-05-29'
+  )
+
+UserScore.create!(
+  user: user,
+  bmi: 27.7,
+  physical_activity: 1, # hours per day
+  fruits_vegetables: 4, # servings per day
+  whole_grains: 15, # grams per day
+  red_meat: 0.5, # servings per day
+  processed_meat: 0, # servings per day
+  fats: 1, # servings per day
+  soda: 2, # drinks per day
+  alcohol: 2, # drinks per day
+  logdate: '2019-05-30'
+  )
+
+UserScore.create!(
+  user: user,
+  bmi: 27.7,
+  physical_activity: 0, # hours per day
+  fruits_vegetables: 3, # servings per day
+  whole_grains: 12, # grams per day
+  red_meat: 0.5, # servings per day
+  processed_meat: 0.5, # servings per day
+  fats: 0.8, # servings per day
+  soda: 1, # drinks per day
+  alcohol: 2, # drinks per day
+  logdate: '2019-05-31'
+  )
 
 
 puts 'Done!'
