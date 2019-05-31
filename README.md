@@ -1,2 +1,2 @@
-https://arkangel.herokuapp.com/
+https://arkangel.life/ </br>
 This app will revolutionize healthcare 

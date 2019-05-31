@@ -1,87 +1,50 @@
+
 <div class="big_title">
   <div class="container">
     <h3>Your <b>Health Score</b></h3>
     <div class="score d-flex align-items-end" id="main_title">
-      <h1><%= @user.user_scores.last.health_score.round(1) %></h1>
+      <h1><%= @health_score.round(1) %></h1>
       <h2>/100</h2>
     </div>
     <%= link_to "Score history", graph_path, style:"color: white;" %>
   </div>
 </div>
 
+<!-- classifier -->
+
+<% great_array = @feedback.select { |component| component[3] == "great" } %>
+<% average_array = @feedback.select { |component| component[3] == "average" } %>
+<% low_array = @feedback.select { |component| component[3] == "low" } %>
+
+
+<!-- columns -->
+
 <div class="container">
   <div class="row mr-3 ml-3">
 
     <!-- feedback -->
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
-
-      <!-- GREAT title component -->
-      <div class="title-great text-right">
-        <p class="text-uppercase font-weight-bold">Great</p>
-        <hr>
-      </div>
-
-      <!-- content component -->
-      <div class="content row" style="flex-wrap: nowrap;" id="score_detail">
-        <div class="col-xs-2">
-          <p class="vital_title pr-3">Weight</p>
-        </div>
-        <div class="col-xs-2">
-          <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        </div>
-        <div class="col-xs-5">
-          <p class="vital_content pl-3">You have a healthy weight (BMI: 24.6), keep it up!</p>
-        </div>
-      </div>
-
-
-      <div class="content row" style="flex-wrap: nowrap;" id="score_detail">
-        <div class="col-xs-2">
-          <p class="vital_title pr-3">Food</p>
-        </div>
-        <div class="col-xs-2">
-          <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        </div>
-        <div class="col-xs-5">
-          <p class="vital_content pl-3">You have a high intake of nuts and seeds (1.2 portion/day) <b>Your goal:</b> 1 portion/day or more</p>
-        </div>
-      </div>
-
-
+      <!-- GREAT  -->
+      <%= render "shared/title_great" %>
+      <% great_array.each do |info| %>
+        <%= render "shared/component_info", info: info %>
+      <% end %>
     </div>
 
     <div class="average col-sm-12 col-md-12 col-lg-4 mt-3">
-
-      <!-- AVERAGE title component -->
-      <div class="title-average">
-        <p class="text-uppercase font-weight-bold">Average</p>
-        <hr>
-      </div>
-
-      <!-- content component -->
-      <div class="content" id="score_detail">
-        <p class="vital_title pr-3">Workout</p>
-        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        <p class="vital_content pl-3">Moderately active (2.5 hr / week). <b>Your goal:</b> 3.5 hours/week or more</p>
-      </div>
-
-
+      <!-- AVERAGE  -->
+      <%= render "shared/title_average" %>
+      <% average_array.each do |info| %>
+        <%= render "shared/component_info", info: info %>
+      <% end %>
     </div>
 
     <div class="low col-sm-12 col-md-12 col-lg-4 mt-3 ">
-
-      <!-- LOW title component -->
-      <div class="title-low">
-        <p class="text-uppercase font-weight-bold">Low</p>
-        <hr>
-      </div>
-
-      <!-- content component -->
-      <div class="content" id="score_detail">
-        <p class="vital_title pr-3">Workout</p>
-        <%= image_tag "vitals/2_Weight.png", style:"max-height: 30px;" %>
-        <p class="vital_content pl-3">Current smoker.<b>Your goal:</b> Non-smoker</p>
-      </div>
+      <!-- LOW  -->
+      <%= render "shared/title_low" %>
+      <% low_array.each do |info| %>
+        <%= render "shared/component_info", info: info %>
+      <% end %>
     </div>
 
   </div>

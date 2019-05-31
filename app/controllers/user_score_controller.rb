@@ -11,15 +11,26 @@ class UserScoreController < ApplicationController
     score.save
   end
 
+  def update
+    @user = user_current
+  end
+
+  def edit
+    @user = current_user
+  end
+
   def graph
     @user_score_params = UserScore.order(:logdate).last(7)
-
+    @text = 'Weekly'
     if params[:date] == "Weekly"
       @user_score_params = UserScore.order(:logdate).last(7)
+      @text = 'Weekly'
     elsif params[:date] == "Monthly"
       @user_score_params = UserScore.order(:logdate).last(30) # make this logic work w/ helper function for MONTHS
+      @text = 'Monthly'
     elsif params[:date] == "All history"
       @user_score_params = UserScore.order(:logdate)
+      @text = 'All history'
     end
 
     @health_score = []

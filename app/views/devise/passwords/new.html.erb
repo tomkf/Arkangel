@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-8 col-lg-4">
       <div class="form-login">
         <h2>Forgot your password?</h2>
         <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -9,11 +9,11 @@
           <%= f.input :email,
           required: true,
           autofocus: true,
-          input_html: { autocomplete: "email" } %>
+          input_html: { autocomplete: "email", class:"inputs"} %>
 
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Send me reset password instructions", class: "btn btn-primary" %>
+            <%= f.button :submit, "Send me reset password instructions", class: "btn btn-primary", id:"action_button" %>
 
             </div>
             <% end %>
