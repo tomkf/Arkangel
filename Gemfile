@@ -18,7 +18,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'chartjs-ror'
-gem 'net/http'
+gem 'fitbit_api'
 
 
 group :development do
