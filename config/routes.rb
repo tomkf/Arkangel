@@ -15,4 +15,12 @@ Rails.application.routes.draw do
 # create this fake route for the apis - I will create a table for the apis next week. Jose
   get 'apis', to: 'pages#apis', as: 'apis'
 
+  Rails.application.routes.draw do
+    # Sidekiq Web UI, only for admins.
+    require "sidekiq/web"
+    authenticate :user, lambda { |u| u.admin } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
+
 end
