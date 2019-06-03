@@ -15,6 +15,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_173827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # Health_score table
+  # user_id
+  # health_score
+  # fitbit
+  # end
+
   create_table "user_params", force: :cascade do |t|
     t.float "bmi"
     t.integer "weight"
@@ -24,6 +30,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_173827) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_params_on_user_id"
   end
+
+# user_scores
+# object with all the columns from fitbit. (everytime we fetch the data it will store a new object.)
+# fibit_date of these values (based on the users)
+# everytime a new line appears you run the algorithm.
+# end
 
   create_table "user_scores", force: :cascade do |t|
     t.float "health_score"
