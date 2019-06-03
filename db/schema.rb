@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_173827) do
     t.string "last_name"
     t.integer "age"
     t.string "smoker"
+    t.boolean "admin", default: false, null: false
     t.string "fitbit_access_token"
     t.string "fitbit_refresh_token"
     t.integer "fitbit_expires_at"

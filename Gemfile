@@ -9,6 +9,8 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'cloudinary', '~> 1.9.1'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 gem 'fitbit_api'
 
 gem 'autoprefixer-rails'
