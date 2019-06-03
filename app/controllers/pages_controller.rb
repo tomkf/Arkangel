@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  #skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     @userno = current_user
@@ -10,21 +10,21 @@ class PagesController < ApplicationController
       sleep 3
     end
 
-    # raise
     @user = current_user
 
-    @health_score = @user.user_scores.last.health_score
-    @bmi = bmi(@user)
-    @physical_activity = physical_activity(@user)
-    @fruits_vegetables = fruits_vegetables(@user)
-    @whole_grains = whole_grains(@user)
-    @red_meat = red_meat(@user)
-    @processed_meat = processed_meat(@user)
-    @fats = fats(@user)
-    @soda = soda(@user)
-    @alcohol = alcohol(@user)
-
-    @feedback = [@bmi, @physical_activity, @fruits_vegetables, @whole_grains, @red_meat, @processed_meat, @fats, @soda, @alcohol]
+    if @user.user_scores.length != 0
+      @health_score = @user.user_scores.last.health_score
+      @bmi = bmi(@user)
+      @physical_activity = physical_activity(@user)
+      @fruits_vegetables = fruits_vegetables(@user)
+      @whole_grains = whole_grains(@user)
+      @red_meat = red_meat(@user)
+      @processed_meat = processed_meat(@user)
+      @fats = fats(@user)
+      @soda = soda(@user)
+      @alcohol = alcohol(@user)
+      @feedback = [@bmi, @physical_activity, @fruits_vegetables, @whole_grains, @red_meat, @processed_meat, @fats, @soda, @alcohol]
+    end
   end
 
   def apis
@@ -53,10 +53,10 @@ class PagesController < ApplicationController
 
   def physical_activity(user)
     message = ["workout", "vitals/6_Workout.png"]
-    if user.user_scores.last.physical_activity >= 3.5
+    if user.user_scores.last.physical_activity >= 0.5
       message << "You are in the healthiest category for physical activity. You meet current physical activity recommendations. Keep up the great work!"
       message << "great"
-    elsif user.user_scores.last.physical_activity.between?(2, 3.4)
+    elsif user.user_scores.last.physical_activity.between?(0.1, 0.4)
       message << "You are on your way to an active lifestyle, but increasing your physical activity will provide more cardiovascular health benefits."
       message << "average"
     else

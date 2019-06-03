@@ -2,14 +2,19 @@
 <div class="big_title">
   <div class="container">
     <h3>Your <b>Health Score</b></h3>
+<% unless @health_score.nil? %>
     <div class="score d-flex align-items-end" id="main_title">
       <h1><%= @health_score.round(1) %></h1>
       <h2>/100</h2>
     </div>
     <%= link_to "Score history", graph_path, style:"color: white;" %>
+<% end %>
   </div>
 </div>
 
+<% if @health_score.nil? %>
+<p>Please add your devices!</p>
+<% else %>
 <!-- classifier -->
 
 <% great_array = @feedback.select { |component| component[3] == "great" } %>
@@ -48,5 +53,8 @@
     </div>
 
   </div>
+
+<% end %>
+
 </div>
 <%= render "shared/footer" %>
