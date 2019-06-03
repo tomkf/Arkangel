@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  #skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     @userno = current_user
@@ -10,7 +10,6 @@ class PagesController < ApplicationController
       sleep 3
     end
 
-    # raise
     @user = current_user
 
     @health_score = @user.user_scores.last.health_score
