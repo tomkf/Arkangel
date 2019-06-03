@@ -7,7 +7,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0-beta2/Chart.min.js"></script>
 
-      <div class="chart-container small-c" style="overflow-x: hidden; display: none;">
+      <div class="chart-container small-c" style="overflow-x: hidden; display: block;">
         <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line'
           style="max-height: 60vh;" width='400' height='450'>
 
@@ -17,7 +17,7 @@
       </div>
 
       <div class="chart-container big-c" style="display: none;">
-        <canvas class="chartjs" data-labels="<%= @dates %>"  data-charttype='line'>
+        <canvas class="chartjs" data-labels="<%= @dates %>"  data-charttype='line' style="max-height: 60vh;">
 
           <div class="chartjs-item" data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
           </div>
@@ -127,12 +127,26 @@
     //   document.querySelector('.big-c').style.display = "none";
     // }
 
-    if (window.innerWidth <= 500) {
+    if (window.innerWidth <= 800) {
       document.querySelector('.small-c').style.display = "block";
-      console.log("hid the small one")
-    } else {
       console.log("hid the big one")
+    } else {
+      console.log("hid the small one")
       document.querySelector('.big-c').style.display = "block";
+      document.querySelector('.small-c').style.display = "none";
+    }
+  }
+
+  window.onresize = () => {
+    // console.log(window.innerWidth)
+    if (window.innerWidth <= 800) {
+      document.querySelector('.small-c').style.display = "block";
+      document.querySelector('.big-c').style.display = "none";
+      // console.log("hid the big one")
+    } else {
+      // console.log("hid the small one")
+      document.querySelector('.big-c').style.display = "block";
+      document.querySelector('.small-c').style.display = "none";
     }
   }
 
