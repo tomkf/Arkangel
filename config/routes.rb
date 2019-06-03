@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
 # create this fake route for the apis - I will create a table for the apis next week. Jose
   get 'apis', to: 'pages#apis', as: 'apis'
+  get 'fitbit/auth', to: 'fibit#auth'
 
   Rails.application.routes.draw do
     # Sidekiq Web UI, only for admins.

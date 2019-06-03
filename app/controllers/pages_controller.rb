@@ -28,7 +28,12 @@ class PagesController < ApplicationController
   end
 
   def apis
-
+    client = FitbitAPI::Client.new(
+      client_id: ENV["FITBIT_ID"],
+      client_secret: ENV["FITBIT_SECRET"],
+      redirect_uri: ENV["FITBIT_REDIRECT_URL"]
+    )
+    @fitbit_url = client.auth_url
   end
 
   private

@@ -3,7 +3,7 @@
     <% if user_signed_in? %>
       <h1>Welcome <%= @userno.first_name.capitalize  %></h1>
       <p>“Get off the Medical System and onto the Self Care System” ― Nina Leavins </p>
-      <%= link_to "Add Sensors", apis_path, class: "btn btn-lg btn-primary", id:"action_button" %>
+      <%= link_to "Add Devices", apis_path, class: "btn btn-lg btn-primary", id:"action_button" %>
     <% else %>
       <h1>Arkangel</h1>
       <p>Your personal health guardian</p>
