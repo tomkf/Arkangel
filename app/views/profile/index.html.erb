@@ -38,7 +38,6 @@
  </div>
 
 
-
 <div class="dashboard">
  <div class="time-toggle">
   <span> Today </span>
@@ -47,19 +46,23 @@
  </div>
 
 
+    <div class="row">
 
-
-
-
-  <div class="stats-display">
-    <div class="stat-item">
+     <div class="col-xs-6 col-3 ">
      <p> Sleep </p>
+     </div>
+          <div class="col-xs-6 col-3 ">
      <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+          </div>
+         <div class="col-xs-12 col-6">
      <span>
       7.5 Hrs
       <p>Slept at 10:45 pm</p>
       </span>
+      </div>
+
      </div>
+
 
        <div class="stat-item">
              <p> Focus </p>
@@ -101,12 +104,8 @@
 
   </div>
 
-</div>
 
 <%= render "shared/footer" %>
-
-
-
 
 
 

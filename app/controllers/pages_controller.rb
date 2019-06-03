@@ -10,7 +10,6 @@ class PagesController < ApplicationController
       sleep 3
     end
 
-    # raise
     @user = current_user
 
     @health_score = @user.user_scores.last.health_score
