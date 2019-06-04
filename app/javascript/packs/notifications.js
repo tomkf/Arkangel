@@ -24,7 +24,7 @@ const initNotify = () =>  { setInterval (() => {
           text: `New score: ${data.score}`,
           duration: 10000,
           destination: "/dashboard",
-          newWindow: true,
+          newWindow: false,
           close: true,
           gravity: "top", // `top` or `bottom`
           positionLeft: false, // `true` or `false`
