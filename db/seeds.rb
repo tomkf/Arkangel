@@ -13,6 +13,35 @@ puts 'Adding user score...'
 
 # Add score
 
+FitbitScore.create!(
+ user: user,
+ bmi: 23.62,
+ overall_sleep: 438,
+ awaken_sleep: 40,
+ rem_sleep: 113,
+ light_sleep: 150,
+ deep_sleep: 80,
+ heart_rate: 73,
+ steps: 5017,
+ active_minutes: 11,
+ exercise_type: "yoga",
+ floors: 3,
+ exercise_time: 0,
+ exercise_km: 3.8,
+ exercise_cal: 2607,
+ water: 3500,
+ carbs: 390,
+ fat: 52,
+ fiber: 12.66,
+ protein: 37.32,
+ sodium: 4.6,
+ sugar: 148,
+ cholesterol: 12,
+ diet_cal: 2500,
+ alcohol_ml: 90,
+ logdate: '2019-06-01'
+ )
+
 # BAD AND SEMI BAD DAYS
 UserScore.create!(
   user: user,
@@ -26,36 +55,6 @@ UserScore.create!(
   soda: 5, # drinks per day
   alcohol: 5, # drinks per day
   logdate: '2019-05-01'
-  )
-
-# average user
-FitbitScore.create!(
-  user: user,
-  bmi: 23.62,
-  overall_sleep: 438,
-  awaken_sleep: 40,
-  rem_sleep: 113,
-  light_sleep: 150,
-  deep_sleep: 80,
-  heart_rate: 73,
-  steps: 5017,
-  active_minutes: 11,
-  exercise_type: "yoga",
-  floors: 3,
-  exercise_time: 0,
-  exercise_km: 3.8,
-  exercise_cal: 2607,
-  water: 3500,
-  carbs: 390,
-  fat: 52,
-  fiber: 12.66,
-  protein: 37.32,
-  sodium: 4.6,
-  sugar: 148,
-  cholesterol: 12,
-  diet_cal: 2500,
-  alcohol_ml: 90,
-  logdate: '2019-06-01'
   )
 
 UserScore.create!(

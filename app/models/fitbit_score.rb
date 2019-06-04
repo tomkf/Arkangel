@@ -86,8 +86,8 @@ class FitbitScore < ApplicationRecord
     end
 
     # awaken_sleep clasifier
-    optimal_awaken_sleep = optimal_overall_sleep * 5 / 100 # 5% of the overall total sleep
-    awaken_percentage = self.awaken_sleep * 100 / self.overall_sleep # transforms to percentage the value
+    optimal_awaken_sleep = optimal_overall_sleep * 5 / 100.0 # 5% of the overall total sleep
+    awaken_percentage = self.awaken_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if awaken_percentage >= 5.6
       awaken_sleep_score = self.awaken_sleep / optimal_awaken_sleep * -0.0021 # Low category
     elsif awaken_percentage.between?(5.1, 5.5)
@@ -97,8 +97,8 @@ class FitbitScore < ApplicationRecord
     end
 
     # REM_sleep clasifier
-    optimal_rem_sleep = optimal_overall_sleep * 35 / 100 # 35% of the overall total sleep
-    rem_percentage = self.rem_sleep * 100 / self.overall_sleep # transforms to percentage the value
+    optimal_rem_sleep = optimal_overall_sleep * 35 / 100.0 # 35% of the overall total sleep
+      rem_percentage = self.rem_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if rem_percentage <= 29
       rem_sleep_score = self.rem_sleep / optimal_rem_sleep * -1.15912 # Low category
     elsif rem_percentage.between?(30, 34.9)
@@ -108,8 +108,8 @@ class FitbitScore < ApplicationRecord
     end
 
     # light_sleep clasifier
-    optimal_light_sleep = optimal_overall_sleep * 40 / 100 # 40% of the overall total sleep
-    light_percentage = self.light_sleep * 100 / self.overall_sleep # transforms to percentage the value
+    optimal_light_sleep = optimal_overall_sleep * 40 / 100.0 # 40% of the overall total sleep
+    light_percentage = self.light_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if light_percentage >= 45.1
       light_sleep_score = self.light_sleep / optimal_light_sleep * 0.00323 # Low category
     elsif light_percentage.between?(40.1, 45)
@@ -119,15 +119,22 @@ class FitbitScore < ApplicationRecord
     end
 
     # deep_sleep clasifier
-    optimal_deep_sleep = optimal_overall_sleep * 20 / 100 # 20% of the overall total sleep
-    deep_percentage = self.deep_sleep * 100 / self.overall_sleep # transforms to percentage the value
+    optimal_deep_sleep = optimal_overall_sleep * 20 / 100.0 # 20% of the overall total sleep
+    deep_percentage = self.deep_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if deep_percentage <= 15
-      deep_sleep_score = self.light_sleep / optimal_deep_sleep * 0.32456 # Low category
+      deep_sleep_score = self.deep_sleep / optimal_deep_sleep * 0.32456 # Low category
     elsif deep_percentage.between?(15.1, 19.9)
-      deep_sleep_score = self.light_sleep / optimal_deep_sleep * 0.67876 # Medium category
+      deep_sleep_score = self.deep_sleep / optimal_deep_sleep * 0.67876 # Medium category
     elsif deep_percentage >= 20
-      deep_sleep_score = self.light_sleep / optimal_deep_sleep * 0.87264 # Great category
+      deep_sleep_score = self.deep_sleep / optimal_deep_sleep * 0.87264 # Great category
     end
+
+    puts "deep optimal deep sleep:"
+    puts optimal_deep_sleep
+    puts "deep sleep percentage:"
+    puts deep_percentage
+    puts "deep sleep score:"
+    puts deep_sleep_score
 
     score = overall_sleep_score + awaken_sleep_score + rem_sleep_score + light_sleep_score + deep_sleep_score # adds everything
     self.sleep_score = score
@@ -144,7 +151,6 @@ class FitbitScore < ApplicationRecord
     elsif self.steps >= 10000
       steps_score = self.steps / optimal_steps * 2.09 # Great category
     end
-    p steps_score
 
     # active minutes clasifier
     optimal_active_minutes = 30.0
@@ -155,7 +161,6 @@ class FitbitScore < ApplicationRecord
     elsif self.active_minutes >= 30
       active_minutes_score = self.active_minutes / optimal_active_minutes * 0.177 # Great category
     end
-    p active_minutes_score
 
     # floors clasifier
     optimal_floors = 5.0
@@ -166,7 +171,7 @@ class FitbitScore < ApplicationRecord
     elsif self.floors >= 5
       floors_score = self.floors / optimal_floors * 0.121 # Great category
     end
-    p floors_score
+
 
     # exercise_km clasifier
     optimal_exercise_km = 8.0
@@ -177,7 +182,7 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_km >= 8
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.3875 # Great category
     end
-    p exercise_km_score
+
 
     # exercise_time clasifier
     optimal_exercise_time = 30.0
@@ -188,7 +193,7 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_time >= 30
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.177 # Great category
     end
-    p exercise_time_score
+
 
     # exercise_cal clasifier
     optimal_exercise_cal = 2300.0
@@ -199,7 +204,6 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_time >= 3000
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.874 # Great category
     end
-    p exercise_cal_score
 
     score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
     self.exercise_score = score
