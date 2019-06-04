@@ -10,16 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_173827) do
+ActiveRecord::Schema.define(version: 2019_06_04_133802) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  # Health_score table
-  # user_id
-  # health_score
-  # fitbit
-  # end
+  create_table "fitbit_scores", force: :cascade do |t|
+    t.float "stress_score"
+    t.float "exercise_score"
+    t.float "diet_score"
+    t.float "health_score"
+    t.float "bmi"
+    t.integer "overall_sleep"
+    t.integer "awaken_sleep"
+    t.integer "rem_sleep"
+    t.integer "light_sleep"
+    t.integer "deep_sleep"
+    t.integer "heart_rate"
+    t.integer "steps"
+    t.integer "active_minutes"
+    t.string "exercise_type"
+    t.integer "exercise_time"
+    t.float "exercise_km"
+    t.integer "exercise_cal"
+    t.float "water"
+    t.float "carbs"
+    t.float "fat"
+    t.float "fiber"
+    t.float "protein"
+    t.float "sodium"
+    t.float "sugar"
+    t.float "cholesterol"
+    t.float "diet_cal"
+    t.float "alcohol_ml"
+    t.date "logdate"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fitbit_scores_on_user_id"
+  end
 
   create_table "user_params", force: :cascade do |t|
     t.float "bmi"
@@ -30,12 +60,6 @@ ActiveRecord::Schema.define(version: 2019_06_03_173827) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_params_on_user_id"
   end
-
-# user_scores
-# object with all the columns from fitbit. (everytime we fetch the data it will store a new object.)
-# fibit_date of these values (based on the users)
-# everytime a new line appears you run the algorithm.
-# end
 
   create_table "user_scores", force: :cascade do |t|
     t.float "health_score"
@@ -67,15 +91,16 @@ ActiveRecord::Schema.define(version: 2019_06_03_173827) do
     t.string "last_name"
     t.integer "age"
     t.string "smoker"
-    t.boolean "admin", default: false, null: false
     t.string "fitbit_access_token"
     t.string "fitbit_refresh_token"
     t.integer "fitbit_expires_at"
     t.string "fitbit_user_id"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fitbit_scores", "users"
   add_foreign_key "user_params", "users"
   add_foreign_key "user_scores", "users"
 end
