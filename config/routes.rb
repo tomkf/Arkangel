@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'apis', to: 'pages#apis', as: 'apis'
   get 'fitbit/auth', to: 'fibit#auth'
 
+  get 'notification', to: 'fibit#notification'
+
   Rails.application.routes.draw do
     # Sidekiq Web UI, only for admins.
     require "sidekiq/web"
