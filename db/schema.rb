@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_06_04_193918) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +47,8 @@ ActiveRecord::Schema.define(version: 2019_06_04_193918) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "sleep_score"
+    t.float "floors"
     t.boolean "notified_user", default: false
     t.index ["user_id"], name: "index_fitbit_scores_on_user_id"
   end
