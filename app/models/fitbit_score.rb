@@ -8,7 +8,7 @@ class FitbitScore < ApplicationRecord
     diet_const = 10
     sleep_const = 5
 
-    p self.health_score = age_clasifier(self.age) + smoker_clasifier(self.user.smoker) + bmi_clasifier(self.bmi) + (stress_calculator(self.heart_rate) * stress_const) + (exercise_calculator * exercise_const) + (sleep_calculator * sleep_const) + (diet_calculator * diet_const)
+    p self.health_score = age_clasifier(self.user.age) + smoker_clasifier(self.user.smoker) + bmi_clasifier(self.bmi) + (stress_calculator(self.heart_rate) * stress_const) + (exercise_calculator * exercise_const) + (sleep_calculator * sleep_const) + (diet_calculator * diet_const)
 
     self.save!
     puts 'score added!'
@@ -39,7 +39,7 @@ class FitbitScore < ApplicationRecord
   end
 
   def bmi_clasifier(bmi)
-    if bmi.exists?
+    if bmi.present?
       if bmi >= 35
         bmi * -1.04676
       elsif bmi.between?(25.1, 30)
@@ -53,18 +53,18 @@ class FitbitScore < ApplicationRecord
   end
 
   def bmi_calculator
-    self.bmi = self.weight / (self.height * self.height)
+    self.bmi = self.user.user_params.last.weight.to_f / (self.user.user_params.last**2)
     return self.bmi
   end
 
   def stress_calculator(heart_rate)
-    optimal_heart_rate = 80
+    optimal_heart_rate = 80.0
     if heart_rate >= 100
-      score = self.stress_score = heart_rate / optimal_heart_rate * 1
+      score = heart_rate / optimal_heart_rate * 1 # Low category
     elsif heart_rate <= 70
-      score = self.stress_score = heart_rate / optimal_heart_rate * 3
+      score = heart_rate / optimal_heart_rate * 3 # Medium category
     else
-      score = self.stress_score = heart_rate / optimal_heart_rate * 4
+      score = heart_rate / optimal_heart_rate * 4 # Great category
     end
 
     self.stress_score = score
@@ -73,8 +73,10 @@ class FitbitScore < ApplicationRecord
 
   def sleep_calculator
 
+    # ideal way should have decorators folder = gem 'draper'
+
     # overall_sleep clasifier
-    optimal_overall_sleep = 480 # in minutes
+    optimal_overall_sleep = 480.0 # in minutes
     if self.overall_sleep <= 421
       overall_sleep_score = self.overall_sleep / optimal_overall_sleep * -0.896 # Low category
     elsif self.overall_sleep >= 481
@@ -128,12 +130,13 @@ class FitbitScore < ApplicationRecord
     end
 
     score = overall_sleep_score + awaken_sleep_score + rem_sleep_score + light_sleep_score + deep_sleep_score # adds everything
+    self.sleep_score = score
     return score
   end
 
   def exercise_calculator
     # steps clasifier
-    optimal_steps = 10000
+    optimal_steps = 10000.0
     if self.steps <= 7000
       steps_score = self.steps / optimal_steps * 1.59 # Low category
     elsif self.steps.between?(7001, 9999)
@@ -141,9 +144,10 @@ class FitbitScore < ApplicationRecord
     elsif self.steps >= 10000
       steps_score = self.steps / optimal_steps * 2.09 # Great category
     end
+    p steps_score
 
     # active minutes clasifier
-    optimal_active_minutes = 30
+    optimal_active_minutes = 30.0
     if self.active_minutes <= 15
       active_minutes_score = self.active_minutes / optimal_active_minutes * 0.078 # Low category
     elsif self.active_minutes.between?(16, 29)
@@ -151,9 +155,21 @@ class FitbitScore < ApplicationRecord
     elsif self.active_minutes >= 30
       active_minutes_score = self.active_minutes / optimal_active_minutes * 0.177 # Great category
     end
+    p active_minutes_score
+
+    # floors clasifier
+    optimal_floors = 5.0
+    if self.floors <= 2
+      floors_score = self.floors / optimal_floors * 0.067 # Low category
+    elsif self.floors.between?(2.1, 4.9)
+      floors_score = self.floors / optimal_floors * 0.101 # Medium category
+    elsif self.floors >= 5
+      floors_score = self.floors / optimal_floors * 0.121 # Great category
+    end
+    p floors_score
 
     # exercise_km clasifier
-    optimal_exercise_km = 8
+    optimal_exercise_km = 8.0
     if self.exercise_km <= 2.9
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.1875 # Low category
     elsif self.exercise_km.between?(3.0, 7.9)
@@ -161,9 +177,10 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_km >= 8
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.3875 # Great category
     end
+    p exercise_km_score
 
     # exercise_time clasifier
-    optimal_exercise_time = 30
+    optimal_exercise_time = 30.0
     if self.exercise_time <= 15
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.078 # Low category
     elsif self.exercise_time.between?(16, 29)
@@ -171,25 +188,27 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_time >= 30
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.177 # Great category
     end
+    p exercise_time_score
 
     # exercise_cal clasifier
-    optimal_exercise_cal = 2300
-    if self.exercise_cal <= 15
+    optimal_exercise_cal = 2300.0
+    if self.exercise_cal <= 2499
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.078 # Low category
-    elsif self.exercise_time.between?(16, 29)
+    elsif self.exercise_cal.between?(2500, 2999)
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.145 # Medium category
-    elsif self.exercise_time >= 30
+    elsif self.exercise_time >= 3000
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.874 # Great category
     end
+    p exercise_cal_score
 
-    score = steps_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
+    score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
     self.exercise_score = score
     return score
   end
 
   def diet_calculator
     # alcohol_ml clasifier
-    optimal_alcohol_ml = 40
+    optimal_alcohol_ml = 40.0
     if self.alcohol_ml >= 80.1
       alcohol_ml_score = self.alcohol_ml / optimal_alcohol_ml * -0.078 # Low category
     elsif self.alcohol_ml.between?(40.1, 80)
@@ -199,7 +218,7 @@ class FitbitScore < ApplicationRecord
     end
 
     # water clasifier
-    optimal_water = 3500
+    optimal_water = 3500.0
     if self.water <= 2499
       water_score = self.water / optimal_water * -0.078 # Low category
     elsif self.water.between?(2500, 3499)
@@ -209,7 +228,7 @@ class FitbitScore < ApplicationRecord
     end
 
     # carbs clasifier
-    optimal_carbs = 325
+    optimal_carbs = 325.0
     if self.carbs <= 129.9
       carbs_score = self.carbs / optimal_carbs * 0.4 # Low category
     elsif self.carbs.between?(130, 324.9)
@@ -219,7 +238,7 @@ class FitbitScore < ApplicationRecord
     end
 
     # fat clasifier
-    optimal_fat = 325
+    optimal_fat = 78.0
     if self.carbs <= 129.9
       fat_score = self.fat / optimal_fat * -0.8283 # Low category
     elsif self.fat.between?(130, 324.9)
