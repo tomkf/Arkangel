@@ -1,13 +1,9 @@
 Rails.application.configure do
 
-
-Rails.application.configure do
-  # ...
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
-  config.action_mailer.default_url_options = { host: "yourapp.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "arkangel.life" }
   # or your custom domain name eg. "www.yourdomain.com"
-end
 
 
   # Settings specified here will take precedence over those in config/application.rb.
