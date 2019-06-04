@@ -17,4 +17,11 @@ class FibitController < ApplicationController
     redirect_to dashboard_path
   end
 
+
+def seeded_log(str)
+
+
+end
+
+
 end
