@@ -31,7 +31,7 @@ UserScore.create!(
 # average user
 FitbitScore.create!(
   user: user,
-  bmi: nil,
+  bmi: 23.62,
   overall_sleep: 438,
   awaken_sleep: 40,
   rem_sleep: 113,

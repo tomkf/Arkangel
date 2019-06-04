@@ -8,8 +8,8 @@ class FitbitScore < ApplicationRecord
     diet_const = 10
     sleep_const = 5
 
-    p self.health_score = age_clasifier(self.user.age) + smoker_clasifier(self.user.smoker) + bmi_clasifier(self.bmi) + (stress_calculator(self.heart_rate) * stress_const) + (exercise_calculator * exercise_const) + (sleep_calculator * sleep_const) + (diet_calculator * diet_const)
-
+    w_score = age_clasifier(self.user.age) + smoker_clasifier(self.user.smoker) + bmi_clasifier(self.bmi) + (stress_calculator(self.heart_rate) * stress_const) + (exercise_calculator * exercise_const) + (sleep_calculator * sleep_const) + (diet_calculator * diet_const)
+    p self.health_score = (1 - 0.9660**(w_score - 6.57301)) * 100
     self.save!
     puts 'score added!'
   end
@@ -239,9 +239,9 @@ class FitbitScore < ApplicationRecord
 
     # fat clasifier
     optimal_fat = 78.0
-    if self.carbs <= 129.9
+    if self.carbs <= 100.1
       fat_score = self.fat / optimal_fat * -0.8283 # Low category
-    elsif self.fat.between?(130, 324.9)
+    elsif self.fat.between?(78.1, 100)
       fat_score = self.fat / optimal_fat * 0.424 # Medium category
     elsif self.carbs >= 325
       fat_score = self.fat / optimal_fat * 0.8283 # Great category
@@ -278,7 +278,7 @@ class FitbitScore < ApplicationRecord
     end
 
     # sugar clasifier
-    optimal_sugar = 37
+    optimal_sugar = 37.0
     if self.sugar >= 80.1
       sugar_score = self.sugar / optimal_sugar * -0.29262 # Low category
     elsif self.sugar.between?(37.1, 80)
@@ -288,7 +288,7 @@ class FitbitScore < ApplicationRecord
     end
 
     # cholesterol clasifier
-    optimal_cholesterol = 13
+    optimal_cholesterol = 13.0
     if self.cholesterol >= 27.1
       cholesterol_score = self.cholesterol / optimal_cholesterol * -0.36566 # Low category
     elsif self.cholesterol.between?(13.1, 27)
@@ -298,7 +298,7 @@ class FitbitScore < ApplicationRecord
     end
 
     # diet_cal clasifier
-    optimal_diet_cal = 2300
+    optimal_diet_cal = 2300.0
     if self.diet_cal >= 27.1
       diet_cal_score = self.diet_cal / optimal_diet_cal * -0.60502 # Low category
     elsif self.diet_cal.between?(2301, 2500)
