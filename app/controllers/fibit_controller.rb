@@ -18,7 +18,8 @@ class FibitController < ApplicationController
   end
 
 
-def seeded_log(str)
+def seeded_log
+date_target = FitbitScore.last.logdate
 
 
 end

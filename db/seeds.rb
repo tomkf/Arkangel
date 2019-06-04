@@ -38,7 +38,7 @@ poor_hash = { user: user,
   cholesterol: rand(25..39),
   diet_cal: rand(2400..3500),
   alcohol_ml: rand(50..140),
-  logdate: '2019-06-01'}
+  logdate: self.seeded_log }
 
 average_hash = { user: user,
   bmi: 29,
@@ -65,7 +65,7 @@ average_hash = { user: user,
   cholesterol: rand(15..35),
   diet_cal: rand(2300..3300),
   alcohol_ml: rand(45..100),
-  logdate: '2019-06-01'}
+  logdate: self.seeded_log }
 
 good_hash = { user: user,
   bmi: 26,
@@ -92,9 +92,41 @@ good_hash = { user: user,
   cholesterol: rand(8..33),
   diet_cal: rand(2000..2800),
   alcohol_ml: rand(30..90),
-  logdate: '2019-06-01'}
+  logdate: self.seeded_log }
 
-10.times do
+
+
+
+FitbitScore.create!(user: user,
+  bmi: 31,
+  overall_sleep: rand(280..350),
+  awaken_sleep: 35,
+  rem_sleep: 50,
+  light_sleep: 15,
+  deep_sleep: 28,
+  heart_rate: rand(70..110),
+  steps: rand(3500..8000),
+  active_minutes: rand(5..25),
+  exercise_type: exercise_array[rand(0..3)],
+  floors: rand(0..5),
+  exercise_time: rand(5..25),
+  exercise_km: rand(0..6),
+  exercise_cal: rand(1000..2600),
+  water: rand(1800..2800),
+  carbs: rand(80..360),
+  fat: rand(80..150),
+  fiber: rand(15..30),
+  protein: rand(20..50),
+  sodium: rand(5..10),
+  sugar: rand(60..140),
+  cholesterol: rand(25..39),
+  diet_cal: rand(2400..3500),
+  alcohol_ml: rand(50..140),
+  logdate: '2019-06-01' )
+
+
+
+9.times do
 FitbitScore.create!(poor_hash)
 end
 
