@@ -1,8 +1,6 @@
-
 puts 'Wiping database...'
 UserScore.destroy_all
 User.destroy_all
-
 
 puts 'Creating users'
 
@@ -13,9 +11,7 @@ puts 'Adding user score...'
 
 # Add score
 
-exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "basketball" ]
-
-
+exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "basketball", "boxing", "running" ]
 
 poor_hash = { user: user,
   bmi: 31,
@@ -72,30 +68,30 @@ average_hash = { user: user,
   logdate: '2019-06-01'}
 
 good_hash = { user: user,
-  bmi: 30,
-  overall_sleep: 360,
+  bmi: 26,
+  overall_sleep: rand(280..350),
   awaken_sleep: 35,
   rem_sleep: 50,
   light_sleep: 15,
   deep_sleep: 28,
-  heart_rate: 70,
-  steps: 6000,
-  active_minutes: 25,
-  exercise_type: "yoga",
-  floors: 5,
-  exercise_time: 25,
-  exercise_km: 5,
-  exercise_cal: 300,
-  water: 2500,
-  carbs: 400,
-  fat: 80,
-  fiber: 30,
-  protein: 37,
-  sodium: 3,
-  sugar: 50,
-  cholesterol: 20,
-  diet_cal: 2800,
-  alcohol_ml: 60,
+  heart_rate: rand(65..85),
+  steps: rand(6500..1200),
+  active_minutes: rand(16..38),
+  exercise_type: exercise_array[rand(0..7)],
+  floors: rand(2..7),
+  exercise_time: rand(15..35),
+  exercise_km: rand(3..10),
+  exercise_cal: rand(1900..3100),
+  water: rand(2000..3800),
+  carbs: rand(80..330),
+  fat: rand(75..120),
+  fiber: rand(22..45),
+  protein: rand(30..57),
+  sodium: rand(1..10),
+  sugar: rand(25..95),
+  cholesterol: rand(8..33),
+  diet_cal: rand(2000..2800),
+  alcohol_ml: rand(30..90),
   logdate: '2019-06-01'}
 
 10.times do
