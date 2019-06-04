@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  #skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     @userno = current_user
@@ -12,22 +12,28 @@ class PagesController < ApplicationController
 
     @user = current_user
 
-    @health_score = @user.user_scores.last.health_score
-    @bmi = bmi(@user)
-    @physical_activity = physical_activity(@user)
-    @fruits_vegetables = fruits_vegetables(@user)
-    @whole_grains = whole_grains(@user)
-    @red_meat = red_meat(@user)
-    @processed_meat = processed_meat(@user)
-    @fats = fats(@user)
-    @soda = soda(@user)
-    @alcohol = alcohol(@user)
-
-    @feedback = [@bmi, @physical_activity, @fruits_vegetables, @whole_grains, @red_meat, @processed_meat, @fats, @soda, @alcohol]
+    if @user.user_scores.length != 0
+      @health_score = @user.user_scores.last.health_score
+      @bmi = bmi(@user)
+      @physical_activity = physical_activity(@user)
+      @fruits_vegetables = fruits_vegetables(@user)
+      @whole_grains = whole_grains(@user)
+      @red_meat = red_meat(@user)
+      @processed_meat = processed_meat(@user)
+      @fats = fats(@user)
+      @soda = soda(@user)
+      @alcohol = alcohol(@user)
+      @feedback = [@bmi, @physical_activity, @fruits_vegetables, @whole_grains, @red_meat, @processed_meat, @fats, @soda, @alcohol]
+    end
   end
 
   def apis
-
+    client = FitbitAPI::Client.new(
+      client_id: ENV["FITBIT_ID"],
+      client_secret: ENV["FITBIT_SECRET"],
+      redirect_uri: ENV["FITBIT_REDIRECT_URL"]
+    )
+    @fitbit_url = client.auth_url
   end
 
   private

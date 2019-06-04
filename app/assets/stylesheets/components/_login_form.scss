@@ -15,6 +15,12 @@
         margin-bottom: 20px;
 
       }
+        abbr, accronym { 
+        border-bottom: 0px; 
+      } 
     }
 
 
+abbr, accronym { 
+  text-decoration: none !important; 
+}

@@ -1,4 +1,3 @@
-source 'https://rubygems.org'
 ruby '2.5.3'
 
 gem 'bootsnap', require: false
@@ -9,6 +8,9 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'cloudinary', '~> 1.9.1'
+gem 'oauth2'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 
 gem 'autoprefixer-rails'
@@ -33,5 +35,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
-
 end
