@@ -2,6 +2,7 @@ class FitbitScore < ApplicationRecord
   belongs_to :user
   after_create :algorithm_v2
 
+
   def algorithm_v2
     stress_const = 4
     exercise_const = 7

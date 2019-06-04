@@ -31,5 +31,4 @@ class FibitController < ApplicationController
       last_score.health_score.round.to_s
     end
   end
-
 end

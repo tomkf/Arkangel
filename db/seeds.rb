@@ -13,6 +13,7 @@ puts 'Adding user score...'
 
 exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "basketball", "boxing", "running" ]
 
+i = 1
 
 FitbitScore.create!(user: user,
   bmi: 31,
@@ -39,7 +40,7 @@ FitbitScore.create!(user: user,
   cholesterol: rand(25..39),
   diet_cal: rand(2400..3500),
   alcohol_ml: rand(50..140),
-  logdate: '2019-05-01' )
+  logdate: '2019-05-01')
 
 9.times do
 FitbitScore.create!(user: user,
@@ -67,7 +68,8 @@ FitbitScore.create!(user: user,
   cholesterol: rand(25..39),
   diet_cal: rand(2400..3500),
   alcohol_ml: rand(50..140),
-  logdate: FitbitScore.last.logdate + 1)
+  logdate: Date.new(2019, 5, 1) + i)
+i += 1
 end
 
 15.times do
@@ -96,7 +98,8 @@ FitbitScore.create!(user: user,
   cholesterol: rand(15..35),
   diet_cal: rand(2300..3300),
   alcohol_ml: rand(45..100),
-  logdate: FitbitScore.last.logdate + 1)
+  logdate: Date.new(2019, 5, 1) + i)
+i += 1
 end
 
 8.times do
@@ -125,7 +128,8 @@ end
   cholesterol: rand(8..33),
   diet_cal: rand(2000..2800),
   alcohol_ml: rand(30..90),
-  logdate: FitbitScore.last.logdate + 1)
+  logdate: Date.new(2019, 5, 1) + i)
+ i += 1
 end
 
 puts 'Done!'
