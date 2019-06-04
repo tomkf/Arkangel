@@ -38,7 +38,7 @@ class FibitController < ApplicationController
     if last_score.present? && last_score.notified_user == false && last_score.created_at > 15.minutes.ago
       last_score.notified_user = true
       last_score.save
-      last_score.health_score.round(2).to_s
+      last_score.health_score.round.to_s
     end
   end
 >>>>>>> 48cd8d747de1066af1c3e7c37b8b466d120e8714
