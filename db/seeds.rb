@@ -65,7 +65,7 @@ average_hash = { user: user,
   cholesterol: rand(15..35),
   diet_cal: rand(2300..3300),
   alcohol_ml: rand(45..100),
-  logdate: self.seeded_log }
+  logdate: '2019-06-01' }
 
 good_hash = { user: user,
   bmi: 26,
@@ -92,7 +92,7 @@ good_hash = { user: user,
   cholesterol: rand(8..33),
   diet_cal: rand(2000..2800),
   alcohol_ml: rand(30..90),
-  logdate: self.seeded_log }
+  logdate: '2019-06-01' }
 
 
 
@@ -123,8 +123,6 @@ FitbitScore.create!(user: user,
   diet_cal: rand(2400..3500),
   alcohol_ml: rand(50..140),
   logdate: '2019-06-01' )
-
-
 
 9.times do
 FitbitScore.create!(poor_hash)

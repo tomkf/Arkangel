@@ -18,11 +18,13 @@ class FibitController < ApplicationController
   end
 
 
-def seeded_log
-date_target = FitbitScore.last.logdate
+# def seeded_log
+#   '2019-06-01'
+# date_target = FitbitScore.last.logdate
+# date_convert = date_target[8, 9].to_i
 
 
-end
+# end
 
 
 end
