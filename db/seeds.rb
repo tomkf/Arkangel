@@ -5,7 +5,6 @@ User.destroy_all
 puts 'Creating users'
 
 user = User.create!(email: 'gustaf@email.com', first_name: "wolfgang", last_name: "mozart", password: '123456', age: 38, smoker: 'never')
-user_params = UserParams.create!(bmi: 30, weight: , height: )
 
 puts 'Adding user score...'
 
@@ -38,7 +37,7 @@ poor_hash = { user: user,
   cholesterol: rand(25..39),
   diet_cal: rand(2400..3500),
   alcohol_ml: rand(50..140),
-  logdate: self.seeded_log }
+  logdate: '2019-06-01' }
 
 average_hash = { user: user,
   bmi: 29,
