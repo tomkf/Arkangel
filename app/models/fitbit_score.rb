@@ -141,6 +141,7 @@ class FitbitScore < ApplicationRecord
     return score
   end
 
+
   def exercise_calculator
     # steps clasifier
     optimal_steps = 10000.0
@@ -241,13 +242,14 @@ class FitbitScore < ApplicationRecord
       carbs_score = self.carbs / optimal_carbs * 0.9431 # Great category
     end
 
+
     # fat clasifier
     optimal_fat = 78.0
-    if self.carbs <= 100.1
+    if self.fat >= 100.1
       fat_score = self.fat / optimal_fat * -0.8283 # Low category
     elsif self.fat.between?(78.1, 100)
       fat_score = self.fat / optimal_fat * 0.424 # Medium category
-    elsif self.carbs >= 325
+    elsif self.fat <= 78
       fat_score = self.fat / optimal_fat * 0.8283 # Great category
     end
 
@@ -311,7 +313,7 @@ class FitbitScore < ApplicationRecord
       diet_cal_score = self.diet_cal / optimal_diet_cal * 0 # Great category
     end
 
-    score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score # adds everything
+    score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score
     self.diet_score = score
     return score
   end
