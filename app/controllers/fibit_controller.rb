@@ -16,6 +16,7 @@ class FibitController < ApplicationController
     redirect_to dashboard_path
   end
 
+
   def notification
     render json: { score: score }
   end
@@ -30,5 +31,4 @@ class FibitController < ApplicationController
       last_score.health_score.round.to_s
     end
   end
-
 end

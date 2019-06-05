@@ -72,10 +72,9 @@ class FitbitScore < ApplicationRecord
   end
 
   def sleep_calculator
-
     # ideal way should have decorators folder = gem 'draper'
-
     # overall_sleep clasifier
+
     optimal_overall_sleep = 480.0 # in minutes
     if self.overall_sleep <= 421
       overall_sleep_score = self.overall_sleep / optimal_overall_sleep * -0.896 # Low category
@@ -129,13 +128,6 @@ class FitbitScore < ApplicationRecord
       deep_sleep_score = self.deep_sleep / optimal_deep_sleep * 0.87264 # Great category
     end
 
-    puts "deep optimal deep sleep:"
-    puts optimal_deep_sleep
-    puts "deep sleep percentage:"
-    puts deep_percentage
-    puts "deep sleep score:"
-    puts deep_sleep_score
-
     score = overall_sleep_score + awaken_sleep_score + rem_sleep_score + light_sleep_score + deep_sleep_score # adds everything
     self.sleep_score = score
     return score
@@ -172,7 +164,6 @@ class FitbitScore < ApplicationRecord
       floors_score = self.floors / optimal_floors * 0.121 # Great category
     end
 
-
     # exercise_km clasifier
     optimal_exercise_km = 8.0
     if self.exercise_km <= 2.9
@@ -182,7 +173,6 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_km >= 8
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.3875 # Great category
     end
-
 
     # exercise_time clasifier
     optimal_exercise_time = 30.0
@@ -194,14 +184,13 @@ class FitbitScore < ApplicationRecord
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.177 # Great category
     end
 
-
     # exercise_cal clasifier
     optimal_exercise_cal = 2300.0
     if self.exercise_cal <= 2499
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.078 # Low category
     elsif self.exercise_cal.between?(2500, 2999)
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.145 # Medium category
-    elsif self.exercise_time >= 3000
+    elsif self.exercise_cal >= 3000
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.874 # Great category
     end
 
@@ -243,11 +232,11 @@ class FitbitScore < ApplicationRecord
 
     # fat clasifier
     optimal_fat = 78.0
-    if self.carbs <= 100.1
+    if self.fat >= 100.1
       fat_score = self.fat / optimal_fat * -0.8283 # Low category
     elsif self.fat.between?(78.1, 100)
       fat_score = self.fat / optimal_fat * 0.424 # Medium category
-    elsif self.carbs >= 325
+    elsif self.fat <= 78
       fat_score = self.fat / optimal_fat * 0.8283 # Great category
     end
 
@@ -255,9 +244,9 @@ class FitbitScore < ApplicationRecord
     optimal_fiber = 38
     if self.fiber <= 24.9
       fiber_score = self.fiber / optimal_fiber * 0.50626 # Low category
-    elsif self.fat.between?(25, 37.9)
+    elsif self.fiber.between?(25, 37.9)
       fiber_score = self.fiber / optimal_fiber * 0.70626 # Medium category
-    elsif self.carbs >= 38
+    elsif self.fiber >= 38
       fiber_score = self.fiber / optimal_fiber * 0.80626 # Great category
     end
 
@@ -267,7 +256,7 @@ class FitbitScore < ApplicationRecord
       protein_score = self.protein / optimal_protein * 0.4567 # Low category
     elsif self.protein.between?(30, 55.9)
       protein_score = self.protein / optimal_protein * 0.7877 # Medium category
-    elsif self.carbs >= 56
+    elsif self.protein >= 56
       protein_score = self.protein / optimal_protein * 0.9678 # Great category
     end
 
@@ -277,7 +266,7 @@ class FitbitScore < ApplicationRecord
       sodium_score = self.sodium / optimal_sodium * -0.07252 # Low category
     elsif self.sodium.between?(2.4, 7.6)
       sodium_score = self.sodium / optimal_sodium * -0.03626 # Medium category
-    elsif self.carbs <= 2.3
+    elsif self.sodium <= 2.3
       sodium_score = self.sodium / optimal_sodium * 0 # Great category
     end
 
@@ -311,9 +300,8 @@ class FitbitScore < ApplicationRecord
       diet_cal_score = self.diet_cal / optimal_diet_cal * 0 # Great category
     end
 
-    score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score # adds everything
+    score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score
     self.diet_score = score
     return score
   end
-
 end
