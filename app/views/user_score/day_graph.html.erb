@@ -1,13 +1,10 @@
-<% exercise = (@user_score.physical_activity / 0.5) * 10 %>
-<% fruits_vegetables = (@user_score.fruits_vegetables / 4) * 10 %>
-<% fibers = (@user_score.whole_grains / 15) * 10 %>
-<% fats = (@user_score.fats / 1) * 10 %>
-<% red_meat = 10 - @user_score.red_meat * 5 %>
-<% processed_meat = 10 - @user_score.processed_meat * 5 %>
-<% soda = 10 - @user_score.soda * 3 %>
-<% alcohol = 10 - @user_score.alcohol * 3 %>
 
-<% datapoints = [exercise, fruits_vegetables, fibers, fats, red_meat, processed_meat, soda, alcohol] %>
+<% sleep_day = @fitbit_score.sleep_score.round * 2.5  %>
+<% exercise_day = @fitbit_score.exercise_score.round * 2.5 %>
+<% stress_day = @fitbit_score.stress_score.round * 2.5 %>
+<% diet_day = @fitbit_score.diet_score.round * 2.5 %>
+
+<% datapoints = [sleep_day, diet_day, stress_day, exercise_day] %>
 
 <% display_points = [] %>
 <% datapoints.each do |datapoint| %>
@@ -20,15 +17,13 @@
   <% end %>
 <% end %>
 
-
 <%
 data = {
-  labels: ["Exercise", "Fruits & Vegetables", "Fibers", "Healthy Fats", "Red meat", "Processed meat", "Soda", "Alcohol"],
+  labels: %w[Sleep Diet Stress Exercise],
   datasets: [
     {
         label: "Goal completion",
-        backgroundColor: "rgba(246,172,29,0.2)",
-        borderColor: "rgba(246,172,29,1)",
+        backgroundColor: ["rgba(246,172,29,0.75)", "rgba(246,172,29,0.65)", "rgba(246,172,29,0.5)", "rgba(246,172,29,0.3)"],
         data: display_points
     }
   ]
@@ -42,12 +37,26 @@ options = { maintainAspectRatio: false, height: 500, width: 250, scale: {
   }
  %>
 
+<div class="big_title mb-3">
+  <div class="mb-2">
+    <a href="javascript:history.back()" style="color: white"><i class="fas fa-chevron-left" style="color: white; font-size: 22px"></i></a>
+  </div>
+
+  <div class="container">
+    <h3>Health Score Breakdown - <b><%= Date::ABBR_MONTHNAMES[@fitbit_score.logdate.month] %> <%= @fitbit_score.logdate.day %></b></h3>
+
+    <p><em>This chart shows a breakdown of your health score.  </em></p>
+
+  </div>
+</div>
+
+
 <div class="container">
-  <h3 class="text-center"><%= Date::ABBR_MONTHNAMES[@user_score.logdate.month] %> <%= @user_score.logdate.day %></h3>
+<!--   <h3 class="text-center"><%#= Date::ABBR_MONTHNAMES[@user_score.logdate.month] %> <%#= @user_score.logdate.day %></h3> -->
 
   <div class="graph-card">
 
-      <%= radar_chart data, options %>
+      <%= polar_area_chart data, options %>
 
   </div>
 </div>

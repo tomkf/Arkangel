@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @user = current_user
 
     if @user.user_scores.length != 0
-      @health_score = @user.user_scores.last.health_score
+      @health_score = @user.fitbit_scores.last.health_score
       @bmi = bmi(@user)
       @physical_activity = physical_activity(@user)
       @fruits_vegetables = fruits_vegetables(@user)

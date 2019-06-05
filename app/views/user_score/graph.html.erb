@@ -1,7 +1,21 @@
-<div class="container">
-  <h3 class="text-center">Health score history</h3>
-  <div class="graph-card">
 
+
+<div class="big_title mb-3">
+  <div class="mb-2">
+    <a href="javascript:history.back()" style="color: white"><i class="fas fa-chevron-left" style="color: white; font-size: 22px"></i></a>
+  </div>
+
+  <div class="container">
+    <h3>Your Health Score <b>History</b></h3>
+
+    <p><em><%= current_user.first_name.capitalize %>, this is your health score history. Click any point in the chart to get a breakdown of that day.</em></p>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="graph-card">
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
@@ -12,6 +26,7 @@
           style="max-height: 60vh;" width='400' height='450'>
 
           <div class="chartjs-item" style="display: none"  data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+
           </div>
         </canvas>
       </div>
@@ -19,7 +34,8 @@
       <div class="chart-container big-c" style="display: none;">
         <canvas class="chartjs" data-labels="<%= @dates %>"  data-charttype='line' style="max-height: 60vh;">
 
-          <div class="chartjs-item" data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+          <div class="chartjs-item" data-label='Health Score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
+
           </div>
         </canvas>
       </div>
