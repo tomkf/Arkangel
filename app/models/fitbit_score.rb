@@ -130,20 +130,6 @@ class FitbitScore < ApplicationRecord
       deep_sleep_score = self.deep_sleep / optimal_deep_sleep * 0.87264 # Great category
     end
 
-    puts "deep optimal deep sleep:"
-    puts optimal_deep_sleep
-    puts "deep sleep percentage:"
-    puts deep_percentage
-    puts "deep sleep score:"
-    puts deep_sleep_score
-
-    puts 'sleep_calculator'
-    puts overall_sleep_score
-    puts awaken_sleep_score
-    puts rem_sleep_score
-    puts light_sleep_score
-    puts deep_sleep_score # adds everything
-
     score = overall_sleep_score + awaken_sleep_score + rem_sleep_score + light_sleep_score + deep_sleep_score # adds everything
     self.sleep_score = score
     return score
@@ -213,14 +199,6 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_cal >= 3000
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.874 # Great category
     end
-
-    puts 'exercise_calculator'
-    puts steps_score
-    puts floors_score
-    puts active_minutes_score
-    puts exercise_km_score
-    puts exercise_time_score
-    puts exercise_cal_score # adds everything
 
     score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
     self.exercise_score = score
@@ -330,18 +308,6 @@ class FitbitScore < ApplicationRecord
     elsif self.diet_cal <= 2300
       diet_cal_score = self.diet_cal / optimal_diet_cal * 0 # Great category
     end
-
-    puts 'diet_calculator'
-    puts alcohol_ml_score
-    puts diet_cal_score
-    puts cholesterol_score
-    puts sugar_score
-    puts sodium_score
-    puts water_score
-    puts carbs_score
-    puts protein_score
-    puts fat_score
-    puts fiber_score
 
     score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score
     self.diet_score = score
