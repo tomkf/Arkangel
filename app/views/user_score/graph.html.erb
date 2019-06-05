@@ -8,7 +8,7 @@
   <div class="container">
     <h3>Your Health Score <b>History</b></h3>
 
-    <p><em><%= current_user.first_name.capitalize %>, this is your health score history. Click any point in the chart to get a breakdown of that day.</em></p>
+    <p><em><%= current_user.first_name.capitalize %>, this is your health score history. Click a point in the chart to get a breakdown of that day.</em></p>
 
   </div>
 </div>
@@ -23,7 +23,7 @@
 
       <div class="chart-container small-c" style="overflow-x: hidden; display: block;">
         <canvas class="chartjs" data-labels="<%= @dates %>" data-charttype='line'
-          style="max-height: 60vh;" width='400' height='450'>
+          style="max-height: 60vh;" width='400' height='430'>
 
           <div class="chartjs-item" style="display: none"  data-label='Health score' data-charturls='<%= @ids %>' data-chartdata='<%= @health_score %>'>
 
