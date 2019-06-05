@@ -137,6 +137,13 @@ class FitbitScore < ApplicationRecord
     puts "deep sleep score:"
     puts deep_sleep_score
 
+    puts 'sleep_calculator'
+    puts overall_sleep_score
+    puts awaken_sleep_score
+    puts rem_sleep_score
+    puts light_sleep_score
+    puts deep_sleep_score # adds everything
+
     score = overall_sleep_score + awaken_sleep_score + rem_sleep_score + light_sleep_score + deep_sleep_score # adds everything
     self.sleep_score = score
     return score
@@ -203,9 +210,17 @@ class FitbitScore < ApplicationRecord
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.078 # Low category
     elsif self.exercise_cal.between?(2500, 2999)
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.145 # Medium category
-    elsif self.exercise_time >= 3000
+    elsif self.exercise_cal >= 3000
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.874 # Great category
     end
+
+    puts 'exercise_calculator'
+    puts steps_score
+    puts floors_score
+    puts active_minutes_score
+    puts exercise_km_score
+    puts exercise_time_score
+    puts exercise_cal_score # adds everything
 
     score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
     self.exercise_score = score
@@ -258,9 +273,9 @@ class FitbitScore < ApplicationRecord
     optimal_fiber = 38
     if self.fiber <= 24.9
       fiber_score = self.fiber / optimal_fiber * 0.50626 # Low category
-    elsif self.fat.between?(25, 37.9)
+    elsif self.fiber.between?(25, 37.9)
       fiber_score = self.fiber / optimal_fiber * 0.70626 # Medium category
-    elsif self.carbs >= 38
+    elsif self.fiber >= 38
       fiber_score = self.fiber / optimal_fiber * 0.80626 # Great category
     end
 
@@ -270,17 +285,19 @@ class FitbitScore < ApplicationRecord
       protein_score = self.protein / optimal_protein * 0.4567 # Low category
     elsif self.protein.between?(30, 55.9)
       protein_score = self.protein / optimal_protein * 0.7877 # Medium category
-    elsif self.carbs >= 56
+    elsif self.protein >= 56
       protein_score = self.protein / optimal_protein * 0.9678 # Great category
     end
 
     # sodium clasifier
+    puts "---------"
+    puts self.sodium
     optimal_sodium = 2.3
     if self.sodium >= 7.7
       sodium_score = self.sodium / optimal_sodium * -0.07252 # Low category
     elsif self.sodium.between?(2.4, 7.6)
       sodium_score = self.sodium / optimal_sodium * -0.03626 # Medium category
-    elsif self.carbs <= 2.3
+    elsif self.sodium <= 2.3
       sodium_score = self.sodium / optimal_sodium * 0 # Great category
     end
 
@@ -313,6 +330,18 @@ class FitbitScore < ApplicationRecord
     elsif self.diet_cal <= 2300
       diet_cal_score = self.diet_cal / optimal_diet_cal * 0 # Great category
     end
+
+    puts 'diet_calculator'
+    puts alcohol_ml_score
+    puts diet_cal_score
+    puts cholesterol_score
+    puts sugar_score
+    puts sodium_score
+    puts water_score
+    puts carbs_score
+    puts protein_score
+    puts fat_score
+    puts fiber_score
 
     score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score
     self.diet_score = score
