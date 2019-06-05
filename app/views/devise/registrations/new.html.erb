@@ -11,11 +11,11 @@
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }%>
+                input_html: { class:"inputs" }%>
     <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }%>
+                input_html: { class:"inputs" }%>
           <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -24,12 +24,10 @@
           <label class="form-control-label age required" for="user_age">
             Date of birth <abbr title="required">*</abbr>
           </label>
-          <input type="text" aria-required="true" placeholder="Select Date..." autofocus="autofocus" required="required" class="form-control required inputs flatpickr" name="user[dob]" id="user_age">
+          <input type="text" aria-required="true" placeholder="Select your date of birth..." autofocus="autofocus" required="required" class="form-control required inputs flatpickr" name="user[dob]" id="user_dob">
         </div>
-    <%#= f.input :age, html5: true,
-                autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }   %>
-    <%= f.input :smoker, collection: [ "Never", "Former", "Current" ],
+
+    <%= f.input :smoker, collection: [ "never", "former", "current" ],
                 autofocus: true,
                 input_html: { class:"inputs" } %>
     <%= f.input :password,
