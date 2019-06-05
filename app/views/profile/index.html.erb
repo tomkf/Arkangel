@@ -1,5 +1,3 @@
-<!-- to re-use partial component, -->
-<!-- in info you need to provide name, icon, and custom message  -->
 <div class="big_title">
   <div class="container">
     <h3>Your <b>Health Score</b></h3>
@@ -32,8 +30,7 @@
    <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
    <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched:", @health_score.created_at.to_s.slice(10, 18) ] %>
    <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type, @health_score.active_minutes, "Minutes" ] %>
-
-   <%= render "shared/component_info", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Based on stats from past 24hrs"]  %>
+   <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Based on stats from past 24hrs"]  %>
       <br>
     </div>
     </div>
