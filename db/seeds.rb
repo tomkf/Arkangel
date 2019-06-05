@@ -2,9 +2,6 @@
 #sleep values first and work with those....might be problematic the way
 #they are currently
 
-
-
-
 puts 'Wiping database...'
 UserScore.destroy_all
 FitbitScore.destroy_all
