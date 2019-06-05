@@ -6,7 +6,10 @@ class User < ApplicationRecord
   has_many :user_scores
   has_many :fitbit_scores
   has_many :user_params
-  validates :first_name, :last_name, :age, :smoker, presence: true
+  validates :first_name, :last_name, :dob, :smoker, presence: true
+
+  before_create :assign_age
+  before_update :assign_age
 
   # authenticates with fitbit and returns the client object
   def fitbit_client
@@ -24,4 +27,10 @@ class User < ApplicationRecord
 
     return client
   end
+
+  def assign_age
+    current_year = Time.new.year
+    self.age = current_year - self.dob.year
+  end
+
 end
