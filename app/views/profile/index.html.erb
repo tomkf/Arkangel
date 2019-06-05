@@ -1,6 +1,5 @@
 <!-- to re-use partial component, -->
 <!-- in info you need to provide name, icon, and custom message  -->
-
 <div class="big_title">
   <div class="container">
     <h3>Your <b>Health Score</b></h3>
@@ -13,16 +12,13 @@
 </div>
 
  <div class="user-title">
-  <h3>
-  <%=  @user.first_name %>'s vitals:
+  <h3 style="font-size: 16px;">
+  Here is a breakdown of your daily consumption and activities:
   </h3>
-  <span>
-  <%=  @user.age %> years old
-  </span>
  </div>
 
-<div class="dashboard">
-
+<div class="container" style="margin-bottom: 12vh; margin-left: 28%;
+">
   <div class="row">
      <div class="col-xs-6 col-3 ">
        <p> Fiber </p>
@@ -33,7 +29,7 @@
       <div class="col-xs-12 col-6">
        <span>
        <%= @health_score.fiber.round %> Grams
-       <p>content</p>
+       <p> <%=  %> </p>
        </span>
       </div>
      </div>
@@ -52,9 +48,6 @@
        </span>
       </div>
      </div>
-
-
-
 
  <div class="row">
      <div class="col-xs-6 col-3 ">
@@ -178,7 +171,7 @@
     </div>
 
       <br>
-    <br>
+  </div>
 </div>
 
 <%= render "shared/footer" %>
