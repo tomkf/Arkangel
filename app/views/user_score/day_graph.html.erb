@@ -4,17 +4,18 @@
 <% stress_day = @fitbit_score.stress_score.round * 2.5 %>
 <% diet_day = @fitbit_score.diet_score.round * 2.5 %>
 
-<% display_points = [sleep_day, diet_day, stress_day, exercise_day] %>
+<% datapoints = [sleep_day, diet_day, stress_day, exercise_day] %>
 
-<% display_points.each do |point| %>
-  <% if point <= 0 %>
-  <% raise %>
-    <% point = 0 %>
-  <% elsif point > 10 %>
-    <% point = 10 %>
+<% display_points = [] %>
+<% datapoints.each do |datapoint| %>
+  <% if datapoint > 10 %>
+    <% display_points << 10 %>
+  <% elsif datapoint < 1 %>
+    <% display_points << 1 %>
+  <% else %>
+    <% display_points << datapoint %>
   <% end %>
 <% end %>
-
 
 <%
 data = {
@@ -22,8 +23,7 @@ data = {
   datasets: [
     {
         label: "Goal completion",
-        backgroundColor: "rgba(246,172,29,0.2)",
-        borderColor: "rgba(246,172,29,1)",
+        backgroundColor: ["rgba(246,172,29,0.75)", "rgba(246,172,29,0.65)", "rgba(246,172,29,0.5)", "rgba(246,172,29,0.3)"],
         data: display_points
     }
   ]
