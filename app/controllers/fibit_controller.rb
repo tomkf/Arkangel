@@ -25,7 +25,7 @@ class FibitController < ApplicationController
 
   def score
     last_score = current_user.fitbit_scores.last
-    if last_score.present? && last_score.notified_user == false && last_score.created_at > 15.minutes.ago
+    if last_score.present? && last_score.notified_user == false
       last_score.notified_user = true
       last_score.save
       last_score.health_score.round.to_s
