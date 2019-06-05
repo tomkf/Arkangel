@@ -9,14 +9,28 @@
           <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }%>
-            <%= f.input :last_name,
+                input_html: { autocomplete: "email", class:"inputs" } %>
+          <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }%>
+                input_html: { autocomplete: "email", class:"inputs" } %>
           <%= f.input :email, required: true, autofocus: true,
-          input_html: { class:"inputs"}
-          %>
+                input_html: { class:"inputs"} %>
+          <%= f.input :age, html5: true,
+                autofocus: true,
+                input_html: { autocomplete: "email", class:"inputs" }   %>
+          <%= f.input :smoker, collection: [ "Never", "Former", "Current" ],
+                autofocus: true,
+                input_html: { class:"inputs" } %>
+          <!-- <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password", class:"inputs" } %>
+          <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password", class:"inputs" } %> -->
+
+
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>

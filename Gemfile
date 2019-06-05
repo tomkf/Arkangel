@@ -11,7 +11,7 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'oauth2'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
-
+gem 'bootstrap-datepicker-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
