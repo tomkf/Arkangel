@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_193918) do
+ActiveRecord::Schema.define(version: 2019_06_05_155942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,35 +20,35 @@ ActiveRecord::Schema.define(version: 2019_06_04_193918) do
     t.float "exercise_score"
     t.float "diet_score"
     t.float "health_score"
-    t.float "bmi"
-    t.integer "overall_sleep"
-    t.integer "awaken_sleep"
-    t.integer "rem_sleep"
-    t.integer "light_sleep"
-    t.integer "deep_sleep"
-    t.integer "heart_rate"
-    t.integer "steps"
-    t.integer "active_minutes"
+    t.float "bmi", default: 0.0
+    t.integer "overall_sleep", default: 0
+    t.integer "awaken_sleep", default: 0
+    t.integer "rem_sleep", default: 0
+    t.integer "light_sleep", default: 0
+    t.integer "deep_sleep", default: 0
+    t.integer "heart_rate", default: 0
+    t.integer "steps", default: 0
+    t.integer "active_minutes", default: 0
     t.string "exercise_type"
-    t.integer "exercise_time"
-    t.float "exercise_km"
-    t.integer "exercise_cal"
-    t.float "water"
-    t.float "carbs"
-    t.float "fat"
-    t.float "fiber"
-    t.float "protein"
-    t.float "sodium"
-    t.float "sugar"
-    t.float "cholesterol"
-    t.float "diet_cal"
-    t.float "alcohol_ml"
+    t.integer "exercise_time", default: 0
+    t.float "exercise_km", default: 0.0
+    t.integer "exercise_cal", default: 0
+    t.float "water", default: 0.0
+    t.float "carbs", default: 0.0
+    t.float "fat", default: 0.0
+    t.float "fiber", default: 0.0
+    t.float "protein", default: 0.0
+    t.float "sodium", default: 0.0
+    t.float "sugar", default: 0.0
+    t.float "cholesterol", default: 0.0
+    t.float "diet_cal", default: 0.0
+    t.float "alcohol_ml", default: 0.0
     t.date "logdate"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "sleep_score"
-    t.float "floors"
+    t.float "floors", default: 0.0
     t.boolean "notified_user", default: false
     t.index ["user_id"], name: "index_fitbit_scores_on_user_id"
   end

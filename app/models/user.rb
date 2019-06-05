@@ -31,7 +31,8 @@ class User < ApplicationRecord
   def fetch_historical_data
      binding.pry
 
-     # create the empty scores for the past 100 days
+     # create the empty scores for the past 7 days
+    self.fitbit_scores.destroy_all
 
     7.times do |i|
       FitbitScore.create!({
@@ -40,9 +41,12 @@ class User < ApplicationRecord
       })
     end
 
+    # make an api call
     client = fitbit_client
+    # maybe we are getting 8 objects
     sleep_info_raw = client.sleep_time_series({ start_date: Time.now - DAY_IN_SECONDS * 7 })
 
+    # organize the data
     sleep_info = sleep_info_raw.map do |day|
       {
        dateOfSleep: day["dateOfSleep"],
@@ -53,20 +57,22 @@ class User < ApplicationRecord
       }
     end
 
+    # store the data in the objects
     sleep_info.each do |day|
-      score_day = FitbitScore.find_by(logdate: day[:dateOfSleep])
+      sleep_object = FitbitScore.find_by(logdate: day[:dateOfSleep])
 
-      score_day.overall_sleep = day[:timeInBed]
-      score_day.awaken_sleep = day[:minutesAwake]
-      score_day.deep_sleep = day[:summary]["deep"]["minutes"]
-      score_day.light_sleep = day[:summary]["light"]["minutes"]
-      score_day.rem_sleep = day[:summary]["rem"]["minutes"]
 
-      score_day.save!
+      next if sleep_object.nil?
+
+      sleep_object.overall_sleep = day[:timeInBed].nil? ?  0 :  day[:timeInBed]
+      sleep_object.awaken_sleep  = day[:minutesAwake].nil? ?  0 :  day[:minutesAwake]
+
+      sleep_object.deep_sleep  = day[:summary]["deep"].nil? || day[:summary]["deep"]["minutes"].nil? ?  0 :  day[:summary]["deep"]["minutes"]
+      sleep_object.light_sleep = day[:summary]["light"].nil? || day[:summary]["light"]["minutes"].nil? ?  0 :  day[:summary]["light"]["minutes"]
+      sleep_object.rem_sleep = day[:summary]["rem"].nil? || day[:summary]["rem"]["minutes"].nil? ?  0 :  day[:summary]["rem"]["minutes"]
+
+      sleep_object.save!
     end
-
-
-    fitbit_client.activity_logs_list
     #.bla, bla call all the methods we need and store them in the table fitbit_score
   end
 
