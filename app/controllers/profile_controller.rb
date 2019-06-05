@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
     def index
     @user = current_user
-    # @health_score = @user.user_scores.last.health_score
+    @health_score = FitbitScore.where("user_id = #{current_user.id}")
     end
 end
