@@ -13,7 +13,7 @@
   <body>
 
     <% if controller_name == 'pages' && action_name == 'home' %>
-      <%#= render 'shared/navbar', transparent: true %>
+      <%= render 'shared/navbar', transparent: true %>
     <% elsif controller_name == 'pages' && action_name == 'dashboard' %>
       <%#= render 'shared/navbar_simple', transparent: false %>
     <% else %>
