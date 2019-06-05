@@ -73,7 +73,7 @@ class FitbitScore < ApplicationRecord
       score = heart_rate / optimal_heart_rate * 4 # Great category
     end
 
-    self.stress_score = score
+    self.update!(stress_score: score)
     return score
   end
 
@@ -135,7 +135,7 @@ class FitbitScore < ApplicationRecord
     end
 
     score = overall_sleep_score + awaken_sleep_score + rem_sleep_score + light_sleep_score + deep_sleep_score # adds everything
-    self.sleep_score = score
+    self.update!(sleep_score: score)
     return score
   end
 
@@ -201,7 +201,7 @@ class FitbitScore < ApplicationRecord
     end
 
     score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
-    self.exercise_score = score
+    self.update!(exercise_score: score)
     return score
   end
 
@@ -307,7 +307,7 @@ class FitbitScore < ApplicationRecord
     end
 
     score = alcohol_ml_score + diet_cal_score + cholesterol_score + sugar_score + sodium_score + water_score + carbs_score + protein_score + fat_score + fiber_score
-    self.diet_score = score
+    self.update!(diet_score: score)
     return score
   end
 end

@@ -14,7 +14,7 @@ class FibitController < ApplicationController
     current_user.save
 
     # fetch all the historical data
-    current_user.fetch_historical_data
+    current_user.fetch_historical_data(7)
     # show a "calculating page"
 
     # redirect to dashboard
