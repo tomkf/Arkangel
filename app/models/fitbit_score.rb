@@ -2,7 +2,6 @@ class FitbitScore < ApplicationRecord
   belongs_to :user
   after_create :algorithm_v2
 
-
   def algorithm_v2
     stress_const = 4
     exercise_const = 7
@@ -73,10 +72,9 @@ class FitbitScore < ApplicationRecord
   end
 
   def sleep_calculator
-
     # ideal way should have decorators folder = gem 'draper'
-
     # overall_sleep clasifier
+
     optimal_overall_sleep = 480.0 # in minutes
     if self.overall_sleep <= 421
       overall_sleep_score = self.overall_sleep / optimal_overall_sleep * -0.896 # Low category
@@ -135,7 +133,6 @@ class FitbitScore < ApplicationRecord
     return score
   end
 
-
   def exercise_calculator
     # steps clasifier
     optimal_steps = 10000.0
@@ -167,7 +164,6 @@ class FitbitScore < ApplicationRecord
       floors_score = self.floors / optimal_floors * 0.121 # Great category
     end
 
-
     # exercise_km clasifier
     optimal_exercise_km = 8.0
     if self.exercise_km <= 2.9
@@ -178,7 +174,6 @@ class FitbitScore < ApplicationRecord
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.3875 # Great category
     end
 
-
     # exercise_time clasifier
     optimal_exercise_time = 30.0
     if self.exercise_time <= 15
@@ -188,7 +183,6 @@ class FitbitScore < ApplicationRecord
     elsif self.exercise_time >= 30
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.177 # Great category
     end
-
 
     # exercise_cal clasifier
     optimal_exercise_cal = 2300.0
@@ -236,7 +230,6 @@ class FitbitScore < ApplicationRecord
       carbs_score = self.carbs / optimal_carbs * 0.9431 # Great category
     end
 
-
     # fat clasifier
     optimal_fat = 78.0
     if self.fat >= 100.1
@@ -268,8 +261,6 @@ class FitbitScore < ApplicationRecord
     end
 
     # sodium clasifier
-    puts "---------"
-    puts self.sodium
     optimal_sodium = 2.3
     if self.sodium >= 7.7
       sodium_score = self.sodium / optimal_sodium * -0.07252 # Low category
@@ -313,5 +304,4 @@ class FitbitScore < ApplicationRecord
     self.diet_score = score
     return score
   end
-
 end
