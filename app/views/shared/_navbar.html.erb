@@ -4,30 +4,33 @@
     <% end %>
 
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+ -->
 
+  <div >
+    <% if !user_signed_in? %>
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    <% end %>
+      <!-- <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-
-        <li class="nav-item dropdown">
-          <%= image_tag "http://vivaioromagarden.it/wp-content/uploads/2018/09/ico-testimonial-man-270x270.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Add your Fitbit", apis_path, class: "dropdown-item" %>
-            <%= link_to "View Dashboard", dashboard_path, class: "dropdown-item" %>
-            <%= link_to "Update your profile", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Health Score History", graph_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+          <li class="nav-item dropdown">
+            <%= image_tag "http://vivaioromagarden.it/wp-content/uploads/2018/09/ico-testimonial-man-270x270.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Add your Fitbit", apis_path, class: "dropdown-item" %>
+              <%= link_to "View Dashboard", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Update your profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Health Score History", graph_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul> -->
   </div>
 </div>

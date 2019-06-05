@@ -42,6 +42,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.6.0)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     autoprefixer-rails (9.5.1.1)
       execjs
@@ -88,7 +90,12 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    json (2.2.0)
     jwt (2.2.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -123,6 +130,11 @@ GEM
       rack (>= 1.2, < 3)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    postmark (1.15.0)
+      json
+    postmark-rails (0.19.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.15.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -131,6 +143,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
+    public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
     rack-protection (2.0.5)
@@ -243,9 +256,11 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 5.6.1)
   jbuilder (~> 2.0)
+  letter_opener
   listen (~> 3.0.5)
   oauth2
   pg (~> 0.21)
+  postmark-rails
   pry-byebug
   pry-rails
   puma

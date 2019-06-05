@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :user_scores
   has_many :fitbit_scores
   has_many :user_params
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :age, :smoker, presence: true
 
 
   # authenticates with fitbit and returns the client object
