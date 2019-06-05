@@ -20,16 +20,16 @@ class UserScoreController < ApplicationController
   end
 
   def graph
-    @user_score_params = UserScore.order(:logdate).last(30)
+    @user_score_params = FitbitScore.order(:logdate).last(30)
     @text = 'Monthly'
     if params[:date] == "Weekly"
-      @user_score_params = UserScore.order(:logdate).last(7)
+      @user_score_params = FitbitScore.order(:logdate).last(7)
       @text = 'Weekly'
     elsif params[:date] == "Monthly"
-      @user_score_params = UserScore.order(:logdate).last(30) # make this logic work w/ helper function for MONTHS
+      @user_score_params = FitbitScore.order(:logdate).last(30) # make this logic work w/ helper function for MONTHS
       @text = 'Monthly'
     elsif params[:date] == "All history"
-      @user_score_params = UserScore.order(:logdate)
+      @user_score_params = FitbitScore.order(:logdate)
       @text = 'All history'
     end
 
@@ -47,19 +47,18 @@ class UserScoreController < ApplicationController
   end
 
   def day_graph
-    @user_score = UserScore.find(params[:score])
+    @user_score = FitbitScore.find(params[:score])
   end
 
   def update_score
-  @user = current_user
-end
+   @user = current_user
+  end
 
 
+  def exercise_score
+  end
 
-def exercise_score
-end
-
-def food_score
+  def food_score
   end
 
 end
