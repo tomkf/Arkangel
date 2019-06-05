@@ -47,11 +47,11 @@ class UserScoreController < ApplicationController
   end
 
   def day_graph
-    @user_score = FitbitScore.find(params[:score])
+    @fitbit_score = FitbitScore.find(params[:score])
   end
 
   def update_score
-   @user = current_user
+    @user = current_user
   end
 
 
