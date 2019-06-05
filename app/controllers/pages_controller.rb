@@ -14,22 +14,15 @@ class PagesController < ApplicationController
 
     if @user.user_scores.length != 0
       @health_score = @user.fitbit_scores.last.health_score
-
       @water = water(@user)
-
       @sleep_h = sleep_h(@user)
-
       @fat = fat(@user)
       @fiber = fiber(@user)
       @protein = protein(@user)
       @sugar = sugar(@user)
       @exercise = exercise(@user)
-
       @alcohol = alcohol(@user)
-
       @heart_rate = heart_rate(@user)
-
-
       @feedback = [@water, @sleep_h, @fat, @fiber, @protein, @sugar, @exercise, @alcohol, @heart_rate]
     end
   end
@@ -64,7 +57,7 @@ class PagesController < ApplicationController
   end
 
   def sleep_h(user)
-    message = ["sleep", "vitals/16_Sleep"]
+    message = ["sleep", "vitals/16_Sleep.png"]
     if user.fitbit_scores.last.overall_sleep < 420
       message << "Last night you only got #{user.fitbit_scores.last.overall_sleep} minutes of sleep. Most adults should target around 480 minutes."
       message << "low"
