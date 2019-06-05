@@ -46,8 +46,6 @@ class User < ApplicationRecord
     # make an api call
     client = fitbit_client
 
-    binding.pry
-
     # make all the different api calls (returns an array)
     sleep_info_raw = client.sleep_time_series({ start_date: Time.now - DAY_IN_SECONDS * days })
     bmi_info = client.body_time_series('bmi',{start_date: Time.now - DAY_IN_SECONDS * days })
@@ -185,15 +183,14 @@ class User < ApplicationRecord
 
       score.save!
       score.algorithm_v2
-
     end
-
 
   end
 
   def fecth_new_data
     fibit_client
     #.bla, bla call all the methods we need and store them in the table fitbit_score
+  end
 
   def assign_age
     current_year = Time.new.year
