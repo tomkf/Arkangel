@@ -1,5 +1,5 @@
-<div class="wrap">
-<!--
+<!-- <div class="wrap">
+ --><!--
 <div class="profile-container">
  <%= image_tag "profile.png", class: "profile-landing" %>
 <div class="side-icons">
@@ -23,7 +23,7 @@
 
  <div class="user-title">
   <h3>
-  <%=  @user.first_name %>'s vitals
+  <%=  @user.first_name %>'s vitals:
   </h3>
   <span>
   <%=  @user.age %> years old
@@ -41,7 +41,7 @@
         </div>
       <div class="col-xs-12 col-6">
        <span>
-       <%= @health_score.fiber %> Grams
+       <%= @health_score.fiber.round %> Grams
        <p>content</p>
        </span>
       </div>
@@ -56,7 +56,7 @@
         </div>
       <div class="col-xs-12 col-6">
        <span>
-       <%= @health_score.protein %> Grams
+       <%= @health_score.protein.round %> Grams
        <p>content</p>
        </span>
       </div>
@@ -74,7 +74,7 @@
          </div>
       <div class="col-xs-12 col-6">
        <span>
-       <%= @health_score.fat %> Grams
+       <%= @health_score.fat.round %> Grams
        <p>content</p>
        </span>
       </div>
@@ -89,7 +89,7 @@
          </div>
       <div class="col-xs-12 col-6">
        <span>
-       <%= @health_score.carbs %> Grams
+       <%= @health_score.carbs.round %> Grams
        <p>content</p>
        </span>
       </div>
@@ -105,7 +105,7 @@
          </div>
       <div class="col-xs-12 col-6">
        <span>
-       <%= @health_score.sugar %> Grams
+       <%= @health_score.sugar.round %> Grams
        <p>content</p>
        </span>
       </div>
@@ -186,8 +186,11 @@
      </div>
     </div>
 
-    </div>
-  </div>
+  <br>
+  <br>
 
+    </div>
+<!--   </div>
+ -->
 
 <%= render "shared/footer" %>
