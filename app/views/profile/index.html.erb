@@ -1,5 +1,5 @@
 <div class="wrap">
-
+<!--
 <div class="profile-container">
  <%= image_tag "profile.png", class: "profile-landing" %>
 <div class="side-icons">
@@ -8,7 +8,7 @@
  <%= image_tag "vitals/3_Mind.png", class: "icon" %>
  <%= image_tag "vitals/4_Energy.png", class: "icon" %>
 </div>
-</div>
+</div> -->
 
 <div class="big_title">
   <div class="container">
@@ -28,14 +28,104 @@
   <span>
   <%=  @user.age %> years old
   </span>
-  <!--
-  <span>
-     user.user_params.height
-   user.user_params.weight
-  </span> -->
  </div>
 
 <div class="dashboard">
+
+  <div class="row">
+     <div class="col-xs-6 col-3 ">
+       <p> Fiber </p>
+      </div>
+      <div class="col-xs-6 col-3 ">
+<!--       <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ -->        </div>
+      <div class="col-xs-12 col-6">
+       <span>
+       <%= @health_score.fiber %> Grams
+       <p>content</p>
+       </span>
+      </div>
+     </div>
+
+ <div class="row">
+     <div class="col-xs-6 col-3 ">
+       <p> Protein </p>
+      </div>
+      <div class="col-xs-6 col-3 ">
+<!--       <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ -->        </div>
+      <div class="col-xs-12 col-6">
+       <span>
+       <%= @health_score.protein %> Grams
+       <p>content</p>
+       </span>
+      </div>
+     </div>
+
+
+
+
+ <div class="row">
+     <div class="col-xs-6 col-3 ">
+       <p> Fat </p>
+      </div>
+      <div class="col-xs-6 col-3 ">
+<!--       <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ -->        </div>
+      <div class="col-xs-12 col-6">
+       <span>
+       <%= @health_score.fat %> Grams
+       <p>content</p>
+       </span>
+      </div>
+     </div>
+
+      <div class="row">
+     <div class="col-xs-6 col-3 ">
+       <p> Carbs </p>
+      </div>
+      <div class="col-xs-6 col-3 ">
+<!--       <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ -->        </div>
+      <div class="col-xs-12 col-6">
+       <span>
+       <%= @health_score.carbs %> Grams
+       <p>content</p>
+       </span>
+      </div>
+     </div>
+
+
+ <div class="row">
+     <div class="col-xs-6 col-3 ">
+       <p> Sugar </p>
+      </div>
+      <div class="col-xs-6 col-3 ">
+<!--       <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ -->        </div>
+      <div class="col-xs-12 col-6">
+       <span>
+       <%= @health_score.sugar %> Grams
+       <p>content</p>
+       </span>
+      </div>
+     </div>
+
+ <div class="row">
+     <div class="col-xs-6 col-3 ">
+       <p> Water </p>
+      </div>
+      <div class="col-xs-6 col-3 ">
+<!--       <%= image_tag "vitals/1_Sleep.png", class: "icon" %>
+ -->        </div>
+      <div class="col-xs-12 col-6">
+       <span>
+       <%= @health_score.water / 500 %> Cups
+       <p>content</p>
+       </span>
+      </div>
+     </div>
+
     <div class="row">
      <div class="col-xs-6 col-3 ">
        <p> Sleep </p>
@@ -45,41 +135,11 @@
         </div>
       <div class="col-xs-12 col-6">
        <span>
-       7.5 Hrs
+       <%= @health_score.overall_sleep / 60 %> hrs
        <p>Slept at 10:45 pm</p>
        </span>
       </div>
      </div>
-
-    <div class="row">
-      <div class="col-xs-6 col-3 ">
-        <p> Focus </p>
-      </div>
-      <div class="col-xs-6 col-3 ">
-     <%= image_tag "vitals/3_Mind.png", class: "icon" %>
-       </div>
-     <div class="col-xs-12 col-6">
-     <span>
-      4.5 hours
-      <p>75% productivity</p>
-     </span>
-    </div>
-   </div>
-
-    <div class="row">
-     <div class="col-xs-6 col-3 ">
-      <p> Food </p>
-     </div>
-     <div class="col-xs-6 col-3 ">
-    <%= image_tag "vitals/4_Energy.png", class: "icon" %>
-    </div>
-    <div class="col-xs-12 col-6">
-  <span>
-    850 Calories
-    <p>60% of daily caloric goal met</p>
-  </span>
-  </div>
-   </div>
 
     <div class="row">
      <div class="col-xs-6 col-3 ">
@@ -90,8 +150,8 @@
       </div>
       <div class="col-xs-12 col-6">
     <span>
-      5, 495 steps
-      <p>Synched 15 mins ago</p>
+     <%= @health_score.steps %> Steps
+      <p>Last Synched: <%= @health_score.created_at.to_s.slice(10, 18) %> </p>
     </span>
    </div>
       </div>
@@ -105,12 +165,29 @@
     </div>
     <div class="col-xs-12 col-6">
      <span>
-      25 mins
-      <p>Light jogging - 4 hours ago</p>
+      <p> <%= @health_score.exercise_type %> </p>
+      <%= @health_score.active_minutes %> Minutes
       </span>
      </div>
     </div>
+
+    <div class="row">
+     <div class="col-xs-6 col-3 ">
+      <p> Resting Heart Rate </p>
+     </div>
+    <div class="col-xs-6 col-3 ">
+     <%= image_tag "vitals/6_Workout.png", class: "icon" %>
+    </div>
+    <div class="col-xs-12 col-6">
+     <span>
+      <%= @health_score.heart_rate %> BPM
+      <p>contetnt</p>
+      </span>
+     </div>
+    </div>
+
     </div>
   </div>
+
 
 <%= render "shared/footer" %>
