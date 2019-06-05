@@ -6,9 +6,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    if params[:apis_params] == 'true'
-      sleep 3
-    end
 
     @user = current_user
 

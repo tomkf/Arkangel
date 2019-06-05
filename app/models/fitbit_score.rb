@@ -1,6 +1,6 @@
 class FitbitScore < ApplicationRecord
   belongs_to :user
-  after_create :algorithm_v2
+  # after_create :algorithm_v2
 
   def algorithm_v2
     stress_const = 4
@@ -9,9 +9,15 @@ class FitbitScore < ApplicationRecord
     sleep_const = 5
 
     w_score = age_clasifier(self.user.age) + smoker_clasifier(self.user.smoker) + bmi_clasifier(self.bmi) + (stress_calculator(self.heart_rate) * stress_const) + (exercise_calculator * exercise_const) + (sleep_calculator * sleep_const) + (diet_calculator * diet_const)
-    p self.health_score = (1 - 0.9660**(w_score - 6.57301)) * 100
+    if w_score <= 6.8
+      self.health_score = 0
+    else
+      self.health_score = (1 - 0.9660**(w_score - 6.57301)) * 100
+    end
+
     self.save!
     puts 'score added!'
+    p self.health_score
   end
 
   def age_clasifier(age)
