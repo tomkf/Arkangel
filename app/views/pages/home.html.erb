@@ -2,23 +2,26 @@
   <div class="content-banner text-center">
     <% if user_signed_in? %>
 
-
-
       <h1>Welcome <%= @userno.first_name.capitalize  %></h1>
       <p style="font-size: 24px; opacity: .8"><em>Get off the Medical System and onto the Self Care System</em> <br> ― Nina Leavins </p>
 
+      <% if @userno.fitbit_access_token.present? %>
+        <%= link_to "View Your Dashboard", dashboard_path, class: "btn btn-lg btn-primary", id:"action_button" %>
+      <% else %>
+        <%= link_to "Connect your Fitbit", apis_path, class: "btn btn-lg btn-primary", id:"action_button" %>
+      <% end %>
 
 
 
-      <%= link_to "Connect your Fitbit", apis_path, class: "btn btn-lg btn-primary", id:"action_button" %>
+
     <% else %>
       <h1>Arkangel</h1>
       <p>Your personal health guardian</p>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-primary", id:"action_button" %>
-      <% end %>
       <h6></h6>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong" style="color:white">
+
         Terms & Conditions
       </button>
 
@@ -96,6 +99,7 @@
           </div>
         </div>
       </div>
+      <% end %>
   </div>
 </div>
 

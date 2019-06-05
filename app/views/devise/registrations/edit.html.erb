@@ -9,14 +9,27 @@
           <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }%>
-            <%= f.input :last_name,
+                input_html: { class:"inputs" } %>
+          <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email", class:"inputs" }%>
-          <%= f.input :email, required: true, autofocus: true,
-          input_html: { class:"inputs"}
-          %>
+                input_html: { class:"inputs" } %>
+          <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { class:"inputs"} %>
+        <div class="form-group">
+          <label class="form-control-label age required" for="user_age">
+            Date of birth <abbr title="required">*</abbr>
+          </label>
+          <input type="text" aria-required="true" placeholder="Select Date..." autofocus="autofocus" required="required" class="form-control required inputs flatpickr" name="user[dob]" id="user_age" value="<%= @user.dob.to_s %>">
+        </div>
+
+          <%= f.input :smoker, collection: [ "never", "former", "current" ],
+                autofocus: true,
+                input_html: { class:"inputs" } %>
+
+
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
@@ -43,3 +56,10 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  flatpickr(".flatpickr", {
+    dateFormat: "Y-m-d"
+  })
+</script>
