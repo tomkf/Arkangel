@@ -14,16 +14,23 @@ class PagesController < ApplicationController
 
     if @user.user_scores.length != 0
       @health_score = @user.fitbit_scores.last.health_score
-      @bmi = bmi(@user)
-      @physical_activity = physical_activity(@user)
-      @fruits_vegetables = fruits_vegetables(@user)
-      @whole_grains = whole_grains(@user)
-      @red_meat = red_meat(@user)
-      @processed_meat = processed_meat(@user)
-      @fats = fats(@user)
-      @soda = soda(@user)
+
+      @water = water(@user)
+
+      @sleep_h = sleep_h(@user)
+
+      @fat = fat(@user)
+      @fiber = fiber(@user)
+      @protein = protein(@user)
+      @sugar = sugar(@user)
+      @exercise = exercise(@user)
+
       @alcohol = alcohol(@user)
-      @feedback = [@bmi, @physical_activity, @fruits_vegetables, @whole_grains, @red_meat, @processed_meat, @fats, @soda, @alcohol]
+
+      @heart_rate = heart_rate(@user)
+
+
+      @feedback = [@water, @sleep_h, @fat, @fiber, @protein, @sugar, @exercise, @alcohol, @heart_rate]
     end
   end
 
@@ -41,121 +48,113 @@ class PagesController < ApplicationController
   # methods to get the specific feedback
   # each method returns an array with the [name_of_category, icon_path, message, clasifier]
 
-  def bmi(user)
-    message = ["weight", "vitals/2_Weight.png"]
-    if user.user_scores.last.bmi <= 24.9
-      message << "Your BMI category is healthy based on the World Health Organization criteria for adults."
+  def water(user)
+    message = ["water", "vitals/15_Water.png"]
+    if user.fitbit_scores.last.water >= 3500
+      message << "Today you've had plenty of water, keep it up!"
       message << "great"
-    elsif user.user_scores.last.bmi.between?(25, 29.9)
-      message << "Your BMI category is overweight based on the World Health Organization criteria."
+    elsif user.fitbit_scores.last.water.between?(2500, 3499)
+      message << "Your water intake is a bit low, drink more water each day."
       message << "average"
     else
-      message << "Your BMI category is obese based on the World Health Organization criteria."
+      message << "Your water intake is very low."
       message << "low"
     end
     return message
   end
 
-  def physical_activity(user)
-    message = ["workout", "vitals/6_Workout.png"]
-    if user.user_scores.last.physical_activity >= 0.5
-      message << "You are in the healthiest category for physical activity. You meet current physical activity recommendations. Keep up the great work!"
-      message << "great"
-    elsif user.user_scores.last.physical_activity.between?(0.1, 0.4)
-      message << "You are on your way to an active lifestyle, but increasing your physical activity will provide more cardiovascular health benefits."
-      message << "average"
-    else
-      message << "Set a goal to increase your physical activity"
+  def sleep_h(user)
+    message = ["sleep", "vitals/16_Sleep"]
+    if user.fitbit_scores.last.overall_sleep < 420
+      message << "Last night you only got #{user.fitbit_scores.last.overall_sleep} minutes of sleep. Most adults should target around 480 minutes."
       message << "low"
+    elsif user.fitbit_scores.last.overall_sleep.between?(420, 480)
+      message << "Last night you got #{user.fitbit_scores.last.overall_sleep} minutes of sleep. Excellent!"
+      message << "great"
+    else
+      message << "Last night you got #{user.fitbit_scores.last.overall_sleep} minutes of sleep."
+      message << "average"
     end
     return message
   end
 
-  def fruits_vegetables(user)
-    message = ["fruits & veggies", "vitals/4_Energy.png"]
-    if user.user_scores.last.fruits_vegetables >= 4
-      message << "You are in the healthiest category for fruit and vegetable intake based on the study population."
-      message << "great"
-    elsif user.user_scores.last.fruits_vegetables.between?(2, 3.9)
-      message << "You are on your way to a healthy fruit and vegetables intake. Try to reach 4 servings a day of vegetables and fruits to get the best benefits."
+  def fat(user)
+    message = ["Fat", "vitals/9_Processed.png"]
+    if user.fitbit_scores.last.fat > 100
+      message << "Your fat intake is high (#{user.fitbit_scores.last.fat.round} g.) Target less than 79 grams."
+      message << "low"
+    elsif user.fitbit_scores.last.fat.between?(78.1, 100)
+      message << "Your fat intake is a bit high. Today you've had #{user.fitbit_scores.last.fat.round} grams of fat. Target less than 79 grams."
       message << "average"
     else
-      message << "Set a goal to increase your intake of fruits and vegetables."
-      message << "low"
+      message << "Your fat intake is at an optimal level."
+      message << "great"
     end
     return message
   end
 
-  def whole_grains(user)
+  def fiber(user)
     message = ["fiber", "vitals/11_Fibers.png"]
-    if user.user_scores.last.whole_grains >= 15
-      message << "You have a diet high in whole grain fiber."
+    if user.fitbit_scores.last.fiber >= 38
+      message << "You have a diet high in fibers."
       message << "great"
-    elsif user.user_scores.last.whole_grains.between?(7, 14.9)
-      message << "You are on your way to a diet high in whole grain fiber, and increasing intake could provide more cardiovascular health benefits."
+    elsif user.fitbit_scores.last.fiber.between?(25, 37.9)
+      message << "You are on your way to a diet high fibers, and increasing intake could provide more cardiovascular health benefits."
       message << "average"
     else
-      message << "You have a low intake of grain fiber, this increases the risk of heart disease"
+      message << "You have a low intake of fiber, this increases the risk of heart disease."
       message << "low"
     end
     return message
   end
 
-  def red_meat(user)
-    message = ["meat", "vitals/13_Red.png"]
-    if user.user_scores.last.red_meat <= 2
-      message << "You have a low intake of red meat. Keep it up!"
+  def protein(user)
+    message = ["protein", "vitals/13_Red.png"]
+    if user.fitbit_scores.last.protein > 56
+      message << "You have a high intake of protein. Keep it up!"
       message << "great"
-    elsif user.user_scores.last.red_meat.between?(2.1, 5)
-      message << "You would benefit from reducing your intake of red meat."
+    elsif user.fitbit_scores.last.protein.between?(30, 55.9)
+      message << "You could benefit from eating more protein. Your intake so far today is #{user.fitbit_scores.last.protein.round} grams."
       message << "average"
     else
-      message << "Set a goal to reduce your intake of red meat."
+      message << "Your protein intake is very low. Try to target at least 30 grams a day!"
       message << "low"
     end
     return message
   end
 
-  def processed_meat(user)
-    message = ["meat", "vitals/9_Processed.png"]
-    if user.user_scores.last.processed_meat >= 0
-      message << "You have the healthiest intake of processed meat."
-      message << "great"
-    elsif user.user_scores.last.processed_meat.between?(3, 4.9)
-      message << "Set a goal to reduce your intake of processed meat to 0 servings a day."
-      message << "average"
-    else
-      message << "Set a goal to reduce your intake of processed meat."
-      message << "low"
-    end
-    return message
-  end
-
-  def fats(user)
-    message = ["fats", "vitals/14_Fats.png"]
-    if user.user_scores.last.fats >= 1
-      message << "You have a healthy intake of nuts and seeds."
-      message << "great"
-    elsif user.user_scores.last.fats.between?(0.5, 0.9)
-      message << "Increasing your intake of nuts and seeds to at least 1 oz/day can provide additional health benefits."
-      message << "average"
-    else
-      message << "You have a low intake of nuts. Set a goal to eat at least 1 a day"
-      message << "low"
-    end
-    return message
-  end
-
-  def soda(user)
+  def sugar(user)
     message = ["sugar", "vitals/10_Sugar.png"]
-    if user.user_scores.last.soda <= 0
-      message << "You are in the healthiest category for sugar-sweetened drinks."
-      message << "great"
-    elsif user.user_scores.last.soda.between?(0.1, 1)
-      message << "Decreasing your intake of sugary beverages would provide health benefits."
+    if user.fitbit_scores.last.sugar > 80
+      message << "You have a very high intake of sugar. Today we have logged #{user.fitbit_scores.last.sugar.round} grams of sugar. Try to eat less than 37 grams."
+      message << "low"
+    elsif user.fitbit_scores.last.sugar.between?(37.1, 80)
+      message << "Set a goal to reduce your intake of sugar."
       message << "average"
     else
-      message << "Set a goal to decrease your intake of sugary beverages."
+      message << "Your intake of sugar is at a healthy level."
+      message << "great"
+    end
+    return message
+  end
+
+  def exercise(user)
+    message = ["exercise", "vitals/6_Workout.png"]
+
+    last_exercise = ''
+    if user.fitbit_scores.last.exercise_type.present?
+      last_exercise = "Your last exercise: #{user.fitbit_scores.last.exercise_type}."
+    end
+
+    if user.fitbit_scores.last.active_minutes > 30
+      message << "#{last_exercise} So far you have #{user.fitbit_scores.last.active_minutes} active minutes today."
+      message << "great"
+    elsif user.fitbit_scores.last.active_minutes.between?(16, 29)
+      message << "#{last_exercise} So far you have #{user.fitbit_scores.last.active_minutes} active minutes today.
+      Try to get at least 30 active minutes per day."
+      message << "average"
+    else
+      message << "Today you only have #{user.fitbit_scores.last.active_minutes} active minutes. You need to exercise more!"
       message << "low"
     end
     return message
@@ -163,15 +162,30 @@ class PagesController < ApplicationController
 
   def alcohol(user)
     message = ["alcohol", "vitals/8_Alcohol.png"]
-    if user.user_scores.last.alcohol <= 1
-      message << "You are drinking the right amount of alcohol for ultimate health benefits."
+    if user.fitbit_scores.last.alcohol_ml < 40
+      message << "You have a healthy intake of alcohol."
       message << "great"
-    elsif user.user_scores.last.alcohol.between?(2.1, 4)
-      message << "Your alcohol intake is higher than what is recommended for overall health. High alcohol intake may increase the risk for diseases like cancer."
+    elsif user.fitbit_scores.last.alcohol_ml.between?(40, 80)
+      message << "Decreasing your intake of alcohol would provide health benefits."
       message << "average"
     else
-      message << "Your alcohol intake is excessive, reduce it to prevent disease like cancer."
+      message << "Your intake of alcohol is at a very high level."
       message << "low"
+    end
+    return message
+  end
+
+  def heart_rate(user)
+    message = ["heart rate", "vitals/1_Heart.png"]
+    if user.fitbit_scores.last.heart_rate > 100
+      message << "Your average heart rate today was #{user.fitbit_scores.last.heart_rate}, which is very high. Please consult with your doctor."
+      message << "low"
+    elsif user.fitbit_scores.last.heart_rate.between?(70, 100)
+      message << "Your heart rate averaged around #{user.fitbit_scores.last.heart_rate} today. This is within the healthy range."
+      message << "great"
+    else
+      message << "Your average heart rate was low today."
+      message << "average"
     end
     return message
   end
