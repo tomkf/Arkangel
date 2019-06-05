@@ -1,3 +1,10 @@
+#if there is great discrepancies with health scores, look into the
+#sleep values first and work with those....might be problematic the way
+#they are currently
+
+
+
+
 puts 'Wiping database...'
 UserScore.destroy_all
 FitbitScore.destroy_all
@@ -18,10 +25,10 @@ i = 1
 FitbitScore.create!(user: user,
   bmi: 31,
   overall_sleep: rand(280..350),
-  awaken_sleep: 35,
-  rem_sleep: 50,
-  light_sleep: 15,
-  deep_sleep: 28,
+  awaken_sleep: rand(25..35),
+  rem_sleep: rand(40..55),
+  light_sleep: rand(15..25),
+  deep_sleep: rand(24..30),
   heart_rate: rand(70..110),
   steps: rand(3500..8000),
   active_minutes: rand(5..25),
@@ -46,10 +53,10 @@ FitbitScore.create!(user: user,
  FitbitScore.create!(user: user,
    bmi: 31,
    overall_sleep: rand(280..350),
-   awaken_sleep: 35,
-   rem_sleep: 50,
-   light_sleep: 15,
-   deep_sleep: 28,
+   awaken_sleep: rand(25..35),
+  rem_sleep: rand(40..55),
+  light_sleep: rand(15..25),
+  deep_sleep: rand(24..30),
    heart_rate: rand(70..110),
    steps: rand(3500..8000),
    active_minutes: rand(5..25),
@@ -75,11 +82,11 @@ FitbitScore.create!(user: user,
  15.times do
  FitbitScore.create!(user: user,
    bmi: 29,
-   overall_sleep: rand(280..350),
-   awaken_sleep: 35,
-   rem_sleep: 50,
-   light_sleep: 15,
-   deep_sleep: 28,
+   overall_sleep: rand(320..450),
+   awaken_sleep: rand(25..35),
+  rem_sleep: rand(40..55),
+  light_sleep: rand(15..25),
+  deep_sleep: rand(24..30),
    heart_rate: rand(65..105),
    steps: rand(5500..9999),
    active_minutes: rand(10..30),
@@ -105,11 +112,11 @@ end
 8.times do
  FitbitScore.create!(user: user,
   bmi: 26,
-  overall_sleep: rand(280..350),
-  awaken_sleep: 35,
-  rem_sleep: 50,
-  light_sleep: 15,
-  deep_sleep: 28,
+  overall_sleep: rand(350..480),
+  awaken_sleep: rand(25..35),
+  rem_sleep: rand(40..55),
+  light_sleep: rand(15..25),
+  deep_sleep: rand(24..30),
   heart_rate: rand(65..85),
   steps: rand(650..1200),
   active_minutes: rand(16..38),
