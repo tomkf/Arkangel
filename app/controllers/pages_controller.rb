@@ -10,9 +10,9 @@ class PagesController < ApplicationController
     @user = current_user
 
 
-    # if @user.fitbit_user_id.nil?
-    #   redirect_to apis_path
-    # end
+    if @user.fitbit_user_id.nil?
+       redirect_to apis_path
+     end
 
 
 
