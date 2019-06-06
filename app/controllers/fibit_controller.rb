@@ -14,7 +14,7 @@ class FibitController < ApplicationController
     current_user.save
 
     # fetch all the historical data
-    current_user.fetch_historical_data(7)
+    current_user.fetch_historical_data(14)
     # show a "calculating page"
 
     # redirect to dashboard
@@ -33,7 +33,7 @@ class FibitController < ApplicationController
     if last_score.present? && last_score.notified_user == false
       last_score.notified_user = true
       last_score.save
-      last_score.health_score.round.to_s
+      last_score.health_score.round(1).to_s
     end
   end
 end
