@@ -9,7 +9,7 @@ class FitbitScore < ApplicationRecord
     sleep_const = 5
 
     w_score = age_clasifier(self.user.age) + smoker_clasifier(self.user.smoker) + bmi_clasifier(self.bmi) + (stress_calculator(self.heart_rate) * stress_const) + (exercise_calculator * exercise_const) + (sleep_calculator * sleep_const) + (diet_calculator * diet_const)
-    if w_score <= 6.8
+    if w_score <= 6.6
       self.health_score = 0
     else
       self.health_score = (1 - 0.9660**(w_score - 6.57301)) * 100
@@ -78,7 +78,7 @@ class FitbitScore < ApplicationRecord
   end
 
   def sleep_calculator
-    # ideal way should have decorators folder = gem 'draper'
+    # ideal way should have decorators folder to simplify the code = gem 'draper'
     # overall_sleep clasifier
 
     optimal_overall_sleep = 480.0 # in minutes
@@ -91,6 +91,11 @@ class FitbitScore < ApplicationRecord
     end
 
     # awaken_sleep clasifier
+    if self.awaken_sleep == 0
+      self.awaken_sleep = self.overall_sleep * 35 / self.overall_sleep.to_f
+    end
+
+
     optimal_awaken_sleep = optimal_overall_sleep * 5 / 100.0 # 5% of the overall total sleep
     awaken_percentage = self.awaken_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if awaken_percentage >= 5.6
