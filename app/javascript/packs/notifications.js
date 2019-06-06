@@ -18,7 +18,7 @@ const initNotify = () =>  { setInterval (() => {
     })
     .then((response) => response.json())
     .then((data) => {
-       console.log(data.score)
+       console.log(data.score);
        if (data.score !== null) {
        Toastify({
           text: `New score: ${data.score}`,
