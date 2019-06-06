@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_195146) do
+ActiveRecord::Schema.define(version: 2019_06_06_220257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(version: 2019_06_05_195146) do
     t.float "floors", default: 0.0
     t.boolean "notified_user", default: false
     t.index ["user_id"], name: "index_fitbit_scores_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "message"
+    t.boolean "notified", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_params", force: :cascade do |t|

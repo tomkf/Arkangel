@@ -1,0 +1,15 @@
+<div class="content row" style="flex-wrap: nowrap;" id="score_detail">
+  <div class="stat-title">
+    <p class="vital_title"><%= info[0].capitalize %></p>
+  </div>
+  <div class="stat-icon">
+    <%= image_tag "#{info[1]}", style:"max-height: 30px;" %>
+  </div>
+  <div class="stat-description">
+    <p class="vital_content"><%= info[2] %> hrs </p>
+    <p><%= info[3] %></p>
+    <% if info[4].present? %>
+    <p> <%= info[4] %></p>
+    <% end %>
+  </div>
+</div>
