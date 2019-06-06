@@ -3,8 +3,39 @@
     <h3>Your <b>Health Score</b></h3>
 <% unless @health_score.nil? %>
     <div class="score d-flex align-items-end" id="main_title">
-      <h1><%= @health_score.round(1) %></h1>
-      <h2>/100</h2>
+
+
+      <!-- Span to trigger modal -->
+      <span data-toggle="modal" data-target="#exampleModalCenter">
+        <h1><%= @health_score.round(1) %></h1>
+      </span>
+        <h2>/100</h2>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="border-radius: 16px;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">
+                <%= image_tag "logo.png", class: "avatar" %>
+              Health score details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              The Health Score will analyze all available data from your wearables and give you a single metric from 0 to 100 of how your habits are doing.
+              <br><br>
+              By clicking <a href="/user_score/graph" style="color: grey"><em>Score history</em></a>, you can visualize your progress over time.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#F6AC1D">Close</button>
+             <!--  <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <%= link_to "Score history", graph_path, style:"color: white;" %>
 <% end %>
@@ -20,24 +51,24 @@
 
         <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Fitbit not found</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                       <%= image_tag ("connection.jpg") %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Connect your Fitbit</button>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fitbit not found</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                         <%= image_tag ("connection.jpg") %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Connect your Fitbit</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
 </div>
 
