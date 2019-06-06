@@ -44,16 +44,16 @@
 
     <div class="great col-sm-12 col-lg-4 offset-lg-4 mt-2 mb-5">
 
-        <%= render "shared/profile_component", info: ["fiber", "vitals/11_Fibers.png", @health_score.fiber.round, "Grams"] %>
-        <%= render "shared/profile_component", info: ["Protein", "vitals/13_Red.png", @health_score.protein.round, "Grams"] %>
-        <%= render "shared/profile_component", info: ["Fat", "vitals/9_Processed.png", @health_score.fat.round, "Grams"] %>
-        <%= render "shared/profile_component", info: ["Carbs", "vitals/wheat.png", @health_score.carbs.round, "Grams"] %>
-        <%= render "shared/profile_component", info: ["Sugar", "vitals/10_Sugar.png", @health_score.sugar.round, "Grams"] %>
-        <%= render "shared/profile_component", info: ["Water", "vitals/15_Water.png", @health_score.water, "Cups" ] %>
-   <%= render "shared/sleep_profile_comp", info: ["Sleep", "vitals/16_Sleep.png", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
-   <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched:", @health_score.created_at.to_s.slice(10, 10) ] %>
-   <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type, @health_score.active_minutes, "Minutes" ] %>
-   <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Based on stats from past 24hrs"]  %>
+      <%= render "shared/profile_component", info: ["fiber", "vitals/11_Fibers.png", @health_score.fiber.round, "Grams"] %>
+      <%= render "shared/profile_component", info: ["Protein", "vitals/13_Red.png", @health_score.protein.round, "Grams"] %>
+      <%= render "shared/profile_component", info: ["Fat", "vitals/9_Processed.png", @health_score.fat.round, "Grams"] %>
+      <%= render "shared/profile_component", info: ["Carbs", "vitals/wheat.png", @health_score.carbs.round, "Grams"] %>
+      <%= render "shared/profile_component", info: ["Sugar", "vitals/10_Sugar.png", @health_score.sugar.round, "Grams"] %>
+      <%= render "shared/profile_component", info: ["Water", "vitals/15_Water.png", (@health_score.water / 236).round, "Cups" ] %>
+       <%= render "shared/sleep_profile_comp", info: ["Sleep", "vitals/16_Sleep.png", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
+       <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched:", @health_score.created_at.to_s.slice(10, 10) ] %>
+       <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type.capitalize, @health_score.active_minutes, "Minutes" ] %>
+       <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", "#{@health_score.heart_rate} BPM", "Based on stats from past 24hrs"]  %>
 
       <br>
     </div>
