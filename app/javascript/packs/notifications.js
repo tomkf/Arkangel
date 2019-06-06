@@ -22,7 +22,7 @@ const initNotify = () =>  { setInterval (() => {
        if (data.score !== null) {
        Toastify({
           text: `New score: ${data.score}`,
-          duration: 10000,
+          duration: 12000,
           destination: "/dashboard",
           newWindow: false,
           close: true,
