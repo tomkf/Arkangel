@@ -60,9 +60,12 @@ module FitbitAPI
       }
     end
 
-    def get(path, opts={})
+    def get(path, opts={}, api_version = nil)
+      api_version_url = @api_version
+      api_version_url = api_version if !api_version.nil?
+
       params = opts.delete(:params) || {}
-      response = token.get(("#{@api_version}/" + path), params: deep_keys_to_camel_case!(params), headers: request_headers).response
+      response = token.get(("#{api_version_url}/" + path), params: deep_keys_to_camel_case!(params), headers: request_headers).response
       object = MultiJson.load(response.body) unless response.status == 204
       process_keys!(object, opts)
     end
