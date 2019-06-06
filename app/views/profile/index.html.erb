@@ -7,13 +7,16 @@
       <h2>/100</h2>
     </div>
     <%= link_to "Score history", graph_path, style:"color: white;" %>
+    <i style="font-size:24px; color: white;" class="fa">&#xf107;</i>
   </div>
 </div>
 
  <div class="user-title" style="max-width: 500px; margin: 0 auto;"
     >
   <div class="stat-icon">
+    <%= link_to edit_user_registration_path do %>
     <%= image_tag "avatar_face.png", style:"max-height: 90px;"%>
+   <% end  %>
   </div>
   <h5>
     Your vitals:
@@ -25,10 +28,14 @@
   <hr>
  </div>
 
-<div class="container" style="margin-bottom: 12vh">
+
+
+
+<div class="container" style="margin-bottom: 12vh; max-width: 1000px;
+    margin: 0 auto;">
   <div class="row mr-3 ml-3" style="padding-left: 8px;">
 
-    <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
+    <div class="great col-sm-12 col-lg-4 offset-lg-4 mt-2 mb-5">
 
         <%= render "shared/profile_component", info: ["fiber", "vitals/11_Fibers.png", @health_score.fiber.round, "Grams"] %>
         <%= render "shared/profile_component", info: ["Protein", "vitals/13_Red.png", @health_score.protein.round, "Grams"] %>
