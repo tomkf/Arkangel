@@ -1,26 +1,11 @@
-<!--
-  <div class="container">
-    <h3>Your <b>Health Score</b></h3>
-    <div class="score d-flex align-items-end" id="main_title">
-
-      <h1><%#= @health_score.health_score.round(1) %></h1>
-      <h2>/100</h2>
-    </div>
-    <%#= link_to "Score history", graph_path, style:"color: white;" %>
-    <i style="font-size:24px; color: white;" class="fa">&#xf107;</i>
-  </div>
-</div>
-
- <div class="user-title" style="max-width: 500px; margin: 0 auto;">
-
- </div> -->
 
 <div class="big_title">
+
   <!-- TITLE -->
-  <div class="container">
+  <div class="container" >
     <div class="row mr-3 ml-3">
       <!-- Avatar logo -->
-      <div class="col-3  mt-3">
+      <div class="col-3 mt-3 text-left">
         <%= link_to edit_user_registration_path do %>
         <%= image_tag "avatar_face.png", style:"width: 60px"%>
         <% end  %>
@@ -28,18 +13,23 @@
       <!-- Title  -->
       <div class="col-6 mt-3">
       <h5 class="text-center" style="font-size: 22px; font-weight:900"><%= @user.first_name.capitalize %>'s  Vitals:</h5>
-      <p class="text-center" style="letter-spacing: -0.035em;"> <%= @user.age %> years old</p>
-      <p class="text-center" style="letter-spacing: -0.035em;"> Health score: <%= @health_score.health_score.round(1) %></p>
+      <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> <%= @user.age %> years old</p>
+      <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> Health score: <%= @health_score.health_score.round(1) %></p>
+      <p class="text-center mb-2" style="letter-spacing: -0.035em; margin:0;"> BMI: <%= @health_score.bmi.round(7) %></p>
       </div>
 
       <!-- Settings button -->
-      <div class="col-3  mt-3 text-right">
-        <%= link_to edit_user_registration_path do %>
-        <%= image_tag "configuration/0_Edit wheel_Colores.png", style:"width: 60px"%>
-        <% end  %>
+      <div class="col-3 mt-3 text-right">
+        <ul class="nav-item dropdown" style="padding: 0;">
+         <%= image_tag "black-nav.png", class: "avatar dropdown-toggle  text-right", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+           <%= link_to "Update your profile", edit_user_registration_path, class: "dropdown-item" %>
+           <%= link_to "Health Score History", graph_path, class: "dropdown-item" %>
+           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+         </div>
+        </ul>
       </div>
     </div>
-
   </div>
 </div>
 <div class="container">
@@ -65,9 +55,9 @@
       <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep.png", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
     </div>
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
-      <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched:", @health_score.created_at.to_s.slice(10, 18) ] %>
+      <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 18)}" ] %>
       <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type, @health_score.active_minutes, "Minutes" ] %>
-      <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Based on stats from past 24hrs"]  %>
+      <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Average from the past 24hrs"]  %>
       <br>
     </div>
   </div >
