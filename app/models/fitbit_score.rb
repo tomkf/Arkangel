@@ -91,13 +91,12 @@ class FitbitScore < ApplicationRecord
     end
 
     # awaken_sleep clasifier
-    if self.awaken_sleep == 0
-      self.awaken_sleep = self.overall_sleep * 35 / self.overall_sleep.to_f
-    end
-
+    # if self.awaken_sleep == 0
+    #   self.awaken_sleep = self.overall_sleep * 35 / self.overall_sleep.to_f
+    # end
 
     optimal_awaken_sleep = optimal_overall_sleep * 5 / 100.0 # 5% of the overall total sleep
-    awaken_percentage = self.awaken_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
+    awaken_percentage = self.overall_sleep == 0 ? 0 : self.awaken_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if awaken_percentage >= 5.6
       awaken_sleep_score = self.awaken_sleep / optimal_awaken_sleep * -0.0021 # Low category
     elsif awaken_percentage.between?(5.1, 5.5)
@@ -108,7 +107,7 @@ class FitbitScore < ApplicationRecord
 
     # REM_sleep clasifier
     optimal_rem_sleep = optimal_overall_sleep * 35 / 100.0 # 35% of the overall total sleep
-      rem_percentage = self.rem_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
+    rem_percentage = self.overall_sleep == 0 ? 0 : self.rem_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if rem_percentage <= 29
       rem_sleep_score = self.rem_sleep / optimal_rem_sleep * -1.15912 # Low category
     elsif rem_percentage.between?(30, 34.9)
@@ -119,7 +118,7 @@ class FitbitScore < ApplicationRecord
 
     # light_sleep clasifier
     optimal_light_sleep = optimal_overall_sleep * 40 / 100.0 # 40% of the overall total sleep
-    light_percentage = self.light_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
+    light_percentage = self.overall_sleep == 0 ? 0 : self.light_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if light_percentage >= 45.1
       light_sleep_score = self.light_sleep / optimal_light_sleep * 0.00323 # Low category
     elsif light_percentage.between?(40.1, 45)
@@ -130,7 +129,7 @@ class FitbitScore < ApplicationRecord
 
     # deep_sleep clasifier
     optimal_deep_sleep = optimal_overall_sleep * 20 / 100.0 # 20% of the overall total sleep
-    deep_percentage = self.deep_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
+    deep_percentage = self.overall_sleep == 0 ? 0 : self.deep_sleep * 100 / self.overall_sleep.to_f # transforms to percentage the value
     if deep_percentage <= 15
       deep_sleep_score = self.deep_sleep / optimal_deep_sleep * 0.32456 # Low category
     elsif deep_percentage.between?(15.1, 19.9)
