@@ -142,7 +142,7 @@ class PagesController < ApplicationController
       last_exercise = "Your last exercise: #{user.fitbit_scores.order(:logdate).last.exercise_type}."
     end
 
-    if user.fitbit_scores.order(:logdate).last.active_minutes > 30
+    if user.fitbit_scores.order(:logdate).last.active_minutes >= 30
       message << "#{last_exercise} So far you have #{user.fitbit_scores.order(:logdate).last.active_minutes} active minutes today."
       message << "great"
     elsif user.fitbit_scores.order(:logdate).last.active_minutes.between?(16, 29)

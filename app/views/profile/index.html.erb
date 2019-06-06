@@ -56,6 +56,7 @@
    <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched:", @health_score.created_at.to_s.slice(10, 10) ] %>
    <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type, @health_score.active_minutes, "Minutes" ] %>
    <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Based on stats from past 24hrs"]  %>
+
       <br>
     </div>
     </div>
