@@ -17,14 +17,14 @@
  </div>
 
 <div class="container" style="margin-bottom: 12vh">
-  <div class="row mr-3 ml-3">
+  <div class="row mr-3 ml-3" style="padding-left: 8px;">
 
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
 
         <%= render "shared/profile_component", info: ["fiber", "vitals/11_Fibers.png", @health_score.fiber.round, "Grams"] %>
         <%= render "shared/profile_component", info: ["Protein", "vitals/13_Red.png", @health_score.protein.round, "Grams"] %>
         <%= render "shared/profile_component", info: ["Fat", "vitals/9_Processed.png", @health_score.fat.round, "Grams"] %>
-        <%= render "shared/profile_component", info: ["Carbs", "vitals/1_Sleep.png", @health_score.carbs.round] %>
+        <%= render "shared/profile_component", info: ["Carbs", class="fas fa-bread-slice", @health_score.carbs.round], "Grams" %>
         <%= render "shared/profile_component", info: ["Sugar", "vitals/10_Sugar.png", @health_score.sugar.round, "Grams"] %>
         <%= render "shared/profile_component", info: ["Water", "vitals/15_Water.png", @health_score.water, "Cups" ] %>
    <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
