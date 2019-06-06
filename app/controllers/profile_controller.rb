@@ -5,5 +5,6 @@ class ProfileController < ApplicationController
     #     redirect_to apis_path
     # end
     @health_score = FitbitScore.where("user_id = #{current_user.id}").last
+    @parmas_data = UserParam.where("user_id = #{current_user.id}").last
     end
 end

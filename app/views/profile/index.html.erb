@@ -10,6 +10,10 @@
 </div>
 
  <div class="user-title">
+  <h5>
+    Your vitals:
+  </h5>
+  <p> <%= @user.age %> years old</p>
   <h3 style="font-size: 16px;">
   Here is a breakdown of your consumption and activities for today:
   </h3>
@@ -27,7 +31,7 @@
         <%= render "shared/profile_component", info: ["Carbs", "vitals/wheat.png", @health_score.carbs.round, "Grams"] %>
         <%= render "shared/profile_component", info: ["Sugar", "vitals/10_Sugar.png", @health_score.sugar.round, "Grams"] %>
         <%= render "shared/profile_component", info: ["Water", "vitals/15_Water.png", @health_score.water, "Cups" ] %>
-   <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
+   <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep.png", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
    <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched:", @health_score.created_at.to_s.slice(10, 18) ] %>
    <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type, @health_score.active_minutes, "Minutes" ] %>
    <%= render "shared/profile_component", info: ["Resting Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Based on stats from past 24hrs"]  %>
