@@ -18,7 +18,7 @@ class PagesController < ApplicationController
 
 
     if @user.fitbit_scores.length != 0
-      @health_score = FitbitScore.where("user_id = #{current_user.id}").last.health_score
+      @health_score = FitbitScore.where("user_id = #{current_user.id}").order(:logdate).last.health_score
       @water = water(@user)
       @sleep_h = sleep_h(@user)
       @fat = fat(@user)

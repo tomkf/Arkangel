@@ -4,7 +4,7 @@ class ProfileController < ApplicationController
     # if @user.fitbit_user_id.nil?
     #     redirect_to apis_path
     # end
-    @health_score = FitbitScore.where("user_id = #{current_user.id}").last
+    @health_score = FitbitScore.where("user_id = #{current_user.id}").order(:logdate).last
     @parmas_data = UserParam.where("user_id = #{current_user.id}").last
     end
 end
