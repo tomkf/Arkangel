@@ -1,5 +1,14 @@
 <div class="big_title">
   <div class="container">
+    <ul class="nav-item dropdown">
+            <%= image_tag "black-nav.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: "position: absolute; top: -4px; right: -4px;" %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Update your profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Health Score History", graph_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </ul>
+
     <h3>Your <b>Health Score</b></h3>
 <% unless @health_score.nil? %>
     <div class="score d-flex align-items-end" id="main_title">
