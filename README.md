@@ -1,3 +1,7 @@
+Arkangel/app/assets/images/Logo_PNG.png
+!["logo: "](https://raw.githubusercontent.com/tomkf/Arkangel/master/app/assets/images/Logo_PNG.png)
+
+
 This app will revolutionize healthcare:
 https://arkangel.life/ </br>
 
