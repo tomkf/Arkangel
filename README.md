@@ -1,5 +1,8 @@
-Arkangel/app/assets/images/Logo_PNG.png
 !["logo: "](https://raw.githubusercontent.com/tomkf/Arkangel/master/app/assets/images/Logo_PNG.png)
+
+<br>
+<br>
+<br>
 
 
 This app will revolutionize healthcare:
