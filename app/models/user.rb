@@ -34,7 +34,6 @@ class User < ApplicationRecord
 
   def fetch_historical_data(days)
      # create the empty scores for the past 7 days
-    self.fitbit_scores.destroy_all
 
     days.times do |i|
       FitbitScore.create!({
@@ -85,7 +84,11 @@ class User < ApplicationRecord
       sleep_object.overall_sleep = day[:timeInBed].nil? ?  0 :  day[:timeInBed]
       sleep_object.awaken_sleep  = day[:minutesAwake].nil? ?  0 :  day[:minutesAwake]
 
-      sleep_object.deep_sleep  = day[:summary]["deep"].nil? || day[:summary]["deep"]["minutes"].nil? ?  0 :  day[:summary]["deep"]["minutes"]
+      if day[:summary]["deep"].nil? || day[:summary]["deep"]["minutes"].nil?
+        sleep_object.deep_sleep  = 0
+      else
+        sleep_object.deep_sleep  = day[:summary]["deep"]["minutes"]
+      end
       sleep_object.light_sleep = day[:summary]["light"].nil? || day[:summary]["light"]["minutes"].nil? ?  0 :  day[:summary]["light"]["minutes"]
       sleep_object.rem_sleep = day[:summary]["rem"].nil? || day[:summary]["rem"]["minutes"].nil? ?  0 :  day[:summary]["rem"]["minutes"]
 

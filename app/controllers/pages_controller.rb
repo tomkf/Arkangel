@@ -9,8 +9,12 @@ class PagesController < ApplicationController
 
     @user = current_user
 
-    if @user.fitbit_scores.length != 0
 
+    if @user.fitbit_user_id.nil?
+      redirect_to apis_path
+    end
+    
+    if @user.fitbit_scores.length != 0
       @health_score = @user.fitbit_scores.last.health_score
       @water = water(@user)
       @sleep_h = sleep_h(@user)

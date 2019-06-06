@@ -20,11 +20,12 @@
                 required: true,
                 autofocus: true,
                 input_html: { class:"inputs" }%>
+
         <div class="form-group">
-          <label class="form-control-label age required" for="user_age">
+          <label class="form-control-label age required" for="user_dob">
             Date of birth <abbr title="required">*</abbr>
           </label>
-          <input type="text" aria-required="true" placeholder="Select your date of birth..." autofocus="autofocus" required="required" class="form-control required inputs flatpickr" name="user[dob]" id="user_dob">
+          <input type="text" aria-required="true" placeholder="Select Date..." autofocus="autofocus" required="required" class="form-control required inputs flatpickr" name="user[dob]" id="user_dob" value="<%= @user.dob.to_s %>">
         </div>
 
     <%= f.input :smoker, collection: [ "never", "former", "current" ],
