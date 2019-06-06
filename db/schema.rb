@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 2019_06_05_195146) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "notified_user", default: false
     t.float "sleep_score"
     t.float "floors", default: 0.0
+    t.boolean "notified_user", default: false
     t.index ["user_id"], name: "index_fitbit_scores_on_user_id"
   end
 
@@ -93,11 +93,11 @@ ActiveRecord::Schema.define(version: 2019_06_05_195146) do
     t.string "last_name"
     t.integer "age"
     t.string "smoker"
-    t.boolean "admin", default: false, null: false
     t.string "fitbit_access_token"
     t.string "fitbit_refresh_token"
     t.integer "fitbit_expires_at"
     t.string "fitbit_user_id"
+    t.boolean "admin", default: false, null: false
     t.date "dob"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
