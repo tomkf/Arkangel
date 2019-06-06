@@ -10,7 +10,7 @@ User.destroy_all
 puts 'Creating users'
 
 user = User.create!(email: 'gustaf@email.com', first_name: "wolfgang", last_name: "mozart", password: '123456', dob: "1990-02-02", smoker: 'never')
-
+#user_params = UserParam.create!(bmi: 26, weight: 86, height: 180, user_id: user.id )
 puts 'Adding user score...'
 
 # Add score
@@ -18,6 +18,7 @@ puts 'Adding user score...'
 exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "basketball", "boxing", "running" ]
 
 i = 1
+
 
 score = FitbitScore.create!(user: user,
   bmi: 31,
@@ -139,6 +140,8 @@ score = FitbitScore.create!(user: user,
  i += 1
  score.algorithm_v2
 end
+
+
 
 ############################
 ##user-score data##########
