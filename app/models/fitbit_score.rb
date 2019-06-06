@@ -152,6 +152,8 @@ class FitbitScore < ApplicationRecord
       steps_score = self.steps / optimal_steps * 1.89 # Medium category
     elsif self.steps >= 10000
       steps_score = self.steps / optimal_steps * 2.09 # Great category
+    else
+      steps_score = 0
     end
 
     # active minutes clasifier
@@ -162,6 +164,8 @@ class FitbitScore < ApplicationRecord
       active_minutes_score = self.active_minutes / optimal_active_minutes * 0.101 # Medium category
     elsif self.active_minutes >= 30
       active_minutes_score = self.active_minutes / optimal_active_minutes * 0.177 # Great category
+    else
+      active_minutes_score = 0
     end
 
     # floors clasifier
@@ -172,6 +176,8 @@ class FitbitScore < ApplicationRecord
       floors_score = self.floors / optimal_floors * 0.101 # Medium category
     elsif self.floors >= 5
       floors_score = self.floors / optimal_floors * 0.121 # Great category
+    else
+      floors_score = 0
     end
 
     # exercise_km clasifier
@@ -182,6 +188,8 @@ class FitbitScore < ApplicationRecord
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.2875 # Medium category
     elsif self.exercise_km >= 8
       exercise_km_score = self.exercise_km / optimal_exercise_km * 0.3875 # Great category
+    else
+      exercise_km_score = 0
     end
 
     # exercise_time clasifier
@@ -192,6 +200,8 @@ class FitbitScore < ApplicationRecord
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.101 # Medium category
     elsif self.exercise_time >= 30
       exercise_time_score = self.exercise_time / optimal_exercise_time * 0.177 # Great category
+    else
+      exercise_time_score = 0
     end
 
     # exercise_cal clasifier
@@ -202,10 +212,27 @@ class FitbitScore < ApplicationRecord
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.145 # Medium category
     elsif self.exercise_cal >= 3000
       exercise_cal_score = self.exercise_cal / optimal_exercise_cal * 0.874 # Great category
+    else
+      exercise_cal_score = 0
     end
 
-    score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
-    self.update!(exercise_score: score)
+    # begin
+      score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
+    # rescue
+
+      p "somethng came up"
+    # end
+
+    # begin
+      self.update!(exercise_score: score)
+    # rescue
+       p "wtf?"
+    # end
+
+
+
+
+
     return score
   end
 

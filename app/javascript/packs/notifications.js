@@ -33,7 +33,8 @@ const initNotify = () =>  { setInterval (() => {
         }).showToast();
       }
     })
-  },5000)
+  // },5000)
+  },500000000000)
 };
 
 export { initNotify };
