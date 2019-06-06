@@ -29,11 +29,14 @@ class FibitController < ApplicationController
   private
 
   def score
-    last_score = current_user.fitbit_scores.last
+    last_score = current_user.fitbit_scores.order(:logdate).last
     if last_score.present? && last_score.notified_user == false
       last_score.notified_user = true
       last_score.save
-      last_score.health_score.round(1).to_s
+      "New score: #{last_score.health_score.round(1)}"
+    elsif Notification.last.present? && Notification.last.notified == false
+      Notification.last.update(notified: true)
+      Notification.last.message.to_s
     end
   end
 end
