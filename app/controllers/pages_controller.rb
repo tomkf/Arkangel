@@ -14,7 +14,6 @@ class PagesController < ApplicationController
     #   redirect_to apis_path
     # end
 
-    end
 
 
     if @user.fitbit_scores.length != 0
