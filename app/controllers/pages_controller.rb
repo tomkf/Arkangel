@@ -48,10 +48,10 @@ class PagesController < ApplicationController
 
   def water(user)
     message = ["water", "vitals/15_Water.png"]
-    if user.fitbit_scores.last.water >= 3500
+    if user.fitbit_scores.order(:logdate).last.water >= 3500
       message << "Today you've had plenty of water, keep it up!"
       message << "great"
-    elsif user.fitbit_scores.last.water.between?(2500, 3499)
+    elsif user.fitbit_scores.order(:logdate).last.water.between?(2500, 3499)
       message << "Your water intake is a bit low, drink more water each day."
       message << "average"
     else
@@ -63,14 +63,14 @@ class PagesController < ApplicationController
 
   def sleep_h(user)
     message = ["sleep", "vitals/16_Sleep.png"]
-    if user.fitbit_scores.last.overall_sleep < 420
-      message << "Last night you only got #{user.fitbit_scores.last.overall_sleep} minutes of sleep. Most adults should target around 480 minutes."
+    if user.fitbit_scores.order(:logdate).last.overall_sleep < 420
+      message << "Last night you only got #{user.fitbit_scores.order(:logdate).last.overall_sleep} minutes of sleep. Most adults should target around 480 minutes."
       message << "low"
-    elsif user.fitbit_scores.last.overall_sleep.between?(420, 480)
-      message << "Last night you got #{user.fitbit_scores.last.overall_sleep} minutes of sleep. Excellent!"
+    elsif user.fitbit_scores.order(:logdate).last.overall_sleep.between?(420, 480)
+      message << "Last night you got #{user.fitbit_scores.order(:logdate).last.overall_sleep} minutes of sleep. Excellent!"
       message << "great"
     else
-      message << "Last night you got #{user.fitbit_scores.last.overall_sleep} minutes of sleep."
+      message << "Last night you got #{user.fitbit_scores.order(:logdate).last.overall_sleep} minutes of sleep."
       message << "average"
     end
     return message
@@ -78,11 +78,11 @@ class PagesController < ApplicationController
 
   def fat(user)
     message = ["Fat", "vitals/9_Processed.png"]
-    if user.fitbit_scores.last.fat > 100
-      message << "Your fat intake is high (#{user.fitbit_scores.last.fat.round} g.) Target less than 79 grams."
+    if user.fitbit_scores.order(:logdate).last.fat > 100
+      message << "Your fat intake is high (#{user.fitbit_scores.order(:logdate).last.fat.round} g.) Target less than 79 grams."
       message << "low"
-    elsif user.fitbit_scores.last.fat.between?(78.1, 100)
-      message << "Your fat intake is a bit high. Today you've had #{user.fitbit_scores.last.fat.round} grams of fat. Target less than 79 grams."
+    elsif user.fitbit_scores.order(:logdate).last.fat.between?(78.1, 100)
+      message << "Your fat intake is a bit high. Today you've had #{user.fitbit_scores.order(:logdate).last.fat.round} grams of fat. Target less than 79 grams."
       message << "average"
     else
       message << "Your fat intake is at an optimal level."
@@ -93,10 +93,10 @@ class PagesController < ApplicationController
 
   def fiber(user)
     message = ["fiber", "vitals/11_Fibers.png"]
-    if user.fitbit_scores.last.fiber >= 38
+    if user.fitbit_scores.order(:logdate).last.fiber >= 38
       message << "You have a diet high in fibers."
       message << "great"
-    elsif user.fitbit_scores.last.fiber.between?(25, 37.9)
+    elsif user.fitbit_scores.order(:logdate).last.fiber.between?(25, 37.9)
       message << "You are on your way to a diet high fibers, and increasing intake could provide more cardiovascular health benefits."
       message << "average"
     else
@@ -108,11 +108,11 @@ class PagesController < ApplicationController
 
   def protein(user)
     message = ["protein", "vitals/13_Red.png"]
-    if user.fitbit_scores.last.protein > 56
+    if user.fitbit_scores.order(:logdate).last.protein > 56
       message << "You have a high intake of protein. Keep it up!"
       message << "great"
-    elsif user.fitbit_scores.last.protein.between?(30, 55.9)
-      message << "You could benefit from eating more protein. Your intake so far today is #{user.fitbit_scores.last.protein.round} grams."
+    elsif user.fitbit_scores.order(:logdate).last.protein.between?(30, 55.9)
+      message << "You could benefit from eating more protein. Your intake so far today is #{user.fitbit_scores.order(:logdate).last.protein.round} grams."
       message << "average"
     else
       message << "Your protein intake is very low. Try to target at least 30 grams a day!"
@@ -123,10 +123,10 @@ class PagesController < ApplicationController
 
   def sugar(user)
     message = ["sugar", "vitals/10_Sugar.png"]
-    if user.fitbit_scores.last.sugar > 80
-      message << "You have a very high intake of sugar. Today we have logged #{user.fitbit_scores.last.sugar.round} grams of sugar. Try to eat less than 37 grams."
+    if user.fitbit_scores.order(:logdate).last.sugar > 80
+      message << "You have a very high intake of sugar. Today we have logged #{user.fitbit_scores.order(:logdate).last.sugar.round} grams of sugar. Try to eat less than 37 grams."
       message << "low"
-    elsif user.fitbit_scores.last.sugar.between?(37.1, 80)
+    elsif user.fitbit_scores.order(:logdate).last.sugar.between?(37.1, 80)
       message << "Set a goal to reduce your intake of sugar."
       message << "average"
     else
@@ -140,19 +140,19 @@ class PagesController < ApplicationController
     message = ["exercise", "vitals/6_Workout.png"]
 
     last_exercise = ''
-    if user.fitbit_scores.last.exercise_type.present?
-      last_exercise = "Your last exercise: #{user.fitbit_scores.last.exercise_type}."
+    if user.fitbit_scores.order(:logdate).last.exercise_type.present?
+      last_exercise = "Your last exercise: #{user.fitbit_scores.order(:logdate).last.exercise_type}."
     end
 
-    if user.fitbit_scores.last.active_minutes > 30
-      message << "#{last_exercise} So far you have #{user.fitbit_scores.last.active_minutes} active minutes today."
+    if user.fitbit_scores.order(:logdate).last.active_minutes > 30
+      message << "#{last_exercise} So far you have #{user.fitbit_scores.order(:logdate).last.active_minutes} active minutes today."
       message << "great"
-    elsif user.fitbit_scores.last.active_minutes.between?(16, 29)
-      message << "#{last_exercise} So far you have #{user.fitbit_scores.last.active_minutes} active minutes today.
+    elsif user.fitbit_scores.order(:logdate).last.active_minutes.between?(16, 29)
+      message << "#{last_exercise} So far you have #{user.fitbit_scores.order(:logdate).last.active_minutes} active minutes today.
       Try to get at least 30 active minutes per day."
       message << "average"
     else
-      message << "Today you only have #{user.fitbit_scores.last.active_minutes} active minutes. You need to exercise more!"
+      message << "Today you only have #{user.fitbit_scores.order(:logdate).last.active_minutes} active minutes. You need to exercise more!"
       message << "low"
     end
     return message
@@ -160,10 +160,10 @@ class PagesController < ApplicationController
 
   def alcohol(user)
     message = ["alcohol", "vitals/8_Alcohol.png"]
-    if user.fitbit_scores.last.alcohol_ml < 40
+    if user.fitbit_scores.order(:logdate).last.alcohol_ml < 40
       message << "You have a healthy intake of alcohol."
       message << "great"
-    elsif user.fitbit_scores.last.alcohol_ml.between?(40, 80)
+    elsif user.fitbit_scores.order(:logdate).last.alcohol_ml.between?(40, 80)
       message << "Decreasing your intake of alcohol would provide health benefits."
       message << "average"
     else
@@ -175,11 +175,11 @@ class PagesController < ApplicationController
 
   def heart_rate(user)
     message = ["heart rate", "vitals/1_Heart.png"]
-    if user.fitbit_scores.last.heart_rate > 100
-      message << "Your average heart rate today was #{user.fitbit_scores.last.heart_rate}, which is very high. Please consult with your doctor."
+    if user.fitbit_scores.order(:logdate).last.heart_rate > 100
+      message << "Your average heart rate today was #{user.fitbit_scores.order(:logdate).last.heart_rate}, which is very high. Please consult with your doctor."
       message << "low"
-    elsif user.fitbit_scores.last.heart_rate.between?(70, 100)
-      message << "Your heart rate averaged around #{user.fitbit_scores.last.heart_rate} today. This is within the healthy range."
+    elsif user.fitbit_scores.order(:logdate).last.heart_rate.between?(70, 100)
+      message << "Your heart rate averaged around #{user.fitbit_scores.order(:logdate).last.heart_rate} today. This is within the healthy range."
       message << "great"
     else
       message << "Your average heart rate was low today."
