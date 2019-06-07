@@ -1,11 +1,21 @@
 
-<% sleep_day = @fitbit_score.sleep_score.round * 2.5  %>
-<% exercise_day = @fitbit_score.exercise_score.round * 2.5 %>
-<% stress_day = @fitbit_score.stress_score.round * 2.5 %>
-<% diet_day = @fitbit_score.diet_score.round * 2.5 %>
+<% sleep_day = @fitbit_score.sleep_score * 2.5  %>
+<% exercise_day = @fitbit_score.exercise_score * 2.5 %>
+<% stress_day = @fitbit_score.stress_score * 1.5 %>
+<% diet_day = @fitbit_score.diet_score * 2.5 %>
 
 
-<% datapoints = [sleep_day, diet_day, stress_day, exercise_day] %>
+
+<% if diet_day < 0 %>
+  <% diet_day  = diet_day * -1 %>
+<% end %>
+
+<% if sleep_day < 0 %>
+  <% sleep_day  = sleep_day * -1 %>
+<% end %>
+
+
+<% datapoints = [sleep_day.round(1), diet_day.round(1), stress_day.round(1), exercise_day.round(1)] %>
 
 <% display_points = [] %>
 <% datapoints.each do |datapoint| %>
@@ -20,22 +30,24 @@
 
 <%
 data = {
-  labels: %w[Sleep Diet Stress Exercise],
+  labels: %w[Sleep Diet Mindfulness Exercise],
   datasets: [
     {
         label: "Goal completion",
-        backgroundColor: ["rgba(246,172,29,0.75)", "rgba(246,172,29,0.65)", "rgba(246,172,29,0.5)", "rgba(246,172,29,0.3)"],
+        backgroundColor: ["#F6AC1D", "#63BD73", "#BEC5DA", "rgba(246,172,29,0.3)"],
         data: display_points
     }
   ]
 }
-options = { maintainAspectRatio: false, height: 500, width: 250, scale: {
-        ticks: {
-          beginAtZero: true,
-          max: 10
-        }
-    }
-  }
+options = { maintainAspectRatio: false, height: 450, width: 250,
+   scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true,
+                suggestedMax: 10
+            }
+        }]
+    } }
  %>
 
 <div class="big_title mb-3">
@@ -57,7 +69,7 @@ options = { maintainAspectRatio: false, height: 500, width: 250, scale: {
 
   <div class="graph-card">
 
-      <%= polar_area_chart data, options %>
+      <%= bar_chart data, options %>
 
   </div>
 </div>

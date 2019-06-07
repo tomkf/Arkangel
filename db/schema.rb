@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_220257) do
+ActiveRecord::Schema.define(version: 2019_06_07_153933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_220257) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "notified_user", default: false
     t.float "sleep_score"
     t.float "floors", default: 0.0
-    t.boolean "notified_user", default: false
     t.index ["user_id"], name: "index_fitbit_scores_on_user_id"
   end
 
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_220257) do
     t.boolean "notified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "user_params", force: :cascade do |t|
@@ -100,17 +103,18 @@ ActiveRecord::Schema.define(version: 2019_06_06_220257) do
     t.string "last_name"
     t.integer "age"
     t.string "smoker"
+    t.boolean "admin", default: false, null: false
     t.string "fitbit_access_token"
     t.string "fitbit_refresh_token"
     t.integer "fitbit_expires_at"
     t.string "fitbit_user_id"
-    t.boolean "admin", default: false, null: false
     t.date "dob"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "fitbit_scores", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "user_params", "users"
   add_foreign_key "user_scores", "users"
 end

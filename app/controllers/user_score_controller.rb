@@ -21,8 +21,8 @@ class UserScoreController < ApplicationController
 
   def graph
 
-    @user_score_params = FitbitScore.where(user: current_user).order(:logdate).last(30)
-    @text = 'Monthly'
+    @user_score_params = FitbitScore.where(user: current_user).order(:logdate).last(7)
+    @text = 'Weekly'
     if params[:date] == "Weekly"
       @user_score_params = FitbitScore.where(user: current_user).order(:logdate).last(7)
       @text = 'Weekly'

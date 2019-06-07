@@ -4,15 +4,16 @@
 
 puts 'Wiping database...'
 UserScore.destroy_all
+Notification.destroy_all
 FitbitScore.destroy_all
 UserParam.destroy_all
 User.destroy_all
 
 puts 'Creating users'
-user2 = User.create!(email: 'jose@email.com', first_name: "Paul", last_name: "Jose", password: '123456', dob: "1990-02-02", smoker: 'never')
+user2 = User.create!(email: 'jose@email.com', first_name: "jose", last_name: "jose", password: '123456', dob: "1990-02-02", smoker: 'never')
 UserParam.create!(bmi: 26, weight: 86, height: 180, user: user2 )
 
-user = User.create!(email: 'gustaf@email.com', first_name: "paul", last_name: "mozart", password: '123456', dob: "1990-02-02", smoker: 'never')
+user = User.create!(email: 'gustaf@email.com', first_name: "jose", last_name: "mozart", password: '123456', dob: "1990-02-02", smoker: 'never')
 #user_params = UserParam.create!(bmi: 26, weight: 86, height: 180, user_id: user.id )
 puts 'Adding user score...'
 

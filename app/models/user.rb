@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :user_scores
   has_many :fitbit_scores
   has_many :user_params
+  has_many :notifications
   validates :first_name, :last_name, :dob, :smoker, presence: true
 
   before_create :assign_age
@@ -180,7 +181,7 @@ class User < ApplicationRecord
       score.carbs = log["summary"]["carbs"]
       score.fiber = log["summary"]["fiber"]
       score.protein = log["summary"]["protein"]
-      score.sodium = log["summary"]["sodium"]
+      score.sodium = 2
       score.water = log["summary"]["water"]
       score.diet_cal = log["summary"]["calories"]
 
