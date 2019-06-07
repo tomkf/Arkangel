@@ -4,6 +4,7 @@
 
 puts 'Wiping database...'
 UserScore.destroy_all
+Notification.destroy_all
 FitbitScore.destroy_all
 UserParam.destroy_all
 User.destroy_all
