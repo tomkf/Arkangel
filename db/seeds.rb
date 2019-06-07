@@ -22,67 +22,36 @@ exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "bas
 
 i = 1
 
-
 score = FitbitScore.create!(user: user,
   bmi: 31,
-  overall_sleep: rand(280..350),
-  awaken_sleep: rand(25..35),
-  rem_sleep: rand(40..55),
-  light_sleep: rand(15..25),
-  deep_sleep: rand(24..30),
-  heart_rate: rand(70..110),
-  steps: rand(3500..8000),
-  active_minutes: rand(5..25),
+    overall_sleep: 482,
+   awaken_sleep: 25,
+  rem_sleep: 154,
+  light_sleep: 202,
+  deep_sleep: 77,
+  heart_rate: 65,
+  steps: 8000,
+  active_minutes: 20,
   exercise_type: exercise_array[rand(0..3)],
-  floors: rand(0..5),
-  exercise_time: rand(5..25),
-  exercise_km: rand(0..6),
-  exercise_cal: rand(1000..2600),
-  water: rand(1800..2800),
-  carbs: rand(80..360),
-  fat: rand(80..150),
-  fiber: rand(15..30),
-  protein: rand(20..50),
-  sodium: rand(5..10),
-  sugar: rand(60..140),
-  cholesterol: rand(25..39),
-  diet_cal: rand(2400..3500),
-  alcohol_ml: rand(50..140),
+  floors: 5,
+  exercise_time: 18,
+  exercise_km: 4,
+  exercise_cal: 2600,
+  water: 2600,
+  carbs: 150,
+  fat: 80,
+  fiber: 30,
+  protein: 45,
+  sodium: 5,
+  sugar: 45,
+  cholesterol: 16,
+  diet_cal: 2400,
+  alcohol_ml: 45,
   logdate: '2019-05-01')
 score.algorithm_v2
 
- 9.times do
- score = FitbitScore.create!(user: user,
-   bmi: 31,
-   overall_sleep: rand(280..350),
-   awaken_sleep: rand(25..35),
-  rem_sleep: rand(40..55),
-  light_sleep: rand(15..25),
-  deep_sleep: rand(24..30),
-   heart_rate: rand(70..110),
-   steps: rand(3500..8000),
-   active_minutes: rand(5..25),
-   exercise_type: exercise_array[rand(0..3)],
-   floors: rand(0..5),
-   exercise_time: rand(5..25),
-   exercise_km: rand(0..6),
-   exercise_cal: rand(1000..2600),
-   water: rand(1800..2800),
-   carbs: rand(80..360),
-   fat: rand(80..150),
-   fiber: rand(15..30),
-   protein: rand(20..50),
-   sodium: rand(5..10),
-   sugar: rand(60..140),
-   cholesterol: rand(25..39),
-   diet_cal: rand(2400..3500),
-   alcohol_ml: rand(50..140),
-   logdate: Date.new(2019, 5, 1) + i)
- i += 1
- score.algorithm_v2
- end
 
- 15.times do
+10.times do
  score = FitbitScore.create!(user: user,
    bmi: 29,
    overall_sleep: rand(320..450),
@@ -91,10 +60,10 @@ score.algorithm_v2
   light_sleep: rand(15..25),
   deep_sleep: rand(24..30),
    heart_rate: rand(65..105),
-   steps: rand(5500..9999),
+  steps: 8000,
    active_minutes: rand(10..30),
    exercise_type: exercise_array[rand(0..5)],
-   floors: rand(2..4),
+  floors: 5,
    exercise_time: rand(8..25),
    exercise_km: rand(1..8),
    exercise_cal: rand(1900..2800),
@@ -113,7 +82,8 @@ score.algorithm_v2
  score.algorithm_v2
 end
 
-8.times do
+
+5.times do
 score = FitbitScore.create!(user: user,
   bmi: 26,
   overall_sleep: rand(350..480),
@@ -144,442 +114,37 @@ score = FitbitScore.create!(user: user,
  score.algorithm_v2
 end
 
+8.times do
+ score = FitbitScore.create!(user: user,
+   bmi: 31,
+   overall_sleep: rand(320..450),
+   awaken_sleep: rand(25..35),
+  rem_sleep: rand(40..55),
+  light_sleep: rand(15..25),
+  deep_sleep: rand(24..30),
+   heart_rate: rand(70..110),
+   steps: rand(3500..8000),
+   active_minutes: rand(5..25),
+   exercise_type: exercise_array[rand(0..3)],
+   floors: rand(0..5),
+   exercise_time: rand(5..25),
+   exercise_km: rand(0..6),
+   exercise_cal: rand(1000..2600),
+   water: rand(1800..2800),
+   carbs: rand(80..360),
+   fat: rand(80..150),
+   fiber: rand(15..30),
+   protein: rand(20..50),
+   sodium: rand(5..10),
+   sugar: rand(60..140),
+   cholesterol: rand(25..39),
+   diet_cal: rand(2400..3500),
+   alcohol_ml: rand(50..140),
+   logdate: Date.new(2019, 5, 1) + i)
+ i += 1
+ score.algorithm_v2
+ end
 
 
-############################
-##user-score data##########
-############################################################################################
-###########################################################################################
-
-# BAD AND SEMI BAD DAYS
-# UserScore.create!(
-#   user: user,
-#   bmi: 30,
-#   physical_activity: 0, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 2, # servings per day
-#   fats: 0, # servings per day
-#   soda: 5, # drinks per day
-#   alcohol: 5, # drinks per day
-#   logdate: '2019-05-01'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 29.5,
-#   physical_activity: 0, # hours per day
-#   fruits_vegetables: 1, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 2, # servings per day
-#   fats: 0, # servings per day
-#   soda: 5, # drinks per day
-#   alcohol: 5, # drinks per day
-#   logdate: '2019-05-02'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 30,
-#   physical_activity: 0.1, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.2, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 3, # drinks per day
-#   logdate: '2019-05-03'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 29.3,
-#   physical_activity: 0.1, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 3, # drinks per day
-#   logdate: '2019-05-04'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 29.3,
-#   physical_activity: 0.2, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 3, # drinks per day
-#   logdate: '2019-05-05'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 29,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 3, # drinks per day
-#   logdate: '2019-05-06'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 29,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 3, # drinks per day
-#   logdate: '2019-05-07'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 29,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 3, # drinks per day
-#   logdate: '2019-05-08'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 29,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 3, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-09'
-#   )
-# UserScore.create!(
-#   user: user,
-#   bmi: 29,
-#   physical_activity: 0.4, # hours per day
-#   fruits_vegetables: 0, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 2, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 0.3, # servings per day
-#   soda: 2, # drinks per day
-#   alcohol: 2, # drinks per day
-#   logdate: '2019-05-10'
-#   )
-
-# # NEUTRAL DAYS
-# UserScore.create!(
-#   user: user,
-#   bmi: 29,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-11'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.9,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-12'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.7,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-13'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.6,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-14'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.5,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-15'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.9,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-16'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.6,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-17'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.5,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-18'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.4,
-#   physical_activity: 0.3, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 10, # grams per day
-#   red_meat: 1.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.5, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 1, # drinks per day
-#   logdate: '2019-05-19'
-#   )
-
-# # CREATING GOOD DAYS
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.5,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-20'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.4,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-21'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.3,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-22'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.2,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-23'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.1,
-#   physical_activity: 2, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-24'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 28.0,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 2, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-25'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 27.9,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-26'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 27.8,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-27'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 27.7,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 2, # servings per day
-#   whole_grains: 8, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-28'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 27.7,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 3, # servings per day
-#   whole_grains: 5, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 1, # servings per day
-#   fats: 1, # servings per day
-#   soda: 0, # drinks per day
-#   alcohol: 0, # drinks per day
-#   logdate: '2019-05-29'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 27.7,
-#   physical_activity: 1, # hours per day
-#   fruits_vegetables: 4, # servings per day
-#   whole_grains: 15, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0, # servings per day
-#   fats: 1, # servings per day
-#   soda: 2, # drinks per day
-#   alcohol: 2, # drinks per day
-#   logdate: '2019-05-30'
-#   )
-
-# UserScore.create!(
-#   user: user,
-#   bmi: 27.7,
-#   physical_activity: 0, # hours per day
-#   fruits_vegetables: 3, # servings per day
-#   whole_grains: 12, # grams per day
-#   red_meat: 0.5, # servings per day
-#   processed_meat: 0.5, # servings per day
-#   fats: 0.8, # servings per day
-#   soda: 1, # drinks per day
-#   alcohol: 2, # drinks per day
-#   logdate: '2019-05-31'
-#   )
 
 puts 'Done!'
