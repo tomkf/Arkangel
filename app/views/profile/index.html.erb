@@ -63,7 +63,7 @@
       <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep.png", "#{@health_score.overall_sleep / 60} hours", "Slept at 10:45 pm"]  %>
     </div>
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
-      <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 18)}" ] %>
+      <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 6)}" ] %>
       <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", exercise_message, @health_score.active_minutes, "Active minutes" ] %>
       <%= render "shared/profile_component", info: ["Heart rate", "vitals/1_Heart.png", "#{@health_score.heart_rate} BPM", "Average from the past 24hrs"]  %>
 
