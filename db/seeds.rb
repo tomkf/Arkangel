@@ -24,7 +24,7 @@ exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "bas
 i = 1
 
 score = FitbitScore.create!(user: user,
-  bmi: 31,
+  bmi: 36,
     overall_sleep: 482,
    awaken_sleep: 25,
   rem_sleep: 154,
@@ -54,31 +54,31 @@ score.algorithm_v2
 
 10.times do
  score = FitbitScore.create!(user: user,
-   bmi: 29,
-   overall_sleep: rand(320..450),
-   awaken_sleep: rand(25..35),
-  rem_sleep: rand(40..55),
-  light_sleep: rand(15..25),
-  deep_sleep: rand(24..30),
-   heart_rate: rand(65..105),
+   bmi: 28,
+    overall_sleep: 482,
+   awaken_sleep: 25,
+  rem_sleep: 154,
+  light_sleep: 202,
+  deep_sleep: 77,
+  heart_rate: 65,
   steps: 8000,
-   active_minutes: rand(10..30),
-   exercise_type: exercise_array[rand(0..5)],
+  active_minutes: 20,
+  exercise_type: exercise_array[rand(0..3)],
   floors: 5,
-   exercise_time: rand(8..25),
-   exercise_km: rand(1..8),
-   exercise_cal: rand(1900..2800),
-   water: rand(2000..3800),
-   carbs: rand(80..250),
-   fat: rand(80..150),
-   fiber: rand(15..30),
-   protein: rand(25..50),
-   sodium: rand(3..10),
-   sugar: rand(30..120),
-   cholesterol: rand(15..35),
-   diet_cal: rand(2300..3300),
-   alcohol_ml: rand(45..100),
-   logdate: Date.new(2019, 5, 1) + i)
+  exercise_time: 18,
+  exercise_km: 4,
+  exercise_cal: 2600,
+  water: rand(2400..2700),
+  carbs: 150,
+  fat: 80,
+  fiber: 30,
+  protein: 45,
+  sodium: 5,
+  sugar: 45,
+  cholesterol: 16,
+  diet_cal: 2400,
+  alcohol_ml: 45,
+  logdate: Date.new(2019, 5, 1) + i)
  i += 1
  score.algorithm_v2
 end
@@ -86,7 +86,7 @@ end
 
 5.times do
 score = FitbitScore.create!(user: user,
-  bmi: 26,
+  bmi: 28,
   overall_sleep: rand(350..480),
   awaken_sleep: rand(25..35),
   rem_sleep: rand(40..55),
