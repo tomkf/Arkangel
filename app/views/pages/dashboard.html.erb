@@ -53,6 +53,19 @@
   </div>
 </div>
 
+<div class="container">
+  <hr>
+  <h3 style="font-size: 15px; color:grey;" class="text-center">
+  <% if @health_score.between?(70, 100) %>
+    <%= "#{@user.first_name} your recent stats indicate great physical health, keep it up!" %>
+  <% elsif @health_score.between?(40, 69.9) %>
+    <%= "Your recent stats indicate average life style choices, but you can do better #{@user.first_name.capitalize}" %>
+  <% else %>
+    <%= "Your recent stats indicate you are missing some healthy habits, but you can fix them #{@user.first_name.capitalize}" %>
+  <% end %>
+  </h3>
+</div>
+
 <% if @health_score.nil? %>
   <div class="container">
         <!-- Button trigger modal -->
