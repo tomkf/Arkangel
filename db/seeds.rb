@@ -78,7 +78,7 @@ score.algorithm_v2
   cholesterol: 16,
   diet_cal: 2400,
   alcohol_ml: 45,
-  logdate: Date.new(2019, 5, 1) + i)
+  logdate: Date.new(2019, 5, 15) + i)
  i += 1
  score.algorithm_v2
 end
@@ -110,7 +110,7 @@ score = FitbitScore.create!(user: user,
   cholesterol: rand(8..33),
   diet_cal: rand(2000..2800),
   alcohol_ml: rand(30..90),
-  logdate: Date.new(2019, 5, 1) + i)
+  logdate: Date.new(2019, 5, 15) + i)
  i += 1
  score.algorithm_v2
 end
@@ -141,7 +141,7 @@ end
    cholesterol: rand(25..39),
    diet_cal: rand(2400..3500),
    alcohol_ml: rand(50..140),
-   logdate: Date.new(2019, 5, 1) + i)
+   logdate: Date.new(2019, 5, 15) + i)
  i += 1
  score.algorithm_v2
  end
