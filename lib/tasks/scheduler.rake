@@ -14,7 +14,7 @@ task :squat => :environment do
   #last_min = User.where(email: "gustaf@email.com")[0].fitbit_scores.order(:logdate).last.active_minutes + 2
 
   if User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.present?
-    first_min = User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.health_score + 5
+    first_score = User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.health_score + 5
     User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.update(notified_user: false, exercise_type: "squats", active_minutes: 31, health_score: first_score)
   end
 
