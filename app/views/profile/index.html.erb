@@ -5,9 +5,9 @@
   <div class="container" >
     <div class="row mr-3 ml-3">
       <!-- Avatar logo -->
-      <div class="col-3 mt-3 text-left">
+      <div class="col-3 mt-3 text-left p-0">
         <%= link_to edit_user_registration_path do %>
-        <%= image_tag "avatar_face.png", style:"width: 60px"%>
+        <%= image_tag "avatar_face.png", style:"width: 100%; max-width:60px; margin:auto;"%>
         <% end  %>
       </div>
       <!-- Title  -->
@@ -19,7 +19,7 @@
       </div>
 
       <!-- Settings button -->
-      <div class="col-3 mt-3 text-right">
+      <div class="col-3 mt-3 text-right p-0">
         <ul class="nav-item dropdown" style="padding: 0;">
          <%= image_tag "black-nav.png", class: "avatar dropdown-toggle  text-right", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -34,7 +34,7 @@
 </div>
 <div class="container">
   <hr>
-  <h3 style="font-size: 13px;" class="text-center">
+  <h3 style="font-size: 15px;" class="text-center">
   Here is a breakdown of your habits for today:
   </h3>
 </div>
