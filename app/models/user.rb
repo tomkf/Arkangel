@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :user_scores
   has_many :fitbit_scores
   has_many :user_params
+  has_many :notifications
   validates :first_name, :last_name, :dob, :smoker, presence: true
 
   before_create :assign_age
