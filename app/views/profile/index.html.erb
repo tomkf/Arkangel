@@ -51,13 +51,14 @@
     </div>
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
       <%= render "shared/profile_component", info: ["Sugar", "vitals/10_Sugar.png", @health_score.sugar.round, "Grams"] %>
-      <%= render "shared/profile_component", info: ["Water", "vitals/15_Water.png", @health_score.water, "Cups" ] %>
-      <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep.png", @health_score.overall_sleep / 60, "Slept at 10:45 pm"]  %>
+      <%= render "shared/profile_component", info: ["Water", "vitals/15_Water.png", (@health_score.water / 236).round, "Cups" ] %>
+      <%= render "shared/profile_component", info: ["Sleep", "vitals/16_Sleep.png", "#{@health_score.overall_sleep / 60} hours", "Slept at 10:45 pm"]  %>
     </div>
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
       <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 18)}" ] %>
       <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type.capitalize, @health_score.active_minutes, "Minutes" ] %>
-      <%= render "shared/profile_component", info: ["Heart Rate", "vitals/1_Heart.png", @health_score.heart_rate, "Average from the past 24hrs"]  %>
+      <%= render "shared/profile_component", info: ["Heart rate", "vitals/1_Heart.png", "#{@health_score.heart_rate} BPM", "Average from the past 24hrs"]  %>
+
       <br>
     </div>
   </div >
