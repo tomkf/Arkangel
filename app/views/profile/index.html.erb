@@ -39,6 +39,14 @@
   </h3>
 </div>
 
+
+<% if @health_score.exercise_type.present? %>
+  <% exercise_message = @health_score.exercise_type.capitalize %>
+<% else %>
+  <% exercise_message = "No workout today" %>
+<% end %>
+
+
 <!-- DATA PLOTED -->
 <div class="container" style="margin-bottom: 12vh">
   <div class="row mr-3 ml-3">
@@ -56,7 +64,7 @@
     </div>
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
       <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 18)}" ] %>
-      <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type.capitalize, @health_score.active_minutes, "Minutes" ] %>
+      <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", exercise_message, @health_score.active_minutes, "Active minutes" ] %>
       <%= render "shared/profile_component", info: ["Heart rate", "vitals/1_Heart.png", "#{@health_score.heart_rate} BPM", "Average from the past 24hrs"]  %>
 
       <br>
