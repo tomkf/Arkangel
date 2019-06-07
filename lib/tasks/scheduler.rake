@@ -9,14 +9,14 @@ task :notify => :environment do
 end
 
 task :squat => :environment do
-  first_min = User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.active_minutes + 2
+  #first_min = User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.active_minutes + 2
   first_min = User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.health_score + 5
 
-  last_min = User.where(email: "gustaf@email.com")[0].fitbit_scores.order(:logdate).last.active_minutes + 2
+  #last_min = User.where(email: "gustaf@email.com")[0].fitbit_scores.order(:logdate).last.active_minutes + 2
   last_score = User.where(email: "gustaf@email.com")[0].fitbit_scores.order(:logdate).last.health_score + 5
 
-  User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.update(notified_user: false, exercise_type: "squats", active_minutes: first_min, health_score: first_score)
-  User.where(email: "gustaf@email.com")[0].fitbit_scores.order(:logdate).last.update(notified_user: false, exercise_type: "squats", active_minutes: last_min, health_score: last_score)
+  User.where(email: "jose@email.com")[0].fitbit_scores.order(:logdate).last.update(notified_user: false, exercise_type: "squats", active_minutes: 31, health_score: first_score)
+  User.where(email: "gustaf@email.com")[0].fitbit_scores.order(:logdate).last.update(notified_user: false, exercise_type: "squats", active_minutes: 31, health_score: last_score)
 end
 
 
