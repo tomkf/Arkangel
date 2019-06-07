@@ -6,10 +6,16 @@
     <%= image_tag "#{info[1]}", style:"max-height: 30px;" %>
   </div>
   <div class="stat-description">
-    <p class="vital_content" style="font-size: 16px"><%= info[2] %></p>
-    <p><%= info[3] %></p>
-    <% if info[4].present? %>
-    <p> <%= info[4] %></p>
+    <p class="vital_content" style="font-size: 20px; font-weight: 700; letter-spacing: -.03rem;"><%= info[2] %></p>
+    <p style="font-size: 10px; font-weight: 300;">
+    <% if info[3].present? %>
+      <%= info[3] %>
+    <% else %>
+      <%= "No workouts today" %>
     <% end %>
+    <% if info[4].present? %>
+      <%= info[4] %>
+    <% end %>
+    </p>
   </div>
 </div>
