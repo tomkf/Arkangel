@@ -216,22 +216,9 @@ class FitbitScore < ApplicationRecord
       exercise_cal_score = 0
     end
 
-    # begin
-      score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
-    # rescue
+    score = steps_score + floors_score + active_minutes_score + exercise_km_score + exercise_time_score + exercise_cal_score # adds everything
 
-      p "somethng came up"
-    # end
-
-    # begin
-      self.update!(exercise_score: score)
-    # rescue
-       p "wtf?"
-    # end
-
-
-
-
+    self.update!(exercise_score: score)
 
     return score
   end
