@@ -14,7 +14,7 @@
       <div class="col-6 mt-3">
       <h5 class="text-center" style="font-size: 22px; font-weight:900"><%= @user.first_name.capitalize %>'s  Vitals:</h5>
       <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> <%= @user.age %> years old</p>
-      <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> Health score: <%= @health_score.health_score.round(1) %></p>
+      <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> Score: <%= @health_score.health_score.round(1) %></p>
       <p class="text-center mb-2" style="letter-spacing: -0.035em; margin:0;"> BMI: <%= @health_score.bmi.round(7) %></p>
       </div>
 
