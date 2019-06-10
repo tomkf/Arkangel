@@ -180,7 +180,7 @@ class User < ApplicationRecord
       score.carbs = log["summary"]["carbs"]
       score.fiber = log["summary"]["fiber"]
       score.protein = log["summary"]["protein"]
-      score.sodium = log["summary"]["sodium"]
+      score.sodium = 2
       score.water = log["summary"]["water"]
       score.diet_cal = log["summary"]["calories"]
 
