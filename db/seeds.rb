@@ -4,16 +4,18 @@
 
 puts 'Wiping database...'
 UserScore.destroy_all
+Notification.destroy_all
 FitbitScore.destroy_all
 UserParam.destroy_all
 User.destroy_all
 
 puts 'Creating users'
-user2 = User.create!(email: 'jose@email.com', first_name: "Jose", last_name: "Jose", password: '123456', dob: "1994-02-02", smoker: 'never')
+
+user2 = User.create!(email: 'jose@email.com', first_name: "jose", last_name: "jose", password: '123456', dob: "1990-02-02", smoker: 'never')
 UserParam.create!(bmi: 26, weight: 86, height: 180, user: user2 )
 
-user = User.create!(email: 'gustaf@email.com', first_name: "Jose", last_name: "mozart", password: '123456', dob: "1994-02-02", smoker: 'never')
-#user_params = UserParam.create!(bmi: 26, weight: 86, height: 180, user_id: user.id )
+user = User.create!(email: 'gustaf@email.com', first_name: "jose", last_name: "mozart", password: '123456', dob: "1990-02-02", smoker: 'never')
+
 puts 'Adding user score...'
 
 # Add score
@@ -23,6 +25,7 @@ exercise_array = ["jogging", "brisk walk", "swimming", "weights", "biking", "bas
 i = 1
 
 score = FitbitScore.create!(user: user,
+<<<<<<< HEAD
   bmi: 31,
   overall_sleep: rand(320..450),
   awaken_sleep: rand(25..35),
@@ -47,10 +50,37 @@ score = FitbitScore.create!(user: user,
   cholesterol: rand(25..39),
   diet_cal: rand(2400..3500),
   alcohol_ml: rand(50..140),
+=======
+  bmi: 36,
+    overall_sleep: 482,
+   awaken_sleep: 25,
+  rem_sleep: 154,
+  light_sleep: 202,
+  deep_sleep: 77,
+  heart_rate: 65,
+  steps: 8000,
+  active_minutes: 20,
+  exercise_type: exercise_array[rand(0..3)],
+  floors: 5,
+  exercise_time: 18,
+  exercise_km: 4,
+  exercise_cal: 2600,
+  water: 2600,
+  carbs: 150,
+  fat: 80,
+  fiber: 30,
+  protein: 45,
+  sodium: 5,
+  sugar: 45,
+  cholesterol: 16,
+  diet_cal: 2400,
+  alcohol_ml: 45,
+>>>>>>> 8cbd268a28a426e9db7d8c8c45fc20873c813070
   logdate: '2019-05-01')
 score.algorithm_v2
 
 
+<<<<<<< HEAD
 15.times do
  score = FitbitScore.create!(user: user,
    bmi: 29,
@@ -78,14 +108,47 @@ score.algorithm_v2
    diet_cal: rand(2300..3300),
    alcohol_ml: rand(45..100),
    logdate: Date.new(2019, 5, 1) + i)
+=======
+10.times do
+ score = FitbitScore.create!(user: user,
+   bmi: 28,
+    overall_sleep: 482,
+   awaken_sleep: 25,
+  rem_sleep: 154,
+  light_sleep: 202,
+  deep_sleep: 77,
+  heart_rate: 65,
+  steps: 8000,
+  active_minutes: 20,
+  exercise_type: exercise_array[rand(0..3)],
+  floors: 5,
+  exercise_time: 18,
+  exercise_km: 4,
+  exercise_cal: 2600,
+  water: rand(2400..2700),
+  carbs: 150,
+  fat: 80,
+  fiber: 30,
+  protein: 45,
+  sodium: 5,
+  sugar: 45,
+  cholesterol: 16,
+  diet_cal: 2400,
+  alcohol_ml: 45,
+  logdate: Date.new(2019, 5, 15) + i)
+>>>>>>> 8cbd268a28a426e9db7d8c8c45fc20873c813070
  i += 1
  score.algorithm_v2
 end
 
 
+<<<<<<< HEAD
 8.times do
+=======
+5.times do
+>>>>>>> 8cbd268a28a426e9db7d8c8c45fc20873c813070
 score = FitbitScore.create!(user: user,
-  bmi: 26,
+  bmi: 28,
   overall_sleep: rand(350..480),
   awaken_sleep: rand(25..35),
   rem_sleep: rand(40..55),
@@ -109,12 +172,16 @@ score = FitbitScore.create!(user: user,
   cholesterol: rand(8..33),
   diet_cal: rand(2000..2800),
   alcohol_ml: rand(30..90),
-  logdate: Date.new(2019, 5, 1) + i)
+  logdate: Date.new(2019, 5, 15) + i)
  i += 1
  score.algorithm_v2
 end
 
+<<<<<<< HEAD
 9.times do
+=======
+8.times do
+>>>>>>> 8cbd268a28a426e9db7d8c8c45fc20873c813070
  score = FitbitScore.create!(user: user,
    bmi: 31,
    overall_sleep: rand(320..450),
@@ -140,7 +207,11 @@ end
    cholesterol: rand(25..39),
    diet_cal: rand(2400..3500),
    alcohol_ml: rand(50..140),
+<<<<<<< HEAD
    logdate: Date.new(2019, 5, 1) + i)
+=======
+   logdate: Date.new(2019, 5, 15) + i)
+>>>>>>> 8cbd268a28a426e9db7d8c8c45fc20873c813070
  i += 1
  score.algorithm_v2
  end
