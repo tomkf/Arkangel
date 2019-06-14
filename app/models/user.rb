@@ -33,8 +33,8 @@ class User < ApplicationRecord
 
 
   def fetch_historical_data(days)
-     # create the empty scores for the past 7 days
 
+    # create the empty scores for the past 7 days
     days.times do |i|
       FitbitScore.create!({
         logdate: Time.now - DAY_IN_SECONDS * i,
@@ -42,10 +42,10 @@ class User < ApplicationRecord
       })
     end
 
-    # make an api call
+    # gets the api call
     client = fitbit_client
 
-    # make all the different api calls (returns an array)
+    # makes all the different api calls (returns an array)
     sleep_info_raw = client.sleep_time_series({ start_date: Time.now - DAY_IN_SECONDS * days })
     bmi_info = client.body_time_series('bmi',{start_date: Time.now - DAY_IN_SECONDS * days })
     heart_rate_info = client.heart_rate_time_series({start_date: Time.now - DAY_IN_SECONDS * days })
@@ -155,25 +155,11 @@ class User < ApplicationRecord
     exercise_type_info.each do |day|
       exercise_type_object = FitbitScore.find_by(logdate: day["dateTime"])
       next if exercise_type_object.nil?
-      exercise_type_object.exercise_type = day["value"].nil? ?  0 : day["value"]
+
+      exercise_type_object.exercise_type = day["value"].nil? ? 0 : day["value"].capitalize
       exercise_type_object.save!
     end
 
-    # # stores diet_cal data
-    # diet_cal_info.each do |day|
-    #   diet_cal_object = FitbitScore.find_by(logdate: day["dateTime"])
-    #   next if diet_cal_object.nil?
-    #   diet_cal_object.diet_cal = day["value"].nil? ?  0 : day["value"]
-    #   diet_cal_object.save!
-    # end
-
-    # # stores water data
-    # water_info.each do |day|
-    #   water_object = FitbitScore.find_by(logdate: day["dateTime"])
-    #   next if water_object.nil?
-    #   water_object.water = day["value"].nil? ?  0 : day["value"]
-    #   water_object.save!
-    # end
     FitbitScore.where(user: self).each do |score|
       log = client.food_logs(score.logdate)
       score.fat = log["summary"]["fat"]

@@ -13,14 +13,14 @@ class FibitController < ApplicationController
     current_user.fitbit_user_id = client.token.params["user_id"]
     current_user.save
 
-    # fetch all the historical data
+    # fetches all the historical data
     current_user.fetch_historical_data(14)
     # show a "calculating page"
+    # TO DO
 
     # redirect to dashboard
     redirect_to dashboard_path
   end
-
 
   def notification
     render json: { score: score }
