@@ -34,9 +34,9 @@ class FibitController < ApplicationController
       last_score.notified_user = true
       last_score.save
       "New score: #{last_score.health_score.round(1)}"
-    elsif Notification.last.present? && Notification.last.notified == false
-      Notification.last.update(notified: true)
-      Notification.last.message.to_s
+    elsif current_user.notifications.last.present? && current_user.notifications.last.notified == false
+      current_user.notifications.last.update(notified: true)
+      current_user.notifications.last.message.to_s
     end
   end
 end

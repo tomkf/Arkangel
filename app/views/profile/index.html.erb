@@ -14,8 +14,8 @@
       <div class="col-6 mt-3">
       <h5 class="text-center" style="font-size: 22px; font-weight:900"><%= @user.first_name.capitalize %>'s  Vitals:</h5>
       <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> <%= @user.age %> years old</p>
-      <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> Score: <%= @health_score.health_score.round(1) %></p>
-      <p class="text-center mb-2" style="letter-spacing: -0.035em; margin:0;"> BMI: <%= @health_score.bmi.round(7) %></p>
+      <p class="text-center" style="letter-spacing: -0.035em; margin:0;"> Health score: <%= @health_score.health_score.round(1) %></p>
+      <p class="text-center mb-2" style="letter-spacing: -0.035em; margin:0;"> BMI: <%= @health_score.bmi.round(1) %></p>
       </div>
 
       <!-- Settings button -->
@@ -32,12 +32,21 @@
     </div>
   </div>
 </div>
+
 <div class="container">
   <hr>
   <h3 style="font-size: 15px;" class="text-center">
   Here is a breakdown of your habits for today:
   </h3>
 </div>
+
+
+<% if @health_score.exercise_type.present? %>
+  <% exercise_message = @health_score.exercise_type.capitalize %>
+<% else %>
+  <% exercise_message = "No workout today" %>
+<% end %>
+
 
 <!-- DATA PLOTED -->
 <div class="container" style="margin-bottom: 12vh">
@@ -56,8 +65,9 @@
     </div>
 
     <div class="great col-sm-12 col-md-12 col-lg-4 mt-3">
-      <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 18)}" ] %>
-      <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", @health_score.exercise_type, @health_score.active_minutes, "Minutes" ] %>
+
+      <%= render "shared/profile_component", info: ["Steps", "vitals/3_Steps.png", @health_score.steps, "Last Synched: #{@health_score.created_at.to_s.slice(10, 6)}" ] %>
+      <%= render "shared/profile_component", info: ["Workout", "vitals/6_Workout.png", exercise_message, @health_score.active_minutes, "Active minutes" ] %>
       <%= render "shared/profile_component", info: ["Heart rate", "vitals/1_Heart.png", "#{@health_score.heart_rate} BPM", "Average from the past 24hrs"]  %>
 
       <br>
